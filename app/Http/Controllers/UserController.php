@@ -46,4 +46,9 @@ class UserController extends Controller
         }
         return view('user.auth', ['message' => $msg]);
     }
+    public function postLogout(Request $request)
+    {
+        Auth::logout();
+        return view('info.top');
+    }
 }

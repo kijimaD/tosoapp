@@ -27,6 +27,7 @@ Route::get('user/del', 'UserController@remove');
 
 Route::get('user/auth', 'UserController@getAuth');
 Route::post('user/auth', 'UserController@postAuth');
+Route::get('user/logout', 'Usercontroller@postLogout');
 
 Auth::routes();
 
