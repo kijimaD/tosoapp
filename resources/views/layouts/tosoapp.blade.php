@@ -28,8 +28,9 @@
     <div class="col-xs-12 col-12 bg-white rounded">
         <h2 class="page-header mt-2">@yield('title')</h2>
         <ul>
-            <li><a href="user/add">ユーザ登録</a></li>
-            <li><a href="user">ユーザ一覧</a></li>
+            <li><a href="/user/add">ユーザ登録</a></li>
+            <li><a href="/user">ユーザ一覧</a></li>
+            <li><a href="/user/auth">ログイン</a>
         </ul>
         <hr>
         @yield('content')

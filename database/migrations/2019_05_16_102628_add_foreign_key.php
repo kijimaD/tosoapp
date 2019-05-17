@@ -18,11 +18,6 @@ class AddForeignKey extends Migration
 
         // 顧客
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('userAddress_id')->unsigned();
-            $table->foreign('userAddress_id')
-            ->references('id')
-            ->on('userAddress')
-            ->onDelete('cascade');
         });
 
         // 入金口座

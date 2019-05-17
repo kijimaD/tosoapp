@@ -24,3 +24,10 @@ Route::post('user/edit', 'UserController@update');
 
 Route::get('user/del', 'UserController@delete');
 Route::get('user/del', 'UserController@remove');
+
+Route::get('user/auth', 'UserController@getAuth');
+Route::post('user/auth', 'UserController@postAuth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
