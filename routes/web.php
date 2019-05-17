@@ -13,3 +13,14 @@
 
 
 Route::get('/', 'InfoController@top');
+
+Route::get('user', 'UserController@index');
+
+Route::get('user/add', 'UserController@add');
+Route::post('user/add', 'UserController@create');
+
+Route::get('user/edit', 'UserController@edit');
+Route::post('user/edit', 'UserController@update');
+
+Route::get('user/del', 'UserController@delete');
+Route::get('user/del', 'UserController@remove');
