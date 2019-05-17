@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddUserRequest;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class UserController extends Controller
@@ -16,12 +18,14 @@ class UserController extends Controller
     {
         return view('user.add');
     }
-    public function create(Request $request)
+    public function create(AddUserRequest $request)
     {
-        $user = new User;
-        $form = $request->all();
-        unset($form['_token']);
-        $user->fill($form)->save();
+        User::create([
+          'family_name' => $request['family_name'],
+          'name' => $request['name'],
+          'email' => $request['email'],
+          'password' => Hash::make($request['password']),
+]);
         return redirect('/user');
     }
 }
