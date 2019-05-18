@@ -17,5 +17,11 @@ class UsersTableSeeder extends Seeder
         'email' => 'norimaking777@gmail.com',
         'password' => bcrypt('11qqaazz')
       ]);
+
+        \App\Admin::create([
+        'name' => '管理者',
+        'email' => 'norimaking777@gmail.com',
+        'password' => bcrypt('11qqaazz')
+      ]);
     }
 }

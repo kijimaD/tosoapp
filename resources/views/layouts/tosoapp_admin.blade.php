@@ -8,7 +8,7 @@
     <title>@yield('title')</title>
     <style>
         body {
-            background-color: silver;
+            background-color: tomato;
         }
 
         li {
@@ -38,7 +38,7 @@
             <li><a href="/home">ホーム</a></li>
             <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
             <li><a href="{{ route('login')}}">{{__('homeログイン')}}</a></li>
-            <li><a href="{{ route('admin.home')}}">{{__('adminログイン')}}</a></li>
+            <li><a href="{{ route('admin.login')}}">{{__('adminログイン')}}</a></li>
         </ul>
         <hr>
         @yield('content')
