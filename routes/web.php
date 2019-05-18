@@ -11,9 +11,6 @@
 |
 */
 
-
-Route::get('/', 'InfoController@top');
-
 Route::get('user/add', 'UserController@add');
 Route::post('user/add', 'UserController@create');
 Route::get('user/auth', 'UserController@getAuth');
@@ -21,17 +18,13 @@ Route::post('user/auth', 'UserController@postAuth');
 Route::get('user/logout', 'Usercontroller@postLogout');
 
 Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 /*
 |--------------------------------------------------------------------------
 | 1) User 認証不要
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return redirect('/home');
-});
+Route::get('/', 'InfoController@top');
+Route::get('/home', 'HomeController@index')->name('home');
 
 /*
 |--------------------------------------------------------------------------
