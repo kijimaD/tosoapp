@@ -33,7 +33,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('user/mypage', 'UserController@mypage')->name('user.mypage');
+    Route::get('/user/mypage', 'UserController@mypage')->name('user.mypage');
+    Route::get('/address', 'AddressBookController@index');
 });
 
 /*

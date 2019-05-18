@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration
         });
 
         // 入金口座
-        Schema::create('bank', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('bank_name');
             $table->string('bank_branch');
@@ -49,7 +49,7 @@ class CreateUsersTable extends Migration
         });
 
         // アドレス帳
-        Schema::create('addressBook', function (Blueprint $table) {
+        Schema::create('addressBooks', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('zip');
             $table->string('city');
@@ -58,13 +58,13 @@ class CreateUsersTable extends Migration
         });
 
         // 本住所
-        Schema::create('userAddress', function (Blueprint $table) {
+        Schema::create('userAddresses', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 都道府県コード
-        Schema::create('prefecture', function (Blueprint $table) {
+        Schema::create('prefectures', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('prefecture_code');
             $table->string('prefecture_name');
@@ -72,27 +72,27 @@ class CreateUsersTable extends Migration
 
 
         // 本人確認送信
-        Schema::create('sendPhoto', function (Blueprint $table) {
+        Schema::create('sendPhotos', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 本人確認完了
-        Schema::create('verifyPhoto', function (Blueprint $table) {
+        Schema::create('verifyPhotos', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 買取系輸送 ===============
         // 案件
-        Schema::create('case', function (Blueprint $table) {
+        Schema::create('cases', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('case_num')->nullable(); // どうやってコードを振る？
             $table->timestamps();
         });
 
         // 入金方法
-        Schema::create('paymentWay', function (Blueprint $table) {
+        Schema::create('paymentWays', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('payment_way');
         });
@@ -104,7 +104,7 @@ class CreateUsersTable extends Migration
         });
 
         // 集荷申請
-        Schema::create('collection', function (Blueprint $table) {
+        Schema::create('collections', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('collection_num')->nullable(); // どうやってコードを振る？
             $table->date('collection_day');
@@ -113,13 +113,13 @@ class CreateUsersTable extends Migration
         });
 
         // 集荷時間帯
-        Schema::create('collectionTime', function (Blueprint $table) {
+        Schema::create('collectionTimes', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('collection_time');
         });
 
         // ロッカー予約
-        Schema::create('reserveLocker', function (Blueprint $table) {
+        Schema::create('reserveLockers', function (Blueprint $table) {
             $table->Increments('id');
             $table->date('reserve_day');
             $table->string('reserve_time');
@@ -127,14 +127,14 @@ class CreateUsersTable extends Migration
         });
 
         // ロッカー番号
-        Schema::create('lockerNum', function (Blueprint $table) {
+        Schema::create('lockerNums', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('num');
             $table->timestamps();
         });
 
         // ロッカー場所
-        Schema::create('lockerPlace', function (Blueprint $table) {
+        Schema::create('lockerPlaces', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('place');
             $table->timestamps();
@@ -142,39 +142,39 @@ class CreateUsersTable extends Migration
 
         // フラグ系 ===============
         // 集荷委託済み
-        Schema::create('applyDone', function (Blueprint $table) {
+        Schema::create('applyDones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 了承確認済み
-        Schema::create('approveDone', function (Blueprint $table) {
+        Schema::create('approveDones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // キャンセル
-        Schema::create('cancel', function (Blueprint $table) {
+        Schema::create('cancels', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 入金済み
-        Schema::create('paymentDone', function (Blueprint $table) {
+        Schema::create('paymentDones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 査定系 ==============
         // 査定
-        Schema::create('assessment', function (Blueprint $table) {
+        Schema::create('assessments', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('sum_price');
             $table->timestamps();
         });
 
         // 送料
-        Schema::create('shippingCost', function (Blueprint $table) {
+        Schema::create('shippingCosts', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('shippingCost_type');
             $table->integer('cost');
@@ -183,7 +183,7 @@ class CreateUsersTable extends Migration
         });
 
         // クーポン
-        Schema::create('coupen', function (Blueprint $table) {
+        Schema::create('coupens', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('coupen_name');
             $table->double('coupen_value');
@@ -191,7 +191,7 @@ class CreateUsersTable extends Migration
         });
 
         // 査定明細
-        Schema::create('assessmentDetail', function (Blueprint $table) {
+        Schema::create('assessmentDetails', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('price');
             $table->timestamps();
@@ -208,7 +208,7 @@ class CreateUsersTable extends Migration
         });
 
         // コンディション
-        Schema::create('condition', function (Blueprint $table) {
+        Schema::create('conditions', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('condition_code');
             $table->double('condition_percent');
@@ -216,7 +216,7 @@ class CreateUsersTable extends Migration
         });
 
         // タイトル
-        Schema::create('title', function (Blueprint $table) {
+        Schema::create('titles', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('isbn');
             $table->string('title_name');

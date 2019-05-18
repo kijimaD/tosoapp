@@ -4,7 +4,7 @@
 
 @section('content')
 <ul>
-    <li><a href="">住所管理</a></li>
+    <li><a href="/address">住所管理</a></li>
     <li><a href="">集荷申請</a></li>
     <li><a href="">買取ロッカー予約</a></li>
     <li><a href="">買取履歴</a></li>
