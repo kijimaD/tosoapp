@@ -15,10 +15,12 @@ class UserController extends Controller
         $items = User::get();
         return view('user.index')->with('items', $items);
     }
+
     public function add(Request $request)
     {
         return view('user.add');
     }
+
     public function create(AddUserRequest $request)
     {
         User::create([
@@ -29,11 +31,13 @@ class UserController extends Controller
         ]);
         return redirect('/user');
     }
+
     public function getAuth(Request $request)
     {
         $param = ['message' => 'ログインしてください。'];
         return view('user.auth', $param);
     }
+
     public function postAuth(Request $request)
     {
         $email = $request->email;
@@ -46,9 +50,15 @@ class UserController extends Controller
         }
         return view('user.auth', ['message' => $msg]);
     }
+
     public function postLogout(Request $request)
     {
         Auth::logout();
         return view('info.top');
+    }
+
+    public function mypage(Request $request)
+    {
+        return view('user.mypage');
     }
 }

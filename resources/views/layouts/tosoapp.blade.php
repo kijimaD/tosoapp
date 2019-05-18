@@ -38,6 +38,7 @@
             <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
             <li><a href="{{ route('login')}}">{{__('homeログイン')}}</a></li>
             <li><a href="{{ route('admin.home')}}">{{__('adminログイン')}}</a></li>
+            <li><a href="{{ route('user.mypage')}}">{{__('マイページ')}}</a></li>
         </ul>
         <hr>
         @yield('content')

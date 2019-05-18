@@ -14,7 +14,7 @@
 
 Route::get('/', 'InfoController@top');
 
-Route::get('user', 'UserController@index')->middleware('verified');
+
 
 Route::get('user/add', 'UserController@add');
 Route::post('user/add', 'UserController@create');
@@ -47,8 +47,9 @@ Route::get('/', function () {
 | 2) User ログイン後
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'auth:user'], function () {
+Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('user/mypage', 'UserController@mypage')->name('user.mypage');
 });
 
 /*
@@ -69,7 +70,8 @@ Route::group(['prefix' => 'admin'], function () {
 | 4) Admin ログイン後
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
-    Route::get('logout', 'Admin\LoginController@logout')->name('admin.logout');
-    Route::get('home', 'Admin\HomeController@index')->name('admin.home');
+Route::group(['middleware' => 'auth:admin'], function () {
+    Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
+    Route::get('admin/user', 'UserController@index');
 });
