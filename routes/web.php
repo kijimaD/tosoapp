@@ -14,7 +14,7 @@
 
 Route::get('/', 'InfoController@top');
 
-Route::get('user', 'UserController@index');
+Route::get('user', 'UserController@index')->middleware('verified');
 
 Route::get('user/add', 'UserController@add');
 Route::post('user/add', 'UserController@create');
@@ -29,6 +29,6 @@ Route::get('user/auth', 'UserController@getAuth');
 Route::post('user/auth', 'UserController@postAuth');
 Route::get('user/logout', 'Usercontroller@postLogout');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -34,7 +34,8 @@
         <ul>
             <li><a href="/user/add">ユーザ登録</a></li>
             <li><a href="/user">ユーザ一覧</a></li>
-            <li><a href="/user/auth">ログイン</a>
+            <li><a href="/user/auth">ログイン</a></li>
+            <li><a href="/home">ホーム</a></li>
         </ul>
         <hr>
         @yield('content')
