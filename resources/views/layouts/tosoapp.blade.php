@@ -36,6 +36,8 @@
             <li><a href="/user">ユーザ一覧</a></li>
             <li><a href="/user/auth">ログイン</a></li>
             <li><a href="/home">ホーム</a></li>
+            <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
+
         </ul>
         <hr>
         @yield('content')
