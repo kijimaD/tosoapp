@@ -24,8 +24,8 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->email_verified_at}}</td>
                 <td>{{$item->created_at}}</td>
-                <td><a href="/customer/edit?CustomerID={{$item->CustomerID}}">修正</a></td>
-                <td><a href="/customer/del?CustomerID={{$item->CustomerID}}">消去</a></td>
+                <td><a href="/user/edit?id={{$item->id}}">修正</a></td>
+                <td><a href="/user/del?id={{$item->id}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>

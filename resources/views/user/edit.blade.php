@@ -1,19 +1,35 @@
-@extends('layouts.tenjiapp')
+@extends('layouts.tosoapp')
 
 @section('title','コメント修正')
 
 @section('content')
-  <table>
-    <form action="/customer/edit" method="post">
-      {{ csrf_field() }}
-      <input type="hidden" name="CustomerID" value = "{{$form->CustomerID}}" />
-      <tr><th>性別</th><td><input type="text" name="sex" value="{{$form->sex}}"/></td></tr>
-      <tr><th>年齢</th><td><input type="text" name="age" value="{{$form->age}}"/></td></tr>
-      <tr><th>職業</th><td><input type="text" name="employment" value="{{$form->employment}}"/></td></tr>
-      <tr><th>どこで知った</th><td><input type="text" name="info_route" value="{{$form->info_route}}"/></td></tr>
-      <tr><th>メモ</th><td><input type="text" name="memo" value="{{$form->memo}}"/></td></tr>
-      <tr><th></th><td><input type="submit" value="send"/></td></tr>
-    </form>
+<form action="/user/edit" method="post">
+    {{csrf_field()}}
+    <input type="hidden" name="id" value="{{$form->id}}">
+    <div class="form-group">
+        <label for="family_name" class="col-form-label text-md-left">姓</label>
+        <div>
+            <input type="text" name="family_name" value="{{$form->family_name}}" />
+        </div>
+    </div>
 
-  </table>
+    <div class="form-group">
+        <label for="name" class="col-form-label text-md-left">名</label>
+        <div>
+            <input type="text" name="name" value="{{$form->name}}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="col-form-label text-md-left">eメール</label>
+        <div>
+            <input type="text" name="email" value="{{$form->email}}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">送信</button>
+    </div>
+</form>
+
 @endsection

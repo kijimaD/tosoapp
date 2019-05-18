@@ -14,17 +14,8 @@
 
 Route::get('/', 'InfoController@top');
 
-
-
 Route::get('user/add', 'UserController@add');
 Route::post('user/add', 'UserController@create');
-
-Route::get('user/edit', 'UserController@edit');
-Route::post('user/edit', 'UserController@update');
-
-Route::get('user/del', 'UserController@delete');
-Route::get('user/del', 'UserController@remove');
-
 Route::get('user/auth', 'UserController@getAuth');
 Route::post('user/auth', 'UserController@postAuth');
 Route::get('user/logout', 'Usercontroller@postLogout');
@@ -73,5 +64,10 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin.logout');
     Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
+
     Route::get('admin/user', 'UserController@index');
+    Route::get('user/edit', 'UserController@edit');
+    Route::post('user/edit', 'UserController@update');
+    Route::get('user/del', 'UserController@delete');
+    Route::post('user/del', 'UserController@remove');
 });

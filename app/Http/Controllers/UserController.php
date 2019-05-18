@@ -32,6 +32,33 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    public function edit(Request $request)
+    {
+        $user = User::find($request->id);
+        return view('user.edit')->with('form', $user);
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $user->fill($form)->save();
+        return redirect('admin/user');
+    }
+
+    public function delete(Request $request)
+    {
+        $user = User::find($request->id);
+        return view('user.del')->with('form', $user);
+    }
+
+    public function remove(Request $request)
+    {
+        User::find($request->id)->delete();
+        return redirect('admin/user');
+    }
+
     public function getAuth(Request $request)
     {
         $param = ['message' => 'ログインしてください。'];
