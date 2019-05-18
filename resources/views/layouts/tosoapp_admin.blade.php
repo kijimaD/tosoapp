@@ -29,7 +29,7 @@
         <h2 class="page-header mt-2">@yield('title')</h2>
         @if (Auth::check())
         <p class="text-success">{{\Auth::user()->family_name}}{{\Auth::user()->name}}でログイン中!</p>
-        <p><a href="/user/logout">ログアウト</a></p>
+        <p><a href="{{ route('admin.logout')}}">ログアウト</a></p>
         @endif
         <ul>
             <li><a href="/user/add">ユーザ登録</a></li>

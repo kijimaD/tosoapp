@@ -32,9 +32,8 @@
         <p><a href="/user/logout">ログアウト</a></p>
         @endif
         <ul>
-            <li><a href="/user/add">ユーザ登録</a></li>
-            <li><a href="/user">ユーザ一覧</a></li>
-            <li><a href="/user/auth">ログイン</a></li>
+            {{-- <li><a href="/user/add">ユーザ登録</a></li> --}}
+            {{-- <li><a href="/user/auth">ログイン</a></li> --}}
             <li><a href="/home">ホーム</a></li>
             <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
             <li><a href="{{ route('login')}}">{{__('homeログイン')}}</a></li>
