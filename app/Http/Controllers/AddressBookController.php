@@ -33,4 +33,12 @@ class AddressBookController extends Controller
         $address->fill($form)->save();
         return redirect('/address');
     }
+
+    public function edit(Request $request)
+    {
+        $address = Addressbook::find($request->id);
+        $prefecture = prefecture::get();
+        $param = ['form' => $address, 'items' => $prefecture];
+        return view('address.edit', $param);
+    }
 }

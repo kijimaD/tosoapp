@@ -15,7 +15,8 @@ class UsersTableSeeder extends Seeder
         'family_name' => '佐藤',
         'name' => '一太郎',
         'email' => 'norimaking777@gmail.com',
-        'password' => bcrypt('11qqaazz')
+        'password' => bcrypt('11qqaazz'),
+        'email_verified_at' => '2019-05-19 18:17:15'
       ]);
 
         \App\User::create([
@@ -23,6 +24,7 @@ class UsersTableSeeder extends Seeder
         'name' => '次郎',
         'email' => 'k9887039@kadai.jp',
         'password' => bcrypt('11qqaazz')
+        'email_verified_at' => '2019-05-19 18:17:15'        
       ]);
 
         \App\Admin::create([
@@ -31,13 +33,13 @@ class UsersTableSeeder extends Seeder
         'password' => bcrypt('11qqaazz')
       ]);
 
-        \App\Addressbook::create([
-        'zip' => '8900081',
-        'prefecture_id' => '46',
-        'city' => '鹿児島市',
-        'address' => '唐湊4丁目14-26',
-        'user_id' => '1'
-      ]);
+        //   \App\Addressbook::create([
+        //   'zip' => '8900081',
+        //   'prefecture_id' => '46',
+        //   'city' => '鹿児島市',
+        //   'address' => '唐湊4丁目14-26',
+        //   'user_id' => '1'
+        // ]);
 
         DB::table('prefectures')->insert([
           [
