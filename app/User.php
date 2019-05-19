@@ -38,3 +38,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 }
+
+class Usermodel extends Model
+{
+    public function prefecture()
+    {
+        $this->hasone('App\Prefecture');
+    }
+}

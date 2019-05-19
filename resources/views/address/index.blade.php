@@ -3,6 +3,7 @@
 @section('title','客一覧')
 
 @section('content')
+<p><a href="/address/add">新規追加</a></p>
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>
@@ -19,13 +20,13 @@
             @foreach ($items as $item)
             <tr>
                 <td>{{$item->zip}}</td>
-                <td>{{$item->prefecture_id}}</td>
+                <td>{{$item->prefecture->prefecture_name}}</td>
                 <td>{{$item->city}}</td>
                 <td>{{$item->address}}</td>
                 <td>{{$item->user_id}}</td>
                 <td>{{$item->created_at}}</td>
-                <td><a href="/addressBook/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/addressBook/del?id={{$item->id}}">消去</a></td>
+                <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
+                <td><a href="/address/del?id={{$item->id}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>

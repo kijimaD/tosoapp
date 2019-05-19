@@ -3,41 +3,41 @@
 @section('title','本登録')
 
 @section('content')
-<form action="/user/add" method="post">
+<form action="/address/add" method="post">
     {{csrf_field()}}
+    <input type="hidden" name="user_id" value="{{$user->id}}">
 
     <div class="form-group">
-        <label for="family_name" class="col-form-label text-md-left">姓</label>
+        <label for="zip" class="col-form-label text-md-left">郵便番号</label>
         <div>
-            <input type="text" name="family_name" value="{{old('family_name')}}" />
+            <input type="text" name="zip" value="{{old('zip')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="name" class="col-form-label text-md-left">名</label>
+        <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
         <div>
-            <input type="text" name="name" value="{{old('name')}}" />
+            <select name="prefecture_id">
+                @foreach ($items as $item)
+                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
+                @endif >
+                {{$item->prefecture_name}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="email" class="col-form-label text-md-left">eメール</label>
+        <label for="city" class="col-form-label text-md-left">市区町村</label>
         <div>
-            <input type="text" name="email" value="{{old('email')}}" />
+            <input type="text" name="city" value="{{old('city')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="password" class="col-form-label text-md-left">パスワード</label>
+        <label for="address" class="col-form-label text-md-left">それ以降の住所</label>
         <div>
-            <input type="password" name="password" value="{{old('password')}}" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="password_confirmation" class="col-form-label text-md-left">パスワード（確認）</label>
-        <div>
-            <input type="password" name="password_confirmation" />
+            <input type="text" name="address" value="{{old('address')}}" />
         </div>
     </div>
 
