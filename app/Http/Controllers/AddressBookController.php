@@ -41,4 +41,25 @@ class AddressBookController extends Controller
         $param = ['form' => $address, 'items' => $prefecture];
         return view('address.edit', $param);
     }
+
+    public function update(Request $request)
+    {
+        $address = Addressbook::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $address->fill($form)->save();
+        return redirect('/address');
+    }
+
+    public function delete(Request $request)
+    {
+        User::find($request->id)->delete();
+        return redirect('/address');
+    }
+
+    public function remove(Request $request)
+    {
+        User::find($request->id)->delete();
+        return redirect('/address');
+    }
 }
