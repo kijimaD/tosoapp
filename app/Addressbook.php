@@ -17,4 +17,9 @@ class Addressbook extends Model
     {
         return $this->belongsTo('App\Prefecture');
     }
+
+    public function useraddress()
+    {
+        return $this->hasone('App\Useraddress');
+    }
 }

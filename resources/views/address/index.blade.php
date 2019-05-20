@@ -25,11 +25,16 @@
                 <td>{{$item->address}}</td>
                 <td>{{$item->user->family_name}}{{$item->user->name}}</td>
                 <td>{{$item->created_at}}</td>
+                @if (isset($item->useraddress->id))
+                <td>{{$item->useraddress->id}}</td>
+                @else
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="addressBook_id" value="{{$item->id}}" />
                     <td><input type="submit" value="既定にする" /></td>
                 </form>
+                @endif
+
                 <td><a href="/address/edit_id={{$item->id}}">修正</a></td>
                 <td><a href="/address/del?id={{$item->id}}">消去</a></td>
             </tr>
