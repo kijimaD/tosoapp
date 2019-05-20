@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Addressbook;
 use App\Prefecture;
+use App\userAddress;
 
 class AddressBookController extends Controller
 {
@@ -60,6 +62,16 @@ class AddressBookController extends Controller
     public function remove(Request $request)
     {
         User::find($request->id)->delete();
+        return redirect('/address');
+    }
+
+    public function defaultCreate(Request $request)
+    {
+        $default_address = new Useraddress;
+        $form = $request->all();
+        unset($form['_token']);
+        $default_address->fill($form)->save();
+
         return redirect('/address');
     }
 }

@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::post('/address/edit', 'AddressBookController@update');
     Route::get('/address/del', 'AddressBookController@delete');
     Route::post('/address/del', 'AddressBookController@remove');
+    Route::post('/address/default/add', 'AddressBookController@defaultCreate');
 });
 
 /*
