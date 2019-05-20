@@ -50,8 +50,8 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('addressBooks')
             ->onDelete('cascade');
-            $table->integer('User_id')->unsigned();
-            $table->foreign('User_id')
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');

@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','客一覧')
+@section('title','アドレス帳')
 
 @section('content')
 <p><a href="/address/add">新規追加</a></p>
@@ -31,11 +31,12 @@
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="addressBook_id" value="{{$item->id}}" />
+                    <input type="hidden" name="user_id" value="{{$user->id}}" />
                     <td><input type="submit" value="既定にする" /></td>
                 </form>
                 @endif
 
-                <td><a href="/address/edit_id={{$item->id}}">修正</a></td>
+                <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
                 <td><a href="/address/del?id={{$item->id}}">消去</a></td>
             </tr>
             @endforeach

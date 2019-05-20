@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Addressbook;
 use App\Prefecture;
-use App\userAddress;
+use App\UserAddress;
 
 class AddressBookController extends Controller
 {
@@ -16,7 +16,8 @@ class AddressBookController extends Controller
         $user = Auth::user();
         $items = Addressbook::where('user_id', 'like', $user["id"])
         ->get();
-        return view('address.index')->with('items', $items);
+        $param = ['items' => $items, 'user' => $user];
+        return view('address.index', $param);
     }
 
     public function add(Request $request)
@@ -55,23 +56,24 @@ class AddressBookController extends Controller
 
     public function delete(Request $request)
     {
-        User::find($request->id)->delete();
-        return redirect('/address');
+        $form = Addressbook::find($request->id);
+        return view('/address/del')->with('form', $form);
     }
 
     public function remove(Request $request)
     {
-        User::find($request->id)->delete();
+        Addressbook::find($request->id)->delete();
         return redirect('/address');
     }
 
     public function defaultCreate(Request $request)
     {
+        Useraddress::where('user_id', $request->user_id)->delete();
+
         $default_address = new Useraddress;
         $form = $request->all();
         unset($form['_token']);
         $default_address->fill($form)->save();
-
         return redirect('/address');
     }
 }
