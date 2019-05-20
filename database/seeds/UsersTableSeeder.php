@@ -23,8 +23,8 @@ class UsersTableSeeder extends Seeder
         'family_name' => '藤原',
         'name' => '次郎',
         'email' => 'k9887039@kadai.jp',
-        'password' => bcrypt('11qqaazz')
-        'email_verified_at' => '2019-05-19 18:17:15'        
+        'password' => bcrypt('11qqaazz'),
+        'email_verified_at' => '2019-05-19 18:17:15'
       ]);
 
         \App\Admin::create([

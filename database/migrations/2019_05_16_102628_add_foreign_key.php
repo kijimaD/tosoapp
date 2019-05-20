@@ -43,12 +43,17 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
-        // 本住所
+        // 本住所、既定のアドレス
         Schema::table('userAddresses', function (Blueprint $table) {
             $table->integer('addressBook_id')->unsigned();
             $table->foreign('addressBook_id')
             ->references('id')
             ->on('addressBooks')
+            ->onDelete('cascade');
+            $table->integer('User_id')->unsigned();
+            $table->foreign('User_id')
+            ->references('id')
+            ->on('users')
             ->onDelete('cascade');
         });
 

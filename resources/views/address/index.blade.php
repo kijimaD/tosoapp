@@ -26,7 +26,7 @@
                 <td>{{$item->user->family_name}}{{$item->user->name}}</td>
                 <td>{{$item->created_at}}</td>
                 @if (isset($item->useraddress->id))
-                <td>{{$item->useraddress->id}}</td>
+                <td>既定の住所</td>
                 @else
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
