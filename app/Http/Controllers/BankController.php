@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Bank;
+use App\Defaultbank;
 
 class BankController extends Controller
 {
@@ -58,6 +59,17 @@ class BankController extends Controller
     public function remove(Request $request)
     {
         Bank::find($request->id)->delete();
+        return redirect('/bank');
+    }
+
+    public function defaultCreate(Request $request)
+    {
+        Defaultbank::where('user_id', $request->user_id)->delete();
+
+        $default_bank = new Defaultbank;
+        $form = $request->all();
+        unset($form['_token']);
+        $default_bank->fill($form)->save();
         return redirect('/bank');
     }
 }

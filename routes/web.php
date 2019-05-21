@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::post('/bank/edit', 'BankController@update');
     Route::get('/bank/del', 'BankController@delete');
     Route::post('/bank/del', 'BankController@remove');
+    Route::post('/bank/default/add', 'BankController@defaultCreate');
 });
 
 /*
