@@ -48,6 +48,12 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        // 既定の入金口座
+        Schema::create('defaultBanks', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->timestamps();
+        });
+
         // アドレス帳
         Schema::create('addressBooks', function (Blueprint $table) {
             $table->Increments('id');
@@ -95,6 +101,11 @@ class CreateUsersTable extends Migration
         Schema::create('paymentWays', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('payment_way');
+        });
+
+        // 支払い口座
+        Schema::create('paymentBanks', function (Blueprint $table) {
+            $table->Increments('id');
         });
 
         // 荷受け申請

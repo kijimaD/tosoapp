@@ -29,6 +29,19 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
+        Schema::table('defaultBanks', function (Blueprint $table) {
+            $table->integer('bank_id')->unsigned();
+            $table->foreign('bank_id')
+            ->references('id')
+            ->on('banks')
+            ->onDelete('cascade');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+        });
+
         // アドレス帳
         Schema::table('addressBooks', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
@@ -97,6 +110,20 @@ class AddForeignKey extends Migration
 
         // 入金方法
         Schema::table('paymentWays', function (Blueprint $table) {
+        });
+
+        // 支払い口座
+        Schema::table('paymentBanks', function (Blueprint $table) {
+            $table->integer('case_id')->unsigned();
+            $table->foreign('case_id')
+            ->references('id')
+            ->on('cases')
+            ->onDelete('cascade');
+            $table->integer('bank_id')->unsigned();
+            $table->foreign('bank_id')
+            ->references('id')
+            ->on('banks')
+            ->onDelete('cascade');
         });
 
         // 荷受け申請
