@@ -31,15 +31,15 @@
         <p class="text-success">{{\Auth::user()->family_name}}{{\Auth::user()->name}}でログイン中!</p>
         <p><a href="/user/logout">ログアウト</a></p>
         @endif
-        <ul>
+        <ul class="list-inline">
             {{-- <li><a href="/user/add">ユーザ登録</a></li> --}}
             {{-- <li><a href="/user/auth">ログイン</a></li> --}}
-            <li><a href="/">トップページ</a></li>
-            <li><a href="/home">ホーム</a></li>
-            <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
-            <li><a href="{{ route('login')}}">{{__('homeログイン')}}</a></li>
-            <li><a href="{{ route('admin.home')}}">{{__('adminログイン')}}</a></li>
-            <li><a href="{{ route('user.mypage')}}">{{__('マイページ')}}</a></li>
+            <li class="list-inline-item"><a href="/">トップページ</a></li>
+            <li class="list-inline-item"><a href="/home">ホーム</a></li>
+            <li class="list-inline-item"><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
+            <li class="list-inline-item"><a href="{{ route('login')}}">{{__('homeログイン')}}</a></li>
+            <li class="list-inline-item"><a href="{{ route('admin.home')}}">{{__('adminログイン')}}</a></li>
+            <li class="list-inline-item"><a href="{{ route('user.mypage')}}">{{__('マイページ')}}</a></li>
         </ul>
         <hr>
         @yield('content')
