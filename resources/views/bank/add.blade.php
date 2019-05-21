@@ -1,43 +1,37 @@
 @extends('layouts.tosoapp')
 
-@section('title','本登録')
+@section('title','口座登録')
 
 @section('content')
-<form action="/address/add" method="post">
+<form action="/bank/add" method="post">
     {{csrf_field()}}
     <input type="hidden" name="user_id" value="{{$user->id}}">
 
     <div class="form-group">
-        <label for="zip" class="col-form-label text-md-left">郵便番号</label>
+        <label for="bank_name" class="col-form-label text-md-left">銀行名</label>
         <div>
-            <input type="text" name="zip" value="{{old('zip')}}" />
+            <input type="text" name="bank_name" value="{{old('bank_name')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
+        <label for="bank_branch" class="col-form-label text-md-left">支店名</label>
         <div>
-            <select name="prefecture_id">
-                @foreach ($items as $item)
-                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
-                @endif >
-                {{$item->prefecture_name}}</option>
-                @endforeach
-            </select>
+            <input type="text" name="bank_branch" value="{{old('bank_branch')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="city" class="col-form-label text-md-left">市区町村</label>
+        <label for="bank_type" class="col-form-label text-md-left">口座種別</label>
         <div>
-            <input type="text" name="city" value="{{old('city')}}" />
+            <input type="text" name="bank_type" value="{{old('bank_type')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="address" class="col-form-label text-md-left">それ以降の住所</label>
+        <label for="bank_num" class="col-form-label text-md-left">口座番号</label>
         <div>
-            <input type="text" name="address" value="{{old('address')}}" />
+            <input type="text" name="bank_num" value="{{old('bank_num')}}" />
         </div>
     </div>
 

@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/user/mypage', 'UserController@mypage')->name('user.mypage');
+
     Route::get('/address', 'AddressBookController@index');
     Route::get('/address/add', 'AddressBookController@add');
     Route::post('/address/add', 'AddressBookController@create');
@@ -42,6 +43,14 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::get('/address/del', 'AddressBookController@delete');
     Route::post('/address/del', 'AddressBookController@remove');
     Route::post('/address/default/add', 'AddressBookController@defaultCreate');
+
+    Route::get('/bank', 'BankController@index');
+    Route::get('/bank/add', 'BankController@add');
+    Route::post('/bank/add', 'BankController@create');
+    Route::get('/bank/edit', 'BankController@edit');
+    Route::post('/bank/edit', 'BankController@update');
+    Route::get('/bank/del', 'BankController@delete');
+    Route::post('/bank/del', 'BankController@remove');
 });
 
 /*

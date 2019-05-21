@@ -14,8 +14,7 @@ class AddressBookController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $items = Addressbook::where('user_id', 'like', $user["id"])
-        ->get();
+        $items = Addressbook::where('user_id', 'like', $user["id"])->get();
         $param = ['items' => $items, 'user' => $user];
         return view('address.index', $param);
     }

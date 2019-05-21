@@ -3,40 +3,35 @@
 @section('title','コメント修正')
 
 @section('content')
-<form action="/address/edit" method="post">
+<form action="/bank/edit" method="post">
     {{csrf_field()}}
     <input type="hidden" name="id" value="{{$form->id}}" />
+
     <div class="form-group">
-        <label for="zip" class="col-form-label text-md-left">郵便番号</label>
+        <label for="bank_name" class="col-form-label text-md-left">銀行名</label>
         <div>
-            <input type="text" name="zip" value="{{$form->zip}}" />
+            <input type="text" name="bank_name" value="{{$form->bank_name}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
+        <label for="bank_branch" class="cl-form-label text-md-left">支店名</label>
         <div>
-            <select name="prefecture_id">
-                @foreach ($items as $item)
-                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
-                @endif >
-                {{$item->prefecture_name}}</option>
-                @endforeach
-            </select>
+            <input type="text" name="bank_branch" value="{{$form->bank_branch}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="city" class="col-form-label text-md-left">市区町村</label>
+        <label for="bank_type" class="col-form-label text-md-left">口座種別</label>
         <div>
-            <input type="text" name="city" value="{{$form->city}}" />
+            <input type="text" name="bank_type" value="{{$form->bank_type}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="address" class="col-form-label text-md-left">それ以降の住所</label>
+        <label for="bank_num" class="col-form-label text-md-left">口座種別</label>
         <div>
-            <input type="text" name="address" value="{{$form->address}}" />
+            <input type="text" name="bank_num" value="{{$form->bank_num}}" />
         </div>
     </div>
 
