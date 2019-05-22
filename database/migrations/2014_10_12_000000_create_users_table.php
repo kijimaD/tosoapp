@@ -91,9 +91,9 @@ class CreateUsersTable extends Migration
 
         // 買取系輸送 ===============
         // 案件
-        Schema::create('cases', function (Blueprint $table) {
+        Schema::create('entries', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('case_num')->nullable(); // どうやってコードを振る？
+            $table->integer('entry_num')->nullable(); // どうやってコードを振る？
             $table->timestamps();
         });
 

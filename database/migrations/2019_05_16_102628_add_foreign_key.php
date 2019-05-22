@@ -95,7 +95,7 @@ class AddForeignKey extends Migration
         // 管理者系 ===============
 
         // 案件
-        Schema::table('cases', function (Blueprint $table) {
+        Schema::table('entries', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
             ->references('id')
@@ -114,10 +114,10 @@ class AddForeignKey extends Migration
 
         // 支払い口座
         Schema::table('paymentBanks', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
             $table->integer('bank_id')->unsigned();
             $table->foreign('bank_id')
@@ -128,10 +128,10 @@ class AddForeignKey extends Migration
 
         // 荷受け申請
         Schema::table('applyGoods', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
         });
 
@@ -184,37 +184,37 @@ class AddForeignKey extends Migration
 
         // 集荷依頼済み
         Schema::table('applyDones', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
         });
 
         // 了承確認済み
         Schema::table('approveDones', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
         });
 
         // キャンセル
         Schema::table('cancels', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
         });
 
         // 入金済み
         Schema::table('paymentDones', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
         });
 
@@ -222,10 +222,10 @@ class AddForeignKey extends Migration
 
         // 査定
         Schema::table('assessments', function (Blueprint $table) {
-            $table->integer('case_id')->unsigned();
-            $table->foreign('case_id')
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
             ->references('id')
-            ->on('cases')
+            ->on('entries')
             ->onDelete('cascade');
             $table->integer('shippingCost_id')->unsigned();
             $table->foreign('shippingCost_id')
