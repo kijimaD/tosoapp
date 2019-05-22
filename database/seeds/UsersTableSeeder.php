@@ -11,6 +11,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // 外部キー制約を無視
+
         \App\User::create([
         'family_name' => '佐藤',
         'name' => '一太郎',
@@ -33,13 +35,21 @@ class UsersTableSeeder extends Seeder
         'password' => bcrypt('11qqaazz')
       ]);
 
-        //   \App\Addressbook::create([
-        //   'zip' => '8900081',
-        //   'prefecture_id' => '46',
-        //   'city' => '鹿児島市',
-        //   'address' => '唐湊4丁目14-26',
-        //   'user_id' => '1'
-        // ]);
+        \App\Addressbook::create([
+          'zip' => '8900081',
+          'city' => '鹿児島市唐湊4丁目',
+          'address' => '14-26塩満アパート',
+          'user_id' => '1',
+          'prefecture_id' => '45',
+        ]);
+
+        \App\Bank::create([
+          'bank_name' => '鹿児島銀行',
+          'bank_branch' => '阿久根',
+          'bank_type' => '普通',
+          'bank_num' => '4302939',
+          'user_id' => '1',
+        ]);
 
         DB::table('prefectures')->insert([
           [
@@ -226,5 +236,17 @@ class UsersTableSeeder extends Seeder
           'prefecture_name' => '沖縄県'
           ],
         ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
+
+
+// \App\Addressbook::create([
+//           '' => '',
+//           '' => '',
+//           '' => '',
+//           '' => '',
+//           '' => '',
+//           '' => '',
+//           '' => '',
+//         ]);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Bank;
 use App\Entry;
 
 class EntryController extends Controller
@@ -20,7 +21,8 @@ class EntryController extends Controller
     public function add(Request $request)
     {
         $user = Auth::user();
-        $param = ['user' => $user];
+        $banks = Bank::where('user_id', 'like', $user["id"])->get();
+        $param = ['user' => $user,'banks' => $banks];
         return view('entry.add', $param);
     }
 
