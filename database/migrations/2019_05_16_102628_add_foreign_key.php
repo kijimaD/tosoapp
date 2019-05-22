@@ -106,6 +106,11 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('paymentWays')
             ->onDelete('cascade');
+            $table->integer('shippingWay_id')->unsigned();
+            $table->foreign('shippingWay_id')
+            ->references('id')
+            ->on('shippingWays')
+            ->onDelete('cascade');
         });
 
         // 入金方法

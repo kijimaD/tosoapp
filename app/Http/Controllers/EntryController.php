@@ -16,4 +16,48 @@ class EntryController extends Controller
         $param = ['items' => $items, 'user' => $user];
         return view('entry.index', $param);
     }
+
+    public function add(Request $request)
+    {
+        $user = Auth::user();
+        $param = ['user' => $user];
+        return view('entry.add', $param);
+    }
+
+    public function create(Request $request)
+    {
+        $entry = new Entry;
+        $form = $request->all();
+        unset($form['_token']);
+        $entry->fill($form)->save();
+        return redirect('/entry');
+    }
+
+    public function edit(Request $request)
+    {
+        $entry = Entry::find($request->id);
+        $param = ['form' => $entry];
+        return view('entry.edit', $param);
+    }
+
+    public function update(Request $request)
+    {
+        $entry = Entry::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);
+        $entry->fill($form)->save();
+        return redirect('/entry');
+    }
+
+    public function delete(Request $request)
+    {
+        $form = Entry::find($request->id);
+        return view('entry/del')->with('form', $form);
+    }
+
+    public function remove(Request $request)
+    {
+        Entry::find($request->id)->delete();
+        return redirect('/entry');
+    }
 }

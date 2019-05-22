@@ -103,6 +103,12 @@ class CreateUsersTable extends Migration
             $table->string('payment_way');
         });
 
+        // 輸送方法
+        Schema::create('shippingWays', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('shipping_way');
+        });
+
         // 支払い口座
         Schema::create('paymentBanks', function (Blueprint $table) {
             $table->Increments('id');

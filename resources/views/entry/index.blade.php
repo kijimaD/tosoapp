@@ -1,8 +1,9 @@
 @extends('layouts.tosoapp')
 
-@section('title','入金口座一覧')
+@section('title',' 履歴一覧')
 
 @section('content')
+<a href="/entry/add">新規追加</a>
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>
