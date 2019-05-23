@@ -4,11 +4,32 @@
 
 @section('content')
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js"></script>
+<?php
+$week = [
+  '日',
+  '月',
+  '火',
+  '水',
+  '木',
+  '金',
+  '土',
+];
+$date1 = date('w',strtotime("+1 day"));
+$date2 = date('w',strtotime("+2 day"));
+$date3 = date('w',strtotime("+3 day"));
+$date4 = date('w',strtotime("+4 day"));
+$date5 = date('w',strtotime("+5 day"));
+$date6 = date('w',strtotime("+6 day"));
+$date7 = date('w',strtotime("+7 day"));
+
+$day1 = date('Y/m/d',strtotime("+1 day"));
+$day2 = date('Y/m/d',strtotime("+2 day"));
+$day3 = date('Y/m/d',strtotime("+3 day"));
+$day4 = date('Y/m/d',strtotime("+4 day"));
+$day5 = date('Y/m/d',strtotime("+5 day"));
+$day6 = date('Y/m/d',strtotime("+6 day"));
+$day7 = date('Y/m/d',strtotime("+7 day"));
+?>
 
 <script>
     $(function(){
@@ -67,8 +88,8 @@ $('#date_sample').datepicker();
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">入金方法</label>
         <div>
-            <input type="radio" name="payment_way" value="1" onclick="payment();" checked="checked" />銀行口座
-            <p>入金口座を選択</p>
+            <input type="radio" name="payment_way" value="1" onclick="payment();" checked="checked" />銀行口座<br>
+            <input type="radio" name="payment_way" value="2" onclick="payment();" />アマゾンギフト券
             <div id="payment_firstbox" class="row">
                 @foreach($banks as $bank)
                 <div class="card" style="width: 20rem;">
@@ -83,13 +104,16 @@ $('#date_sample').datepicker();
                             {{$bank->bank_num}}
                         </p>
                     </div>
+                    <div class="card-footer">
+                        Footer
+                    </div>
                     {{-- <div class="card-footer">
                         Footer
                     </div> --}}
                 </div>
                 @endforeach
             </div>
-            <input type="radio" name="payment_way" value="2" onclick="payment();" />アマゾンギフト券
+
             <p id="payment_secondbox">これはamazonギフト券です</p>
         </div>
     </div>
@@ -98,7 +122,9 @@ $('#date_sample').datepicker();
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
         <div>
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" checked="checked" />集荷
+            <input type="radio" name="shipping_way" value="" onclick="shipping()" checked="checked" />集荷<br>
+            <input type="radio" name="shipping_way" value="" onclick="shipping()" />専用ロッカー<br>
+            <input type="radio" name="shipping_way" value="" onclick="shipping()" />自分で送る
             <p>住所を選択</p>
             <div id="shipping_firstbox" class="row">
                 @foreach($addresses as $address)
@@ -119,31 +145,41 @@ $('#date_sample').datepicker();
                     </div>
                 </div>
                 @endforeach
-            </div>
 
-            <div class="form-group">
-                <label for="number" class="control-label col-xs-2">集荷日</label>
-                <div class="">
-                    <input type="text" id="picker">
+                <div class="form-group">
+                    <label for="number" class="control-label col-xs-2">集荷日</label>
+                    <div class="">
+                        <select class="form-control" id="number" name="number">
+                            <option value="">{{$day1}}({{$week[$date1]}})</option>
+                            <option value="">{{$day2}}({{$week[$date2]}})</option>
+                            <option value="">{{$day3}}({{$week[$date3]}})</option>
+                            <option value="">{{$day4}}({{$week[$date4]}})</option>
+                            <option value="">{{$day5}}({{$week[$date5]}})</option>
+                            <option value="">{{$day6}}({{$week[$date6]}})</option>
+                            <option value="">{{$day7}}({{$week[$date7]}})</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="number" class="control-label col-xs-2">集荷時間帯</label>
+                    <div class="">
+                        <select class="form-control" id="number" name="number">
+                            <option value="1">指定なし</option>
+                            <option value="2">午前中</option>
+                            <option value="3">13時まで</option>
+                            <option value="4">14時から16時まで</option>
+                            <option value="5">16時から18時まで</option>
+                            <option value="6">17時から18時30分まで</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="number" class="control-label col-xs-2">集荷時間帯</label>
-                <div class="">
-                    <select class="form-control" id="number" name="number">
-                        <option value="1">午前中</option>
-                        <option value="2">13~15時</option>
-                        <option value="3">15～19時</option>
-                    </select>
-                </div>
-            </div>
-
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" />専用ロッカー
             <div id="shipping_secondbox">
                 iii
             </div>
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" />自分で送る
+
             <div id="shipping_thirdbox">
                 uuu
             </div>
