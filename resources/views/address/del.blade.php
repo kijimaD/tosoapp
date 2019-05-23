@@ -1,34 +1,48 @@
 @extends('layouts.tosoapp')
 
-@section('title','コメント削除')
+@section('title','アドレス削除')
 
 @section('content')
-<form action="/address/del" method="post">
+<form action="/address/edit" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="id" value="{{$form->id}}">
+    <input type="hidden" name="id" value="{{$form->id}}" />
     <div class="form-group">
-        <label for="family_name" class="col-form-label text-md-left">姓</label>
+        <label for="zip" class="col-form-label text-md-left">郵便番号</label>
         <div>
-            <input type="text" name="family_name" value="{{$form->family_name}}" />
+            <input type="text" name="zip" value="{{$form->zip}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="name" class="col-form-label text-md-left">名</label>
+        <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
         <div>
-            <input type="text" name="name" value="{{$form->name}}" />
+            <select name="prefecture_id">
+                @foreach ($items as $item)
+                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
+                @endif >
+                {{$item->prefecture_name}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="email" class="col-form-label text-md-left">eメール</label>
+        <label for="city" class="col-form-label text-md-left">市区町村</label>
         <div>
-            <input type="text" name="email" value="{{$form->email}}" />
+            <input type="text" name="city" value="{{$form->city}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">消去</button>
+        <label for="address" class="col-form-label text-md-left">それ以降の住所</label>
+        <div>
+            <input type="text" name="address" value="{{$form->address}}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">送信</button>
     </div>
 </form>
+
 @endsection

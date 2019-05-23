@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','コメント修正')
+@section('title','アドレス修正')
 
 @section('content')
 <form action="/address/edit" method="post">

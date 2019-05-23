@@ -56,7 +56,9 @@ class AddressBookController extends Controller
     public function delete(Request $request)
     {
         $form = Addressbook::find($request->id);
-        return view('/address/del')->with('form', $form);
+        $prefecture = prefecture::get();
+        $param = ['form' => $form, 'items' => $prefecture];
+        return view('/address/del', $param);
     }
 
     public function remove(Request $request)

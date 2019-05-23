@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','口座登録')
+@section('title','買取申請')
 
 @section('content')
 
@@ -107,14 +107,17 @@ $('#date_sample').datepicker();
                     <div class="card-footer">
                         Footer
                     </div>
-                    {{-- <div class="card-footer">
-                        Footer
-                    </div> --}}
                 </div>
                 @endforeach
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <p><a href="">新規追加する</a></p>
+                    </div>
+                </div>
             </div>
-
-            <p id="payment_secondbox">これはamazonギフト券です</p>
+            <div id="payment_secondbox">
+                <p>これはamazonギフト券です</p>
+            </div>
         </div>
     </div>
     <hr>
@@ -125,7 +128,7 @@ $('#date_sample').datepicker();
             <input type="radio" name="shipping_way" value="" onclick="shipping()" checked="checked" />集荷<br>
             <input type="radio" name="shipping_way" value="" onclick="shipping()" />専用ロッカー<br>
             <input type="radio" name="shipping_way" value="" onclick="shipping()" />自分で送る
-            <p>住所を選択</p>
+
             <div id="shipping_firstbox" class="">
                 <div class="row">
                     @foreach($addresses as $address)
@@ -146,6 +149,11 @@ $('#date_sample').datepicker();
                         </div>
                     </div>
                     @endforeach
+                    <div class="card" style="width: 20rem;">
+                        <div class="card-body">
+                            <p><a href="">新規追加する</a></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -189,21 +197,14 @@ $('#date_sample').datepicker();
     </div>
 
     <div class="form-group">
-        <label for="bank_type" class="col-form-label text-md-left">口座種別</label>
-        <div>
-            <input type="text" name="bank_type" value="" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="bank_num" class="col-form-label text-md-left">口座番号</label>
+        <label for="bank_num" class="col-form-label text-md-left">ああああ</label>
         <div>
             <input type="text" name="bank_num" value="" />
         </div>
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">送信</button>
+        <button class="btn btn-primary" type="submit">確認</button>
     </div>
 </form>
 
