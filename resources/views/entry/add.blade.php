@@ -126,25 +126,27 @@ $('#date_sample').datepicker();
             <input type="radio" name="shipping_way" value="" onclick="shipping()" />専用ロッカー<br>
             <input type="radio" name="shipping_way" value="" onclick="shipping()" />自分で送る
             <p>住所を選択</p>
-            <div id="shipping_firstbox" class="row">
-                @foreach($addresses as $address)
-                <div class="card" style="width: 20rem;">
-                    <div class="card-header">
-                        <input type="radio" name="address" value="" />
+            <div id="shipping_firstbox" class="">
+                <div class="row">
+                    @foreach($addresses as $address)
+                    <div class="card" style="width: 20rem;">
+                        <div class="card-header">
+                            <input type="radio" name="address" value="" />
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                {{$address->zip }}
+                                {{$address->prefecture->prefecture_name}}
+                                {{$address->city}}
+                                {{$address->address}}
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            Footer
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>
-                            {{$address->zip }}
-                            {{$address->prefecture->prefecture_name}}
-                            {{$address->city}}
-                            {{$address->address}}
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        Footer
-                    </div>
+                    @endforeach
                 </div>
-                @endforeach
 
                 <div class="form-group">
                     <label for="number" class="control-label col-xs-2">集荷日</label>
