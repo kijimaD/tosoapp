@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Bank;
 use App\Entry;
+use App\Addressbook;
 
 class EntryController extends Controller
 {
@@ -22,7 +23,8 @@ class EntryController extends Controller
     {
         $user = Auth::user();
         $banks = Bank::where('user_id', 'like', $user["id"])->get();
-        $param = ['user' => $user,'banks' => $banks];
+        $addresses = Addressbook::where('user_id', 'like', $user["id"])->get();
+        $param = ['user' => $user,'banks' => $banks, 'addresses' => $addresses];
         return view('entry.add', $param);
     }
 

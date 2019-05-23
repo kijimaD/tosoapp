@@ -43,11 +43,27 @@ class UsersTableSeeder extends Seeder
           'prefecture_id' => '45',
         ]);
 
+        \App\Addressbook::create([
+          'zip' => '8900023',
+          'city' => 'あああ街',
+          'address' => 'あああアパート',
+          'user_id' => '1',
+          'prefecture_id' => '44',
+        ]);
+
         \App\Bank::create([
           'bank_name' => '鹿児島銀行',
           'bank_branch' => '阿久根',
           'bank_type' => '普通',
           'bank_num' => '4302939',
+          'user_id' => '1',
+        ]);
+
+        \App\Bank::create([
+          'bank_name' => 'ぎぎ銀行',
+          'bank_branch' => 'ああ',
+          'bank_type' => '普通',
+          'bank_num' => '9918999',
           'user_id' => '1',
         ]);
 
