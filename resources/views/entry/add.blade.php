@@ -33,7 +33,7 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 
 <script>
     function payment(){
-  	radio = document.getElementsByName('paymentWay_id')
+  	radio = document.getElementsByName('paymentway_id')
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('payment_firstbox').style.display = "";
@@ -45,10 +45,9 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
       Field.clear('bank_radio');
   	}
   }
-  window.onload = payment;// ロード時に実行！
 
     function shipping(){
-  	radio = document.getElementsByName('shippingWay_id')
+  	radio = document.getElementsByName('shippingway_id')
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('shipping_firstbox').style.display = "";
@@ -66,7 +65,14 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     }
 
   }
-  window.onload = shipping;// ロード時に実行！
+
+  // window.onload = shipping;// は上書きされてしまうので以下を使用する。
+window.addEventListener('load', function(){
+payment();
+});
+window.addEventListener('load', function(){
+shipping();
+});
 
 </script>
 
@@ -77,13 +83,13 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">入金方法</label>
         <div>
-            <input type="radio" name="paymentWay_id" value="1" onclick="payment();" checked="checked" />銀行口座<br>
-            <input type="radio" name="paymentWay_id" value="2" onclick="payment();" />アマゾンギフト券
+            <input type="radio" name="paymentway_id" value="1" onclick="payment();" checked="checked" />銀行口座<br>
+            <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
             <div id="payment_firstbox" class="row">
                 @foreach($banks as $bank)
                 <div class="card" style="width: 20rem;">
                     <div class="card-header">
-                        <input type="radio" name="paymentBank_id" value="{{$bank->id}}" id="bank_radio" />
+                        <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" />
                     </div>
                     <div class="card-body">
                         <p>
@@ -114,9 +120,9 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
         <div>
-            <input type="radio" name="shippingWay_id" value="1" onclick="shipping()" checked="checked" />集荷<br>
-            <input type="radio" name="shippingWay_id" value="2" onclick="shipping()" />専用ロッカー<br>
-            <input type="radio" name="shippingWay_id" value="3" onclick="shipping()" />自分で送る
+            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" checked="checked" />集荷<br>
+            <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br>
+            <input type="radio" name="shippingway_id" value="3" onclick="shipping()" />自分で送る
 
             <div id="shipping_firstbox" class="">
                 <div class="row">

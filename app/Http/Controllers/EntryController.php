@@ -35,8 +35,8 @@ class EntryController extends Controller
         $entry_id = DB::table('entries')->insertGetId(
             [
       'user_id'=>$request->user_id,
-      'paymentWay_id'=>$request->paymentWay_id,
-      'shippingWay_id'=>$request->shippingWay_id,
+      'paymentWay_id'=>$request->paymentway_id,
+      'shippingWay_id'=>$request->shippingway_id,
       'created_at'=>now(),
     ]
     );
@@ -47,8 +47,10 @@ class EntryController extends Controller
     ]
     );
 
-        $collection_id = DB::table('collections')->insertGetId(
-            [
+        // 集荷時のみ
+        if ($request->shippingway_id == '1') {
+            $collection_id = DB::table('collections')->insertGetId(
+                [
       'collection_day'=>$request->collection_day,
       'collection_time'=>$request->collection_time,
       'box_num'=>$request->box_num,
@@ -56,14 +58,17 @@ class EntryController extends Controller
       'addressBook_id'=>$request->addressBook_id,
     ]
     );
+        }
 
-        $paymentBank_id = DB::table('paymentBanks')->insertGetId(
+        // 銀行振込時のみ
+        if ($request->paymentway_id == '1') {
+            $paymentBank_id = DB::table('paymentBanks')->insertGetId(
             [
       'entry_id'=>$entry_id,
-      'bank_id'=>$request->paymentBank_id,
+      'bank_id'=>$request->paymentbank_id,
     ]
     );
-
+        }
 
         return redirect('/entry');
     }
