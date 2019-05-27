@@ -101,17 +101,20 @@ class CreateUsersTable extends Migration
         Schema::create('paymentWays', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('payment_way');
+            $table->timestamps();
         });
 
         // 輸送方法
         Schema::create('shippingWays', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('shipping_way');
+            $table->timestamps();
         });
 
         // 支払い口座
         Schema::create('paymentBanks', function (Blueprint $table) {
             $table->Increments('id');
+            $table->timestamps();
         });
 
         // 荷受け申請
@@ -125,15 +128,15 @@ class CreateUsersTable extends Migration
             $table->Increments('id');
             $table->integer('collection_num')->nullable(); // どうやってコードを振る？
             $table->date('collection_day');
+            $table->string('collection_time');
             $table->integer('box_num');
             $table->timestamps();
         });
 
-        // 集荷時間帯
-        Schema::create('collectionTimes', function (Blueprint $table) {
-            $table->Increments('id');
-            $table->string('collection_time');
-        });
+        // // 集荷時間帯
+        // Schema::create('collectionTimes', function (Blueprint $table) {
+        //     $table->Increments('id');
+        // });
 
         // ロッカー予約
         Schema::create('reserveLockers', function (Blueprint $table) {

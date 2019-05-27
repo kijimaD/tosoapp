@@ -32,19 +32,8 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 ?>
 
 <script>
-    $(function(){
-$("#picker").bootstrapMaterialDatePicker({
-weekStart:0,
-format:"YYYY-MM-DD",
-lang:"ja",
-time:'false',
-});
-});
-</script>
-
-<script>
     function payment(){
-  	radio = document.getElementsByName('payment_way')
+  	radio = document.getElementsByName('paymentWay_id')
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('payment_firstbox').style.display = "";
@@ -53,12 +42,13 @@ time:'false',
   		//B.2つ目が選択されたら下記を実行
   		document.getElementById('payment_firstbox').style.display = "none";
   		document.getElementById('payment_secondbox').style.display = "";
+      Field.clear('bank_radio');
   	}
   }
   window.onload = payment;// ロード時に実行！
 
     function shipping(){
-  	radio = document.getElementsByName('shipping_way')
+  	radio = document.getElementsByName('shippingWay_id')
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('shipping_firstbox').style.display = "";
@@ -78,7 +68,6 @@ time:'false',
   }
   window.onload = shipping;// ロード時に実行！
 
-$('#date_sample').datepicker();
 </script>
 
 <form action="/entry/add" method="post">
@@ -88,13 +77,13 @@ $('#date_sample').datepicker();
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">入金方法</label>
         <div>
-            <input type="radio" name="payment_way" value="1" onclick="payment();" checked="checked" />銀行口座<br>
-            <input type="radio" name="payment_way" value="2" onclick="payment();" />アマゾンギフト券
+            <input type="radio" name="paymentWay_id" value="1" onclick="payment();" checked="checked" />銀行口座<br>
+            <input type="radio" name="paymentWay_id" value="2" onclick="payment();" />アマゾンギフト券
             <div id="payment_firstbox" class="row">
                 @foreach($banks as $bank)
                 <div class="card" style="width: 20rem;">
                     <div class="card-header">
-                        <input type="radio" name="paymentBank" value="{{$bank->id}}" />
+                        <input type="radio" name="paymentBank_id" value="{{$bank->id}}" id="bank_radio" />
                     </div>
                     <div class="card-body">
                         <p>
@@ -125,16 +114,16 @@ $('#date_sample').datepicker();
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
         <div>
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" checked="checked" />集荷<br>
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" />専用ロッカー<br>
-            <input type="radio" name="shipping_way" value="" onclick="shipping()" />自分で送る
+            <input type="radio" name="shippingWay_id" value="1" onclick="shipping()" checked="checked" />集荷<br>
+            <input type="radio" name="shippingWay_id" value="2" onclick="shipping()" />専用ロッカー<br>
+            <input type="radio" name="shippingWay_id" value="3" onclick="shipping()" />自分で送る
 
             <div id="shipping_firstbox" class="">
                 <div class="row">
                     @foreach($addresses as $address)
                     <div class="card" style="width: 20rem;">
                         <div class="card-header">
-                            <input type="radio" name="address" value="" />
+                            <input type="radio" name="addressBook_id" value="{{$address->id}}" />
                         </div>
                         <div class="card-body">
                             <p>
@@ -157,24 +146,24 @@ $('#date_sample').datepicker();
                 </div>
 
                 <div class="form-group">
-                    <label for="number" class="control-label col-xs-2">集荷日</label>
+                    <label for="collection_date" class="control-label col-xs-2">集荷日</label>
                     <div class="">
-                        <select class="form-control" id="number" name="number">
-                            <option value="">{{$day1}}({{$week[$date1]}})</option>
-                            <option value="">{{$day2}}({{$week[$date2]}})</option>
-                            <option value="">{{$day3}}({{$week[$date3]}})</option>
-                            <option value="">{{$day4}}({{$week[$date4]}})</option>
-                            <option value="">{{$day5}}({{$week[$date5]}})</option>
-                            <option value="">{{$day6}}({{$week[$date6]}})</option>
-                            <option value="">{{$day7}}({{$week[$date7]}})</option>
+                        <select class="form-control" id="number" name="collection_day">
+                            <option value="{{$day1}}">{{$day1}}({{$week[$date1]}})</option>
+                            <option value="{{$day2}}">{{$day2}}({{$week[$date2]}})</option>
+                            <option value="{{$day3}}">{{$day3}}({{$week[$date3]}})</option>
+                            <option value="{{$day4}}">{{$day4}}({{$week[$date4]}})</option>
+                            <option value="{{$day5}}">{{$day5}}({{$week[$date5]}})</option>
+                            <option value="{{$day6}}">{{$day6}}({{$week[$date6]}})</option>
+                            <option value="{{$day7}}">{{$day7}}({{$week[$date7]}})</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="number" class="control-label col-xs-2">集荷時間帯</label>
+                    <label for="time_zone" class="control-label col-xs-2">集荷時間帯</label>
                     <div class="">
-                        <select class="form-control" id="number" name="number">
+                        <select class="form-control" name="collection_time">
                             <option value="1">指定なし</option>
                             <option value="2">午前中</option>
                             <option value="3">13時まで</option>
@@ -182,6 +171,13 @@ $('#date_sample').datepicker();
                             <option value="5">16時から18時まで</option>
                             <option value="6">17時から18時30分まで</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="box_num" class="col-form-label text-md-left">箱数</label>
+                    <div>
+                        <input type="num" name="box_num" value="1" />
                     </div>
                 </div>
             </div>
@@ -196,12 +192,12 @@ $('#date_sample').datepicker();
         </div>
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="bank_num" class="col-form-label text-md-left">ああああ</label>
         <div>
             <input type="text" name="bank_num" value="" />
         </div>
-    </div>
+    </div> --}}
 
     <div class="form-group">
         <button class="btn btn-primary" type="submit">確認</button>

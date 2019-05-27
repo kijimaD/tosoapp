@@ -11,7 +11,7 @@
                 <th><a href="">案件ID</a></th>
                 <th><a href="">顧客ID</a></th>
                 <th><a href="">入金方法ID</a></th>
-                <th><a href="">登録日</a></th>
+                <th><a href="">申請日</a></th>
             </tr>
         </thead>
         <tbody>

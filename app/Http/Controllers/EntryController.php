@@ -30,10 +30,38 @@ class EntryController extends Controller
 
     public function create(Request $request)
     {
-        $entry = new Entry;
-        $form = $request->all();
-        unset($form['_token']);
-        $entry->fill($form)->save();
+        $entry_id = DB::table('entries')->insertGetId(
+            [
+      'user_id'=>$request->user_id,
+      'paymentWay_id'=>$request->paymentWay_id,
+      'shippingWay_id'=>$request->shippingWay_id,
+    ]
+    );
+
+        $applygoods_id = DB::table('applyGoods')->insertGetId(
+            [
+          'entry_id'=>$entry_id,
+    ]
+    );
+
+        $collection_id = DB::table('collections')->insertGetId(
+            [
+      'collection_day'=>$request->collection_day,
+      'collection_time'=>$request->collection_time,
+      'box_num'=>$request->box_num,
+      'applyGoods_id'=>$applygoods_id,
+      'addressBook_id'=>$request->addressBook_id,
+    ]
+    );
+
+        $paymentBank_id = DB::table('paymentBanks')->insertGetId(
+            [
+      'entry_id'=>$entry_id,
+      'bank_id'=>$request->paymentBank_id,
+    ]
+    );
+
+
         return redirect('/entry');
     }
 

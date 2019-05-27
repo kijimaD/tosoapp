@@ -67,6 +67,24 @@ class UsersTableSeeder extends Seeder
           'user_id' => '1',
         ]);
 
+        \App\Paymentway::create([
+          'payment_way' => '銀行振込',
+        ]);
+        \App\Paymentway::create([
+          'payment_way' => 'Amazonギフト券',
+        ]);
+
+        \App\Shippingway::create([
+          'shipping_way' => '集荷'
+        ]);
+        \App\Shippingway::create([
+          'shipping_way' => '専用ロッカー'
+        ]);
+        \App\Shippingway::create([
+          'shipping_way' => '自分で送る'
+        ]);
+
+
         DB::table('prefectures')->insert([
           [
           'prefecture_code' => '01',

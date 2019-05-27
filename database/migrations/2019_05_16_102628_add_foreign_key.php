@@ -147,16 +147,21 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('applyGoods')
             ->onDelete('cascade');
-            $table->integer('collectionTime_id')->unsigned();
-            $table->foreign('collectionTime_id')
+            $table->integer('addressBook_id')->unsigned();
+            $table->foreign('addressBook_id')
             ->references('id')
-            ->on('collectionTimes')
+            ->on('addressBooks')
             ->onDelete('cascade');
+            // $table->integer('collectionTime_id')->unsigned();
+            // $table->foreign('collectionTime_id')
+            // ->references('id')
+            // ->on('collectionTimes')
+            // ->onDelete('cascade');
         });
 
-        // 集荷時間帯
-        Schema::table('collectionTimes', function (Blueprint $table) {
-        });
+        // // 集荷時間帯
+        // Schema::table('collectionTimes', function (Blueprint $table) {
+        // });
 
         // ロッカー予約
         Schema::table('reserveLockers', function (Blueprint $table) {
