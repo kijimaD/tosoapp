@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Bank;
 use App\Entry;
 use App\Addressbook;
+use App\Paymentway;
+use App\Shippingway;
 
 class EntryController extends Controller
 {
@@ -35,6 +37,7 @@ class EntryController extends Controller
       'user_id'=>$request->user_id,
       'paymentWay_id'=>$request->paymentWay_id,
       'shippingWay_id'=>$request->shippingWay_id,
+      'created_at'=>now(),
     ]
     );
 

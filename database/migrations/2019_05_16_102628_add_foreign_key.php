@@ -101,15 +101,15 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->integer('paymentWay_id')->unsigned();
-            $table->foreign('paymentWay_id')
+            $table->integer('paymentway_id')->unsigned();
+            $table->foreign('paymentway_id')
             ->references('id')
-            ->on('paymentWays')
+            ->on('paymentways')
             ->onDelete('cascade');
-            $table->integer('shippingWay_id')->unsigned();
-            $table->foreign('shippingWay_id')
+            $table->integer('shippingway_id')->unsigned();
+            $table->foreign('shippingway_id')
             ->references('id')
-            ->on('shippingWays')
+            ->on('shippingways')
             ->onDelete('cascade');
         });
 

@@ -9,20 +9,20 @@
         <thead>
             <tr>
                 <th><a href="">案件ID</a></th>
-                <th><a href="">顧客ID</a></th>
                 <th><a href="">入金方法ID</a></th>
-                <th><a href="">申請日</a></th>
+                <th><a href="">発送方法ID</a></th>
+                <th><a href="">申請時刻</a></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($items as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->user_id}}</td>
-                <td>{{$item->payment_id}}</td>
+                <td>{{$item->paymentway->payment_way}}</td>
+                <td>{{$item->shippingway->shipping_way}}</td>
                 <td>{{$item->created_at}}</td>
-                <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/entry/del?id={{$item->id}}">消去</a></td>
+                {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
+                <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>
