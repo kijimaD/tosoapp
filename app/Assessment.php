@@ -15,7 +15,7 @@ class Assessment extends Model
 
     public function shippingcost()
     {
-        return $this->belongsTo('App\Shippingcost');
+        return $this->hasone('App\Shippingcost');
     }
 
     public function coupen()

@@ -41,6 +41,7 @@
                     <td><input type="submit" value="委託完了" /></td>
                 </form>
                 @endif
+                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
 
                 {{-- <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
                 <td><a href="/address/del?id={{$item->id}}">消去</a></td> --}}

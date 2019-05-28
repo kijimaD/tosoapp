@@ -3,34 +3,42 @@
 @section('title','口座登録')
 
 @section('content')
-<form action="/bank/add" method="post">
+<form action="/assessment/add" method="post">
     {{csrf_field()}}
 
+    <input type="hidden" name="entry_id" value="{{$entry_id}}">
+
     <div class="form-group">
-        <label for="bank_name" class="col-form-label text-md-left">銀行名</label>
+        <label for="cost" class="col-form-label text-md-left">送料費用</label>
         <div>
-            <input type="text" name="bank_name" value="{{old('bank_name')}}" />
+            <input type="num" name="cost" value="{{old('cost')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="bank_branch" class="col-form-label text-md-left">支店名</label>
+        <label for="apply_cost" class="col-form-label text-md-left">適用送料</label>
         <div>
-            <input type="text" name="bank_branch" value="{{old('bank_branch')}}" />
+            <input type="text" name="apply_cost" value="{{old('apply_cost')}}" />
         </div>
     </div>
 
     <div class="form-group">
-        <label for="bank_type" class="col-form-label text-md-left">口座種別</label>
+        <label for="shippingcost_type" class="col-form-label text-md-left">送料区分</label>
         <div>
-            <input type="text" name="bank_type" value="{{old('bank_type')}}" />
+            <select class="form-control" name="shippingcost_type">
+                <option value="20冊以上で無料">20冊以上で無料</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="bank_num" class="col-form-label text-md-left">口座番号</label>
+        <label for="coupen_id" class="col-form-label text-md-left">クーポン選択</label>
         <div>
-            <input type="text" name="bank_num" value="{{old('bank_num')}}" />
+            <select class="form-control" name="coupen_id">
+                @foreach ($coupens as $coupen)
+                <option value="{{$coupen->id}}">{{$coupen->coupen_name}}(x{{$coupen->coupen_value}})</option>
+                @endforeach
+            </select>
         </div>
     </div>
 

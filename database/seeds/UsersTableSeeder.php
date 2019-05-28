@@ -84,6 +84,20 @@ class UsersTableSeeder extends Seeder
           'shipping_way' => '自分で送る'
         ]);
 
+        \App\Coupen::create([
+          'coupen_name' => 'Ti0020',
+          'coupen_value' => '1.15',
+        ]);
+
+        \App\Coupen::create([
+          'coupen_name' => 'なし',
+          'coupen_value' => '1.00',
+        ]);
+
+        \App\Coupen::create([
+          'coupen_name' => 'Te0022',
+          'coupen_value' => '1.15',
+        ]);
 
         DB::table('prefectures')->insert([
           [

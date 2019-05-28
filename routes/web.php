@@ -96,4 +96,5 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('assessment/admin_index', 'AssessmentController@admin_index');
     Route::get('assessment/add', 'AssessmentController@add');
+    Route::post('assessment/add', 'AssessmentController@create');
 });

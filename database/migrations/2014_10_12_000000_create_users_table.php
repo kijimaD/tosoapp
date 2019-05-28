@@ -196,7 +196,7 @@ class CreateUsersTable extends Migration
         // 送料
         Schema::create('shippingCosts', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('shippingCost_type');
+            $table->string('shippingcost_type');
             $table->integer('cost');
             $table->integer('apply_cost');
             $table->timestamps();
