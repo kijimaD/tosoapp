@@ -14,8 +14,8 @@
                 <th><a href="">振込先</a></th>
                 <th><a href="">発送方法</a></th>
                 <th><a href="">郵便番号</a></th>
-                <th><a href="">県</a></th>
-                <th><a href="">都市</a></th>
+                <th><a href="">都道府県</a></th>
+                <th><a href="">市区町村</a></th>
                 <th><a href="">以降の住所</a></th>
                 <th><a href="">集荷日</a></th>
                 <th><a href="">集荷時間帯</a></th>

@@ -30,4 +30,26 @@ class Entry extends Model
     {
         return $this->hasone('App\Applygoods')->withDefault();
     }
+
+    // フラグ系
+
+    public function applydone()
+    {
+        return $this->hasone('App\Applydone')->withDefault();
+    }
+
+    public function approvedone()
+    {
+        return $this->hasone('App\Approvedone')->withDefault();
+    }
+
+    public function cancel()
+    {
+        return $this->hasone('App\Cancel')->withDefault();
+    }
+
+    public function paymentdone()
+    {
+        return $this->hasone('App\Paymentdone')->withDefault();
+    }
 }
