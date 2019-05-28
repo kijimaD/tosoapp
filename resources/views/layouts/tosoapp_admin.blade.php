@@ -27,20 +27,17 @@
 
     <div class="col-xs-12 col-12 bg-white rounded">
         <h2 class="page-header mt-2">@yield('title')</h2>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/home">ホーム</a></li>
+            <li class="list-inline-item"><a href="/admin/user">ユーザ一覧</a></li>
+            <li class="list-inline-item"><a href="{{ route('admin.login')}}">{{__('adminログイン')}}</a></li>
+            <li class="list-inline-item"><a href="/entry/admin_index">案件一覧</a></li>
+            <li class="list-inline-item"><a href="/collection/admin_index">集荷一覧</a></li>
+        </ul>
         @if (Auth::check())
         <p class="text-success">{{\Auth::user()->family_name}}{{\Auth::user()->name}}でログイン中!</p>
         <p><a href="{{ route('admin.logout')}}">ログアウト</a></p>
         @endif
-        <ul>
-            <li><a href="/user/add">ユーザ登録</a></li>
-            <li><a href="/admin/user">ユーザ一覧</a></li>
-            <li><a href="/user/auth">ログイン</a></li>
-            <li><a href="/home">ホーム</a></li>
-            <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
-
-            <li><a href="{{ route('admin.login')}}">{{__('adminログイン')}}</a></li>
-            <li><a href="/entry/admin_index">案件一覧</a></li>
-        </ul>
         <hr>
         @yield('content')
     </div>
