@@ -189,7 +189,7 @@ class CreateUsersTable extends Migration
         // 査定
         Schema::create('assessments', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('sum_price');
+            // $table->integer('sum_price');
             $table->timestamps();
         });
 
