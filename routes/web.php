@@ -93,4 +93,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('entry/admin_index', 'EntryController@admin_index');
     Route::get('collection/admin_index', 'CollectionController@admin_index');
     Route::post('collection/admin_add', 'CollectionController@admin_create');
+
+    Route::get('assessment/admin_index', 'AssessmentController@admin_index');
+    Route::get('assessment/add', 'AssessmentController@add');
 });

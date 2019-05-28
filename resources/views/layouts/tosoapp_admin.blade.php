@@ -33,7 +33,7 @@
             <li class="list-inline-item"><a href="{{ route('admin.login')}}">{{__('adminログイン')}}</a></li>
             <li class="list-inline-item"><a href="/entry/admin_index">案件一覧</a></li>
             <li class="list-inline-item"><a href="/collection/admin_index">集荷一覧</a></li>
-            <li class="list-inline-item"><a href="/collection/admin_index">査定</a></li>
+            <li class="list-inline-item"><a href="/assessment/admin_index">査定</a></li>
         </ul>
         @if (Auth::check())
         <p class="text-success">{{\Auth::user()->family_name}}{{\Auth::user()->name}}でログイン中!</p>
