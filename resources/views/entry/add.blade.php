@@ -170,12 +170,12 @@ shipping();
                     <label for="time_zone" class="control-label col-xs-2">集荷時間帯</label>
                     <div class="">
                         <select class="form-control" name="collection_time">
-                            <option value="1">指定なし</option>
-                            <option value="2">午前中</option>
-                            <option value="3">13時まで</option>
-                            <option value="4">14時から16時まで</option>
-                            <option value="5">16時から18時まで</option>
-                            <option value="6">17時から18時30分まで</option>
+                            <option value="指定なし">指定なし</option>
+                            <option value="午前中">午前中</option>
+                            <option value="~13時">13時まで</option>
+                            <option value="14時~16時">14時から16時まで</option>
+                            <option value="16時~18時">16時から18時まで</option>
+                            <option value="17時~18時30分">17時から18時30分まで</option>
                         </select>
                     </div>
                 </div>

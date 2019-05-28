@@ -15,7 +15,7 @@ class Addressbook extends Model
 
     public function prefecture()
     {
-        return $this->belongsTo('App\Prefecture');
+        return $this->belongsTo('App\Prefecture')->withDefault();
     }
 
     public function useraddress()
