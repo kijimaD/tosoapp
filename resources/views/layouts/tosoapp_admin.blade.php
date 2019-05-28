@@ -39,6 +39,7 @@
             <li><a href="{{ route('register')}}">{{__('会員登録')}}</a></li>
 
             <li><a href="{{ route('admin.login')}}">{{__('adminログイン')}}</a></li>
+            <li><a href="/entry/admin_index">案件一覧</a></li>
         </ul>
         <hr>
         @yield('content')

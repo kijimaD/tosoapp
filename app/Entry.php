@@ -18,6 +18,16 @@ class Entry extends Model
 
     public function paymentbank()
     {
-        return $this->hasone('App\Paymentbank');
+        return $this->hasone('App\Paymentbank')->withDefault();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function applygoods()
+    {
+        return $this->hasone('App\Applygoods')->withDefault();
     }
 }

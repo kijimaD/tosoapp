@@ -21,6 +21,13 @@ class EntryController extends Controller
         return view('entry.index', $param);
     }
 
+    public function admin_index(Request $request)
+    {
+        $items = Entry::get();
+        $param = ['items' => $items];
+        return view('entry.admin_index', $param);
+    }
+
     public function add(Request $request)
     {
         $user = Auth::user();
@@ -63,7 +70,7 @@ class EntryController extends Controller
         // 銀行振込時のみ
         if ($request->paymentway_id == '1') {
             $paymentBank_id = DB::table('paymentBanks')->insertGetId(
-            [
+                [
       'entry_id'=>$entry_id,
       'bank_id'=>$request->paymentbank_id,
     ]

@@ -89,4 +89,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('user/edit', 'UserController@update');
     Route::get('user/del', 'UserController@delete');
     Route::post('user/del', 'UserController@remove');
+
+    Route::get('entry/admin_index', 'EntryController@admin_index');
 });

@@ -58,8 +58,8 @@ class AddForeignKey extends Migration
 
         // 本住所、既定のアドレス
         Schema::table('userAddresses', function (Blueprint $table) {
-            $table->integer('addressBook_id')->unsigned();
-            $table->foreign('addressBook_id')
+            $table->integer('addressbook_id')->unsigned();
+            $table->foreign('addressbook_id')
             ->references('id')
             ->on('addressBooks')
             ->onDelete('cascade');
@@ -142,13 +142,13 @@ class AddForeignKey extends Migration
 
         // 集荷申請
         Schema::table('collections', function (Blueprint $table) {
-            $table->integer('applyGoods_id')->unsigned();
-            $table->foreign('applyGoods_id')
+            $table->integer('applygoods_id')->unsigned();
+            $table->foreign('applygoods_id')
             ->references('id')
             ->on('applyGoods')
             ->onDelete('cascade');
-            $table->integer('addressBook_id')->unsigned();
-            $table->foreign('addressBook_id')
+            $table->integer('addressbook_id')->unsigned();
+            $table->foreign('addressbook_id')
             ->references('id')
             ->on('addressBooks')
             ->onDelete('cascade');
@@ -165,13 +165,13 @@ class AddForeignKey extends Migration
 
         // ロッカー予約
         Schema::table('reserveLockers', function (Blueprint $table) {
-            $table->integer('lockerNum_id')->unsigned();
-            $table->foreign('lockerNum_id')
+            $table->integer('lockernum_id')->unsigned();
+            $table->foreign('lockernum_id')
             ->references('id')
             ->on('lockerNums')
             ->onDelete('cascade');
-            $table->integer('applyGoods_id')->unsigned();
-            $table->foreign('applyGoods_id')
+            $table->integer('applygoods_id')->unsigned();
+            $table->foreign('applygoods_id')
             ->references('id')
             ->on('applyGoods')
             ->onDelete('cascade');
@@ -179,8 +179,8 @@ class AddForeignKey extends Migration
 
         // ロッカー番号
         Schema::table('lockerNums', function (Blueprint $table) {
-            $table->integer('lockerPlace_id')->unsigned();
-            $table->foreign('lockerPlace_id')
+            $table->integer('lockerplace_id')->unsigned();
+            $table->foreign('lockerplace_id')
             ->references('id')
             ->on('lockerPlaces')
             ->onDelete('cascade');
@@ -237,8 +237,8 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('entries')
             ->onDelete('cascade');
-            $table->integer('shippingCost_id')->unsigned();
-            $table->foreign('shippingCost_id')
+            $table->integer('shippingcost_id')->unsigned();
+            $table->foreign('shippingcost_id')
             ->references('id')
             ->on('shippingCosts')
             ->onDelete('cascade');
@@ -295,8 +295,8 @@ class AddForeignKey extends Migration
 
         // 了承
         Schema::table('approveGoods', function (Blueprint $table) {
-            $table->integer('assessmentDetail_id')->unsigned();
-            $table->foreign('assessmentDetail_id')
+            $table->integer('assessmentdetail_id')->unsigned();
+            $table->foreign('assessmentdetail_id')
             ->references('id')
             ->on('assessmentDetails')
             ->onDelete('cascade');
@@ -304,13 +304,13 @@ class AddForeignKey extends Migration
 
         // 返送
         Schema::table('resendGoods', function (Blueprint $table) {
-            $table->integer('assessmentDetail_id')->unsigned();
-            $table->foreign('assessmentDetail_id')
+            $table->integer('assessmentdetail_id')->unsigned();
+            $table->foreign('assessmentdetail_id')
             ->references('id')
             ->on('assessmentDetails')
             ->onDelete('cascade');
-            $table->integer('userAddress_id')->unsigned();
-            $table->foreign('userAddress_id')
+            $table->integer('useraddress_id')->unsigned();
+            $table->foreign('useraddress_id')
             ->references('id')
             ->on('userAddresses')
             ->onDelete('cascade');

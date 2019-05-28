@@ -8,6 +8,6 @@ class Paymentbank extends Model
 {
     public function bank()
     {
-        return $this->belongsTo('App\Bank');
+        return $this->belongsTo('App\Bank')->withDefault();
     }
 }
