@@ -91,6 +91,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('user/del', 'UserController@remove');
 
     Route::get('entry/admin_index', 'EntryController@admin_index');
+    Route::get('entry/unify', 'EntryController@unify');
+
     Route::get('collection/admin_index', 'CollectionController@admin_index');
     Route::post('collection/admin_add', 'CollectionController@admin_create');
 

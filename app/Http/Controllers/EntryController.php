@@ -107,4 +107,11 @@ class EntryController extends Controller
         Entry::find($request->id)->delete();
         return redirect('/entry');
     }
+
+    public function unify(Request $request)
+    {
+        $items = Entry::get();
+        $param = ['items' => $items];
+        return view('entry.unify', $param);
+    }
 }

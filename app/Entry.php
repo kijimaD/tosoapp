@@ -31,6 +31,11 @@ class Entry extends Model
         return $this->hasone('App\Applygoods')->withDefault();
     }
 
+    public function assessment()
+    {
+        return $this->hasone('App\Assessment')->withDefault();
+    }
+
     // フラグ系
 
     public function applydone()
