@@ -3,7 +3,6 @@
 @section('title','査定一覧')
 
 @section('content')
-<p><a href="/assessment/add">追加</a></p>
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>
@@ -27,8 +26,8 @@
                 <td>{{$item->shippingcost->apply_cost}}</td>
                 <td>{{$item->coupen->coupen_name}}</td>
                 <td>{{$item->coupen->coupen_value}}</td>
-                {{-- <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/address/del?id={{$item->id}}">消去</a></td> --}}
+                <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
+                <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>

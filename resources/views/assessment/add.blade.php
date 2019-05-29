@@ -27,6 +27,7 @@
         <div>
             <select class="form-control" name="shippingcost_type">
                 <option value="20冊以上で無料">20冊以上で無料</option>
+                <option value="適用なし">適用なし</option>
             </select>
         </div>
     </div>

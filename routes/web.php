@@ -99,4 +99,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('assessment/admin_index', 'AssessmentController@admin_index');
     Route::get('assessment/add', 'AssessmentController@add');
     Route::post('assessment/add', 'AssessmentController@create');
+    Route::get('assessment/edit', 'AssessmentController@edit');
+    Route::post('assessment/edit', 'AssessmentController@update');
+    Route::get('assessment/del', 'AssessmentController@delete');
+    Route::post('assessment/del', 'AssessmentController@remove');
 });
