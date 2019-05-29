@@ -35,17 +35,11 @@
                 @if (isset($item->applydone->id))
                 <td>委託完了({{$item->applydone->created_at}})</td>
                 @else
-                <form action="/collection/admin_add" method="post">
+                <form action="/collection/applydone_add" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="entry_id" value="{{$item->id}}" />
                     <td><input type="submit" value="委託完了" /></td>
                 </form>
-                @endif
-
-                @if (isset($item->assessment->id))
-                <td>査定完了</td>
-                @else
-                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
                 @endif
 
                 {{-- <td><a href="/address/edit?id={{$item->id}}">修正</a></td>

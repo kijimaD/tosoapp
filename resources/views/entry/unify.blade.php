@@ -30,9 +30,9 @@
                 @endif
 
                 @if (isset($item->assessment->id))
-                <td>完了</td>
+                <td>査定完了</td>
                 @else
-                <td>未</td>
+                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
                 @endif
 
                 @if (isset($item->approvedone->id))

@@ -17,7 +17,7 @@ class CollectionController extends Controller
         return view('collection.admin_index', $param);
     }
 
-    public function admin_create(Request $request)
+    public function applydone_create(Request $request)
     {
         $applydone = new Applydone;
         $form = $request->all();

@@ -94,7 +94,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('entry/unify', 'EntryController@unify');
 
     Route::get('collection/admin_index', 'CollectionController@admin_index');
-    Route::post('collection/admin_add', 'CollectionController@admin_create');
+    Route::post('collection/applydone_add', 'CollectionController@applydone_create');
 
     Route::get('assessment/admin_index', 'AssessmentController@admin_index');
     Route::get('assessment/add', 'AssessmentController@add');
