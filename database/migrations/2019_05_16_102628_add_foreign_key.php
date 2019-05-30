@@ -273,7 +273,7 @@ class AddForeignKey extends Migration
 
         // 商品
         Schema::table('goods', function (Blueprint $table) {
-            $table->integer('condition_id')->unsigned();
+            $table->integer('condition_id')->unsigned()->nullable();
             $table->foreign('condition_id')
             ->references('id')
             ->on('conditions')

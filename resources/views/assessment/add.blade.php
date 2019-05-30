@@ -29,7 +29,7 @@ function removeList(obj) {
   tbody.removeChild(tr);
 }
 function addarea(){
-  $('#addarea').append('<div class="form-group form-inline"><div class=""><input type="text" name="isbn[]" /></div><div class=""><input type="text" name="title[]" /></div><div class=""><input type="text" name="description[]" /></div><div class=""><input type="text" name="condition_id[]" /></div><div class=""><input type="text" name="market_price[]" /></div><div class=""><input type="text" name="get_price[]" /></div><div class=""><button type="button" class="btn btn-outline-primary" onclick="addarea();">＋</button></div><div class=""><button type="button" class="btn btn-outline-primary" onclick="removearea(this);">－</button></div></div>')
+  $('#addarea').append('<div class="form-group form-inline"><div class=""><input type="text" name="isbn[]" /></div><div class=""><input type="text" name="title[]" /></div><div class=""><button type="button" class="btn btn-outline-primary" onclick="addarea();">＋</button></div><div class=""><button type="button" class="btn btn-outline-primary" onclick="removearea(this);">－</button></div></div>')
 }
 
 // function addarea(){
@@ -119,26 +119,6 @@ function removearea(obj){
         <div class="">
             <label for="title_name[]" class="col-form-label text-md-left">タイトル</label>
             <input type="text" name="title[]" />
-        </div>
-
-        <div class="">
-            <label for="description[]" class="col-form-label text-md-left">説明文</label>
-            <input type="text" name="description[]" />
-        </div>
-
-        <div class="">
-            <label for="codition_id[]" class="col-form-label text-md-left">コンディションコード</label>
-            <input type="text" name="condition_id[]" />
-        </div>
-
-        <div class="">
-            <label for="market_price[]" class="col-form-label text-md-left">市場価格</label>
-            <input type="text" name="market_price[]" />
-        </div>
-
-        <div class="">
-            <label for="get_price[]" class="col-form-label text-md-left">買取価格</label>
-            <input type="text" name="get_price[]" />
         </div>
 
         <div class="">

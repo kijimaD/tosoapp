@@ -46,31 +46,49 @@ class AssessmentController extends Controller
         ]
       );
 
-
-
-        $title_id = DB::table('titles')->insertGetId(
-            [
-              'isbn'=>$request->isbn,
-              'title'=>$request->title,
+        foreach (array_map(null, $request->isbn, $request->title) as [$val_isbn,$val_title]) {
+            $title_id = DB::table('titles')->insertGetId(
+                [
+          'isbn'=>$val_isbn,
+          'title_name'=>$val_title,
+          'created_at'=> now(),
           ]
         );
 
-        $goods_id = DB::table('goods')->insertGetId(
-            [
-            'description'=>$request->description,
-            'market_price'=>$request->market_price,
-            'get_price'=>$request->get_price,
-            'title_id'=>$title_id,
-            'condition_id'=>$request->condition_id,
-          ]
-        );
+            $goods_id = DB::table('goods')->insertGetId(
+                [
+              'title_id'=>$title_id,
+            ]
+          );
 
-        $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
-            [
-          'goods_id'=>$goods_id,
-          'assessment_id'=>$assessment_id,
-        ]
-      );
+            $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+                [
+                'goods_id'=>$goods_id,
+                'assessment_id'=>$assessment_id,
+              ]
+            );
+        }
+
+        // foreach (array_map(null, $request->isbn) as [$isbn]) {
+        //     $param_title [] = array(
+        //   'isbn'=>$isbn,
+        // );
+        // }
+        //
+        // $title_id = DB::table('titles')->insertGetId($param_title);
+
+        //   $goods_id = DB::table('goods')->insertGetId(
+        //       [
+        //       'title_id'=>$title_id,
+        //     ]
+        //   );
+        //
+        //   $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+        //       [
+        //     'goods_id'=>$goods_id,
+        //     'assessment_id'=>$assessment_id,
+        //   ]
+        // );
 
         return redirect('/assessment/admin_index');
     }

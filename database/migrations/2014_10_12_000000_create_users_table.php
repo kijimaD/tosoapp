@@ -220,10 +220,10 @@ class CreateUsersTable extends Migration
         // 商品
         Schema::create('goods', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('description');
-            $table->integer('market_price');
-            $table->integer('sell_price');
-            $table->integer('get_price');
+            $table->string('description')->nullable();
+            $table->integer('market_price')->nullable();
+            $table->integer('sell_price')->nullable();
+            $table->integer('get_price')->nullable();
             $table->timestamps();
         });
 
@@ -238,7 +238,7 @@ class CreateUsersTable extends Migration
         // タイトル
         Schema::create('titles', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('isbn');
+            $table->string('isbn')->nullable();
             $table->string('title_name')->nullable();
             $table->timestamps();
         });
