@@ -213,7 +213,7 @@ class CreateUsersTable extends Migration
         // 査定明細
         Schema::create('assessmentDetails', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
 
@@ -239,7 +239,7 @@ class CreateUsersTable extends Migration
         Schema::create('titles', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('isbn');
-            $table->string('title_name');
+            $table->string('title_name')->nullable();
             $table->timestamps();
         });
 

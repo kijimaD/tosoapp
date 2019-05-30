@@ -45,6 +45,33 @@ class AssessmentController extends Controller
           'created_at'=>now(),
         ]
       );
+
+
+
+        $title_id = DB::table('titles')->insertGetId(
+            [
+              'isbn'=>$request->isbn,
+              'title'=>$request->title,
+          ]
+        );
+
+        $goods_id = DB::table('goods')->insertGetId(
+            [
+            'description'=>$request->description,
+            'market_price'=>$request->market_price,
+            'get_price'=>$request->get_price,
+            'title_id'=>$title_id,
+            'condition_id'=>$request->condition_id,
+          ]
+        );
+
+        $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+            [
+          'goods_id'=>$goods_id,
+          'assessment_id'=>$assessment_id,
+        ]
+      );
+
         return redirect('/assessment/admin_index');
     }
 
