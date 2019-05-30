@@ -14,6 +14,8 @@
                 <th>適用送料</th>
                 <th>クーポン名</th>
                 <th>価格上昇割合</th>
+                <th>査定小計</th>
+                <th>合計金額</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +28,9 @@
                 <td>{{$item->shippingcost->apply_cost}}</td>
                 <td>{{$item->coupen->coupen_name}}</td>
                 <td>{{$item->coupen->coupen_value}}</td>
+                <td></td>
+                <td></td>
+                <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
                 <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
                 <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
             </tr>
