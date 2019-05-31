@@ -96,6 +96,29 @@ class AssessmentController extends Controller
                     'shippingcost_type'=>$request->shippingcost_type
                   ])->save();
 
+        foreach (array_map(null, $request->isbn, $request->title) as [$val_isbn,$val_title]) {
+            $title_id = DB::table('titles')->insertGetId(
+                [
+          'isbn'=>$val_isbn,
+          'title_name'=>$val_title,
+          'created_at'=> now(),
+          ]
+        );
+
+            $goods_id = DB::table('goods')->insertGetId(
+                [
+              'title_id'=>$title_id,
+            ]
+          );
+
+            $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+                [
+                'goods_id'=>$goods_id,
+                'assessment_id'=>$request->id,
+              ]
+            );
+        }
+
         return redirect('/assessment/admin_index');
     }
 
