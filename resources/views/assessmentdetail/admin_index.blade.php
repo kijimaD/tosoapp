@@ -3,6 +3,10 @@
 @section('title','査定一覧')
 
 @section('content')
+
+
+
+
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>
@@ -28,7 +32,6 @@
                 <td>{{$item->goods->market_price}}</td>
                 <td>{{$item->goods->get_price}}</td>
                 <td>{{$item->goods->sell_price}}</td>
-                <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
                 <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
                 <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
             </tr>

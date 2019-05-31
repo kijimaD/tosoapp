@@ -3,10 +3,8 @@
 @section('title','明細入力')
 
 @section('content')
-<form action="/assessment/edit" method="post">
+<form action="/assessmentdetail/edit" method="post">
     {{csrf_field()}}
-
-    {{-- <input type="hidden" name="id" value="{{$items->id}}" /> --}}
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
@@ -25,16 +23,18 @@
             </thead>
             <tbody>
                 @foreach ($items as $item)
+                <input type="hidden" name="goods_id[]" value="{{$item->goods->id}}" />
+                <input type="hidden" name="title_id[]" value="{{$item->goods->title->id}}" />
                 <tr>
                     <td>{{$item->assessment->id}}</td>
                     <td>{{$item->id}}</td>
-                    <td><input type="text" name="isbn" value="{{$item->goods->title->isbn}}" /></td>
-                    <td><input type="text" name="title_name" value="{{$item->goods->title->title_name}}" /></td>
-                    <td><input type="text" name="description" value="{{$item->goods->description}}" /></td>
-                    <td><input type="text" name="condition_id" value="{{$item->goods->condition_id}}" /></td>
-                    <td><input type="text" name="market_price" value="{{$item->goods->market_price}}" /></td>
-                    <td><input type="text" name="get_price" value="{{$item->goods->get_price}}" /></td>
-                    <td><input type="text" name="sell_price" value="{{$item->goods->sell_price}}" /></td>
+                    <td><input type="text" name="isbn[]" value="{{$item->goods->title->isbn}}" /></td>
+                    <td><input type="text" name="title_name[]" value="{{$item->goods->title->title_name}}" /></td>
+                    <td><input type="text" name="description[]" value="{{$item->goods->description}}" /></td>
+                    <td><input type="text" name="condition_id[]" value="{{$item->goods->condition_id}}" /></td>
+                    <td><input type="text" name="market_price[]" value="{{$item->goods->market_price}}" /></td>
+                    <td><input type="text" name="get_price[]" value="{{$item->goods->get_price}}" /></td>
+                    <td><input type="text" name="sell_price[]" value="{{$item->goods->sell_price}}" /></td>
                     <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
                 </tr>
                 @endforeach
