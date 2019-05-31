@@ -35,7 +35,7 @@
             <li class="list-inline-item"><a href="/entry/unify">統合ステータス</a></li>
             <li class="list-inline-item"><a href="/collection/admin_index">集荷一覧</a></li>
             <li class="list-inline-item"><a href="/assessment/admin_index">査定一覧</a></li>
-
+            <li class="list-inline-item"><a href="/assessmentdetail/admin_index">査定明細一覧</a></li>
         </ul>
         @if (Auth::check())
         <p class="text-success">{{\Auth::user()->family_name}}{{\Auth::user()->name}}でログイン中!</p>

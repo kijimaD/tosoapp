@@ -23,7 +23,7 @@ class Assessment extends Model
         return $this->belongsTo('App\Coupen');
     }
 
-    public function assessmentdetail()
+    public function assessmentdetails()
     {
         return $this->hasmany('App\Assessmentdetail');
     }
