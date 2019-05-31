@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Assessment;
 use App\Coupen;
 use App\Shippingcost;
+use App\Title;
+use App\Goods;
 
 class AssessmentController extends Controller
 {
@@ -68,27 +70,6 @@ class AssessmentController extends Controller
               ]
             );
         }
-
-        // foreach (array_map(null, $request->isbn) as [$isbn]) {
-        //     $param_title [] = array(
-        //   'isbn'=>$isbn,
-        // );
-        // }
-        //
-        // $title_id = DB::table('titles')->insertGetId($param_title);
-
-        //   $goods_id = DB::table('goods')->insertGetId(
-        //       [
-        //       'title_id'=>$title_id,
-        //     ]
-        //   );
-        //
-        //   $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
-        //       [
-        //     'goods_id'=>$goods_id,
-        //     'assessment_id'=>$assessment_id,
-        //   ]
-        // );
 
         return redirect('/assessment/admin_index');
     }

@@ -43,7 +43,8 @@ class AssessmentdetailController extends Controller
             $request->market_price,
             $request->get_price,
             $request->sell_price
-            )as
+            )
+            as
           [$val_goods_id,
             $val_title_id,
             $val_isbn,

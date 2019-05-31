@@ -3,6 +3,7 @@
 @section('title','修正')
 
 @section('content')
+
 <form action="/assessment/edit" method="post">
     {{csrf_field()}}
 

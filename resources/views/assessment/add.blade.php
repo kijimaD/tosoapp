@@ -102,34 +102,25 @@ function removearea(obj){
     <div id="addarea" class="">
         <div class="form-group form-inline">
 
-            {{-- <div class="">
-                <label for="ProductID[]" class="col-form-label text-md-left">ISBN</label>
-                <select name="ProductID[]">
-                    @foreach ($items as $item)
-                    <option value="{{$item->ProductID}}">{{$item->ProductID}}:{{$item->product_name}}</option>
-            @endforeach
-            </select>
-        </div> --}}
+            <div class="">
+                <label for="isbn[]" class="col-form-label text-md-left">ISBN</label>
+                <input type="text" name="isbn[]" />
+            </div>
 
-        <div class="">
-            <label for="isbn[]" class="col-form-label text-md-left">ISBN</label>
-            <input type="text" name="isbn[]" />
-        </div>
+            <div class="">
+                <label for="title_name[]" class="col-form-label text-md-left">タイトル</label>
+                <input type="text" name="title[]" />
+            </div>
 
-        <div class="">
-            <label for="title_name[]" class="col-form-label text-md-left">タイトル</label>
-            <input type="text" name="title[]" />
+            <div class="">
+                <label class="col-form-label text-md-left">追加</label>
+                <button type="button" class="btn btn-outline-primary" onclick="addarea();">＋</button>
+            </div>
+            <div class="">
+                <label class="col-form-label text-md-left">削除</label>
+                <button type="button" class="btn btn-outline-primary" onclick="removearea(this);">－</button>
+            </div>
         </div>
-
-        <div class="">
-            <label class="col-form-label text-md-left">追加</label>
-            <button type="button" class="btn btn-outline-primary" onclick="addarea();">＋</button>
-        </div>
-        <div class="">
-            <label class="col-form-label text-md-left">削除</label>
-            <button type="button" class="btn btn-outline-primary" onclick="removearea(this);">－</button>
-        </div>
-    </div>
     </div>
     <!--▲サブテーブル▲-->
 
