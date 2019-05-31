@@ -35,7 +35,7 @@
                     <td><input type="text" name="market_price[]" value="{{$item->goods->market_price}}" /></td>
                     <td><input type="text" name="get_price[]" value="{{$item->goods->get_price}}" /></td>
                     <td><input type="text" name="sell_price[]" value="{{$item->goods->sell_price}}" /></td>
-                    <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
+                    <td><a href="/assessmentdetail/del?id={{$item->id}}">消去</a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -76,4 +76,16 @@ class AssessmentdetailController extends Controller
         $param = ['items' => $items];
         return redirect('/assessment/admin_index');
     }
+
+    public function delete(Request $request)
+    {
+        $form = Assessmentdetail::find($request->id);
+        return view('assessmentdetail/del')->with('item', $form);
+    }
+
+    public function remove(Request $request)
+    {
+        Assessmentdetail::find($request->id)->delete();
+        return redirect('/assessmentdetail/admin_index');
+    }
 }
