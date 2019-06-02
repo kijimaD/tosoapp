@@ -17,16 +17,16 @@ function searchIsbn($isbn)
     $params['AWSAccessKeyId']	= $access_key_id;
     $params['Version']			= '2011-08-02';
     $params['AssociateTag']		= $AssociateTag;			// 自分のアソシエイトIDを追加
-$params['Timestamp']		= gmdate('Y-m-d\TH:i:s\Z');	// Timeは毎回Checkされる【ISO8601,UTC(GMT)】
-// ◆取得情報がLargeで検索時◆
-$params['ResponseGroup']	= 'Large';
+    $params['Timestamp']		= gmdate('Y-m-d\TH:i:s\Z');	// Timeは毎回Checkされる【ISO8601,UTC(GMT)】
+    // ◆取得情報がLargeで検索時◆
+    $params['ResponseGroup']	= 'Large';
     // ◆取得情報がItemAttributesで検索時◆
-// $params['ResponseGroup']	= 'ItemAttributes';
-// ■キーワードで検索時■
-$params['Operation']		= 'ItemSearch';				//商品名や著者名でキーワード検索
-$params['SearchIndex']		= 'All';					// カテゴリを指定
-$params['Keywords']			= $isbn;					// 文字コードはUTF-8
-$params['ItemPage']			= 1;
+    // $params['ResponseGroup']	= 'ItemAttributes';
+    // ■キーワードで検索時■
+    $params['Operation']		= 'ItemSearch';				//商品名や著者名でキーワード検索
+    $params['SearchIndex']		= 'All';					// カテゴリを指定
+    $params['Keywords']			= $isbn;					// 文字コードはUTF-8
+    $params['ItemPage']			= 1;
     // ■ASIN番号で検索時■
     // $params['Operation']		= 'ItemLookup';				// 商品名や著者名でキーワード検索
     // $params['ItemId']		= 'B00CPDCZWG';				// ASINをパラメータに入れる
