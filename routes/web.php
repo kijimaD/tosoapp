@@ -18,6 +18,8 @@ Route::post('user/auth', 'UserController@postAuth');
 Route::get('user/logout', 'Usercontroller@postLogout');
 
 Auth::routes(['verify' => true]);
+
+    Route::get('test/index', 'TestController@index');
 /*
 |--------------------------------------------------------------------------
 | 1) User 認証不要
