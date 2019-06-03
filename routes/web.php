@@ -19,7 +19,8 @@ Route::get('user/logout', 'Usercontroller@postLogout');
 
 Auth::routes(['verify' => true]);
 
-    Route::get('test/index', 'TestController@index');
+Route::get('test/index', 'TestController@index');
+Route::get('test/index0', 'TestController@index0');
 /*
 |--------------------------------------------------------------------------
 | 1) User 認証不要
