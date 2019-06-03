@@ -3,7 +3,7 @@
 @section('title','アドレス削除')
 
 @section('content')
-<form action="/address/edit" method="post">
+<form action="/address/del" method="post">
     {{csrf_field()}}
     <input type="hidden" name="id" value="{{$form->id}}" />
     <div class="form-group">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">送信</button>
+        <button class="btn btn-primary" type="submit">削除</button>
     </div>
 </form>
 

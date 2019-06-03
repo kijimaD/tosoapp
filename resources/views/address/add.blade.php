@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','本登録')
+@section('title','アドレス帳登録')
 
 @section('content')
 <form action="/address/add" method="post">
