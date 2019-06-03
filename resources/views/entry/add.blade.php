@@ -87,8 +87,8 @@ shipping();
             <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
             <div id="payment_firstbox" class="row">
                 @foreach($banks as $bank)
-                <div class="card" style="width: 20rem;">
-                    <div class="card-header">
+                <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
+                    <div class="card-header bg-white">
                         <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" />
                     </div>
                     <div class="card-body">
@@ -99,12 +99,12 @@ shipping();
                             {{$bank->bank_num}}
                         </p>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer bg-white">
                         Footer
                     </div>
                 </div>
                 @endforeach
-                <div class="card" style="width: 20rem;">
+                <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <p><a href="">新規追加する</a></p>
                     </div>
@@ -127,24 +127,24 @@ shipping();
             <div id="shipping_firstbox" class="">
                 <div class="row">
                     @foreach($addresses as $address)
-                    <div class="card" style="width: 20rem;">
-                        <div class="card-header">
+                    <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
+                        <div class="card-header bg-white">
                             <input type="radio" name="addressBook_id" value="{{$address->id}}" />
                         </div>
                         <div class="card-body">
                             <p>
-                                {{$address->zip }}
-                                {{$address->prefecture->prefecture_name}}
-                                {{$address->city}}
-                                {{$address->address}}
+                                〒{{$address->zip }}<br>
+                                {{$address->prefecture->prefecture_name}}<br>
+                                {{$address->city}}<br>
+                                {{$address->address}}<br>
                             </p>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer bg-white">
                             Footer
                         </div>
                     </div>
                     @endforeach
-                    <div class="card" style="width: 20rem;">
+                    <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <p><a href="">新規追加する</a></p>
                         </div>

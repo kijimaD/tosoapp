@@ -59,7 +59,7 @@
                                 <a class="dropdown-item" href="{{route('user.mypage')}}">マイページ</a>
                                 <a class="dropdown-item" href="/address">住所管理</a>
                                 <a class="dropdown-item" href="/bank">口座管理</a>
-                                <a class="dropdown-item" href="/entry/payment">買取申込</a>
+                                <a class="dropdown-item" href="/entry/add">買取申込</a>
                                 <a class="dropdown-item" href="/entry">買取履歴</a>
                                 <a class="dropdown-item" href="">進行状況確認</a>
                                 <a class="dropdown-item" href="">査定承認</a>
