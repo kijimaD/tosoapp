@@ -58,7 +58,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{route('user.mypage')}}">マイページ</a>
                                 <a class="dropdown-item" href="/address">住所管理</a>
-                                <a class="dropdown-item" href="/bank">入金管理</a>
+                                <a class="dropdown-item" href="/bank">口座管理</a>
                                 <a class="dropdown-item" href="/entry/payment">買取申込</a>
                                 <a class="dropdown-item" href="/entry">買取履歴</a>
                                 <a class="dropdown-item" href="">進行状況確認</a>
@@ -102,7 +102,7 @@
 
         <div class="row">
             <div class="col-12 footer mt-3 navbar-dark bg-primary">
-                <small class="text-white">copyright 2019 TSB</small>
+                <small class="text-white">copyright 2019 とそブックス</small>
             </div>
         </div>
 

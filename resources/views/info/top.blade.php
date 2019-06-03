@@ -1,7 +1,6 @@
 @extends('layouts.tosoapp')
 
 @section('title','トップページ')
-
 @section('content')
 <div class="container">
     <p>
