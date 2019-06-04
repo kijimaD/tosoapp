@@ -115,7 +115,6 @@ shipping();
             </div>
         </div>
     </div>
-    <hr>
 
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
