@@ -67,6 +67,14 @@ class UsersTableSeeder extends Seeder
           'user_id' => '1',
         ]);
 
+        \App\Entry::create([
+          'user_id' => '1',
+          'paymentway_id' => '1',
+          'shippingway_id' => '1',
+        ]);
+
+        // 定数データ系--------------------
+
         \App\Paymentway::create([
           'payment_way' => '銀行振込',
         ]);
@@ -84,16 +92,27 @@ class UsersTableSeeder extends Seeder
           'shipping_way' => '自分で送る'
         ]);
 
-        \App\Coupen::create([
-          'coupen_name' => 'Ti0020',
-          'coupen_value' => '1.15',
-        ]);
+        \App\Condition::create([
+            'condition_code' => '非常に良い',
+            'condition_percent' => '0.35',
+          ]);
+        \App\Condition::create([
+            'condition_code' => '良い',
+            'condition_percent' => '0.30',
+          ]);
+        \App\Condition::create([
+            'condition_code' => '可',
+            'condition_percent' => '0.20',
+          ]);
 
         \App\Coupen::create([
           'coupen_name' => 'なし',
           'coupen_value' => '1.00',
         ]);
-
+        \App\Coupen::create([
+          'coupen_name' => 'Ti0020',
+          'coupen_value' => '1.15',
+        ]);
         \App\Coupen::create([
           'coupen_name' => 'Te0022',
           'coupen_value' => '1.15',

@@ -218,7 +218,7 @@ class CreateUsersTable extends Migration
         });
 
         // 商品
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('goods', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('description')->nullable();
             $table->integer('market_price')->nullable();

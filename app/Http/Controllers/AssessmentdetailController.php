@@ -22,12 +22,26 @@ class AssessmentdetailController extends Controller
     public function edit(Request $request)
     {
         $items = Assessmentdetail::where('assessment_id', $request->id)->get();
-        $sum_price = DB::table('assessmentdetails')
+        $sum_get_price = DB::table('assessmentdetails')
         ->where('assessment_id', $request->id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('get_price');
 
-        $param = ['items' => $items,'sum_price' => $sum_price];
+        $sum_market_price = DB::table('assessmentdetails')
+        ->where('assessment_id', $request->id)
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->sum('market_price');
+
+        $sum_sell_price = DB::table('assessmentdetails')
+        ->where('assessment_id', $request->id)
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->sum('sell_price');
+
+        $param = ['items' => $items,
+                  'sum_get_price' => $sum_get_price,
+                  'sum_market_price' => $sum_market_price,
+                  'sum_sell_price' => $sum_sell_price,
+      ];
         return view('assessmentdetail.edit', $param);
     }
 

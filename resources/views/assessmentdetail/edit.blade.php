@@ -38,11 +38,21 @@
                     <td><a href="/assessmentdetail/del?id={{$item->id}}">消去</a></td>
                 </tr>
                 @endforeach
+                <tr>
+                    <td><b>合計</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{$sum_market_price}}</td>
+                    <td>{{$sum_get_price}}</td>
+                    <td>{{$sum_sell_price}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
 
-    <p>買取価格合計:{{$sum_price}}円</p>
 
     <div class="form-group">
         <button class="btn btn-primary" type="submit">送信</button>
