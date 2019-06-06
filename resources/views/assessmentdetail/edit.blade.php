@@ -42,6 +42,8 @@
         </table>
     </div>
 
+    <p>買取価格合計:{{$sum_price}}円</p>
+
     <div class="form-group">
         <button class="btn btn-primary" type="submit">送信</button>
     </div>

@@ -22,7 +22,12 @@ class AssessmentdetailController extends Controller
     public function edit(Request $request)
     {
         $items = Assessmentdetail::where('assessment_id', $request->id)->get();
-        $param = ['items' => $items];
+        $sum_price = DB::table('assessmentdetails')
+        ->where('assessment_id', $request->id)
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->sum('get_price');
+
+        $param = ['items' => $items,'sum_price' => $sum_price];
         return view('assessmentdetail.edit', $param);
     }
 
