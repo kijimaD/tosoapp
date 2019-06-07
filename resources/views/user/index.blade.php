@@ -1,6 +1,6 @@
-@extends('layouts.tosoapp')
+@extends('layouts.tosoapp_admin')
 
-@section('title','客一覧')
+@section('title','ユーザ一覧')
 
 @section('content')
 <div class="table-responsive">
