@@ -106,6 +106,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('assessment/edit', 'AssessmentController@update');
     Route::get('assessment/del', 'AssessmentController@delete');
     Route::post('assessment/del', 'AssessmentController@remove');
+    Route::post('assessment/assessmentdone_add', 'AssessmentController@assessmentdone_create');
 
     Route::get('assessmentdetail/admin_index', 'AssessmentdetailController@admin_index');
     Route::get('assessmentdetail/edit', 'AssessmentdetailController@edit');

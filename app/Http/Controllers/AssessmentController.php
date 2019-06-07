@@ -10,6 +10,7 @@ use App\Coupen;
 use App\Shippingcost;
 use App\Title;
 use App\Goods;
+use App\Assessmentdone;
 
 class AssessmentController extends Controller
 {
@@ -133,5 +134,13 @@ class AssessmentController extends Controller
     {
         Assessment::find($request->id)->delete();
         return redirect('/assessment/admin_index');
+    }
+
+    public function assessmentdone_create(Request $request)
+    {
+        $assessmentdone = new Assessmentdone;
+        $form = $request->all();
+        $assessmentdone->fill($form)->save();
+        return redirect('assessment/admin_index');
     }
 }

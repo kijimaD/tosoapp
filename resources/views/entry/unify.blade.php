@@ -11,6 +11,7 @@
                 <th><a href="">ユーザID</a></th>
                 <th><a href="">集荷委託</a></th>
                 <th><a href="">査定</a></th>
+                <th><a href="">査定送信</a></th>
                 <th><a href="">了承</a></th>
                 <th><a href="">入金</a></th>
                 <th><a href="">キャンセル</a></th>
@@ -33,6 +34,12 @@
                 <td>査定完了</td>
                 @else
                 <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
+                @endif
+
+                @if (isset($item->assessment->assessmentdone->id))
+                <td>査定送信完了</td>
+                @else
+                <td class="text-danger">査定未送信</td>
                 @endif
 
                 @if (isset($item->approvedone->id))

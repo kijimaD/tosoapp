@@ -29,6 +29,11 @@ class Assessment extends Model
         return $this->hasmany('App\Assessmentdetail');
     }
 
+    public function assessmentdone()
+    {
+        return $this->hasone('App\Assessmentdone');
+    }
+
     public function sumPrice()
     {
         $sum = DB::table('assessmentdetails')

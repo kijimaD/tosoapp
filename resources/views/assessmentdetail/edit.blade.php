@@ -53,6 +53,10 @@
         </table>
     </div>
 
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="assessmentdone">
+        <label class="form-check-label" for="">査定完了</label>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-primary" type="submit">送信</button>

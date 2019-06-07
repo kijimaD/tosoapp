@@ -91,8 +91,6 @@ class AssessmentdetailController extends Controller
           );
         }
 
-        $items = assessmentdetail::get();
-        $param = ['items' => $items];
         return redirect('/assessment/admin_index');
     }
 

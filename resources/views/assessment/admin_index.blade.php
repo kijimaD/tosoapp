@@ -32,9 +32,17 @@
                 <td>{{$item->assessmentdetails->count()}}</td>
                 <td>{{$item->sumPrice()}}</td>
                 <td></td>
-                <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
-                <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
+                @if(isset($item->assessmentdone->id))
+                    <td>査定完了</td>
+                    @else
+                    <form action="/assessment/assessmentdone_add" method="post">
+                        {{csrf_field()}}
+                        <input type="hidden" name="assessment_id" value="{{$item->id}}" />
+                        <td><input type="submit" value="査定完了"></td>
+                        @endif
+                        <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
+                        <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
+                        <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>
