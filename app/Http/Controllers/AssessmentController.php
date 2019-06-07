@@ -16,6 +16,7 @@ class AssessmentController extends Controller
     public function admin_index(Request $request)
     {
         $items = Assessment::get();
+
         $param = ['items' => $items];
         return view('assessment.admin_index', $param);
     }
@@ -30,20 +31,20 @@ class AssessmentController extends Controller
 
     public function create(Request $request)
     {
-        $assessment_id = DB::table('assessments')->insertGetId(
+        $shippingcost_id = DB::table('shippingCosts')->insertGetId(
             [
-          'entry_id'=>$request->entry_id,
-          'coupen_id'=>$request->coupen_id,
+          'shippingcost_type'=>$request->shippingcost_type,
+          'cost'=>$request->cost,
+          'apply_cost'=>$request->apply_cost,
           'created_at'=>now(),
         ]
       );
 
-        $shipping_id = DB::table('shippingCosts')->insertGetId(
+        $assessment_id = DB::table('assessments')->insertGetId(
             [
-          'assessment_id'=>$assessment_id,
-          'shippingcost_type'=>$request->shippingcost_type,
-          'cost'=>$request->cost,
-          'apply_cost'=>$request->apply_cost,
+          'entry_id'=>$request->entry_id,
+          'coupen_id'=>$request->coupen_id,
+          'shippingcost_id'=>$shippingcost_id,
           'created_at'=>now(),
         ]
       );

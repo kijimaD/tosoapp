@@ -30,8 +30,7 @@
                 <td>{{$item->coupen->coupen_name}}</td>
                 <td>{{$item->coupen->coupen_value}}</td>
                 <td>{{$item->assessmentdetails->count()}}</td>
-                {{-- <td>{{$item->assessmentdetails->goods->get_price}}</td> --}}
-                <td></td>
+                <td>{{$item->sumPrice()}}</td>
                 <td></td>
                 <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
                 <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>

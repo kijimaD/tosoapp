@@ -242,15 +242,15 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('coupens')
             ->onDelete('cascade');
+            $table->integer('shippingcost_id')->unsigned();
+            $table->foreign('shippingcost_id')
+            ->references('id')
+            ->on('shippingCosts')
+            ->onDelete('cascade');
         });
 
         // 送料
         Schema::table('shippingCosts', function (Blueprint $table) {
-            $table->integer('assessment_id')->unsigned();
-            $table->foreign('assessment_id')
-            ->references('id')
-            ->on('assessments')
-            ->onDelete('cascade');
         });
 
         // クーポン

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Assessment extends Model
 {
@@ -15,7 +16,7 @@ class Assessment extends Model
 
     public function shippingcost()
     {
-        return $this->hasone('App\Shippingcost');
+        return $this->belongsTo('App\Shippingcost');
     }
 
     public function coupen()
@@ -26,5 +27,15 @@ class Assessment extends Model
     public function assessmentdetails()
     {
         return $this->hasmany('App\Assessmentdetail');
+    }
+
+    public function sumPrice()
+    {
+        $sum = DB::table('assessmentdetails')
+        ->where('assessment_id', $this->id)
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->sum('get_price');
+
+        return $sum;
     }
 }

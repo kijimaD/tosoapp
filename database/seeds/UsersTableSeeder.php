@@ -73,6 +73,73 @@ class UsersTableSeeder extends Seeder
           'shippingway_id' => '1',
         ]);
 
+        \App\Assessment::create([
+          'entry_id' => '1',
+          'coupen_id' => '1',
+          'shippingcost_id' => '1',
+        ]);
+
+        \App\Shippingcost::create([
+          'shippingcost_type' => '20冊以上で無料',
+          'cost' => '1200',
+          'apply_cost' => '0',
+        ]);
+
+        \App\Assessmentdetail::create([
+          'assessment_id' => '1',
+          'goods_id' => '1',
+        ]);
+        \App\Assessmentdetail::create([
+          'assessment_id' => '1',
+          'goods_id' => '2',
+        ]);
+        \App\Assessmentdetail::create([
+          'assessment_id' => '1',
+          'goods_id' => '3',
+        ]);
+        \App\Assessmentdetail::create([
+          'assessment_id' => '1',
+          'goods_id' => '4',
+        ]);
+
+        \App\Goods::create([
+          'market_price' => '1000',
+          'sell_price' => '1000',
+          'get_price' => '300',
+          'title_id' => '1',
+        ]);
+        \App\Goods::create([
+          'market_price' => '1200',
+          'sell_price' => '1200',
+          'get_price' => '350',
+          'title_id' => '2',
+        ]);
+        \App\Goods::create([
+          'market_price' => '1500',
+          'sell_price' => '1440',
+          'get_price' => '400',
+          'title_id' => '3',
+        ]);
+        \App\Goods::create([
+          'market_price' => '400',
+          'sell_price' => '400',
+          'get_price' => '120',
+          'title_id' => '4',
+        ]);
+
+        \App\Title::create([
+          'isbn' => '9784274065972',
+        ]);
+        \App\Title::create([
+          'isbn' => '9784939204802',
+        ]);
+        \App\Title::create([
+          'isbn' => '9784382040234',
+        ]);
+        \App\Title::create([
+          'isbn' => '9784333330224',
+        ]);
+
         // 定数データ系--------------------
 
         \App\Paymentway::create([
