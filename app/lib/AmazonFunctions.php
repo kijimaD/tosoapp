@@ -44,7 +44,7 @@ class Amazonfunctions
         $option_string = '';
         foreach ($params as $k => $v) {
             // URLの追加部分をURLエンコードして&でつなげる。
-            $option_string .= '&'.urlencode_rfc3986($k).'='.urlencode_rfc3986($v);
+            $option_string .= '&'.$this->urlencode_rfc3986($k).'='.$this->urlencode_rfc3986($v);
         }
         // 最初の"&"のみ削除
         $option_string = substr($option_string, 1);
@@ -55,7 +55,7 @@ class Amazonfunctions
         // - HMAC-SHA256 を計算し、BASE64 エンコード
         $signature		= base64_encode(hash_hmac('sha256', $string_to_sign, $secret_access_key, true));
         // - リクエストの末尾に署名を追加
-        $url			= $baseurl.'?'.$option_string.'&Signature='.urlencode_rfc3986($signature);
+        $url			= $baseurl.'?'.$option_string.'&Signature='.$this->urlencode_rfc3986($signature);
 
         // HTMLアクセスを行う
         $get_contents	= file_get_contents($url);
@@ -89,15 +89,15 @@ class Amazonfunctions
             $curDate = sprintf("%04d%02d%02d", date("Y"), date("n"), date("j"))
             . "_" . sprintf("%02d%02d%02d", date("G"), date("i"), date("s"));
             $temWord = mb_convert_encoding($getdata['titlename'], "SJIS", "UTF-8");
-            printf(
-                "Time=[%s], ASIN=[%s], Title=[%s], Price=[%s], UsedPrice=[%s], title=[%s]\n",
-                $curDate,
-                $getdata['asin'],
-                $temWord,
-                $getdata['newprice'],
-                $getdata['usedprice'],
-                $getdata['titlename']
-    );
+            //         printf(
+            //             "Time=[%s], ASIN=[%s], Title=[%s], Price=[%s], UsedPrice=[%s], title=[%s]\n",
+            //             $curDate,
+            //             $getdata['asin'],
+            //             $temWord,
+            //             $getdata['newprice'],
+            //             $getdata['usedprice'],
+            //             $getdata['titlename']
+            // );
 
             $title = $getdata['titlename'];
             $usedprice = $getdata['usedprice'];
