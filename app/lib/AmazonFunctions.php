@@ -98,9 +98,8 @@ class Amazonfunctions
             //             $getdata['usedprice'],
             //             $getdata['titlename']
             // );
-
-            $title = $getdata['titlename'];
-            $usedprice = $getdata['usedprice'];
+            // $title = $getdata['titlename'];
+            // $usedprice = $getdata['usedprice'];
 
             return $getdata;
         }
@@ -123,9 +122,4 @@ class Amazonfunctions
 //     searchIsbn($item);
 //     sleep(1);
     // }
-
-    public function insertISBN($isbn)
-    {
-        $this->searchIsbn($isbn);
-    }
 }

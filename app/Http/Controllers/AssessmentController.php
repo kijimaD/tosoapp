@@ -52,19 +52,23 @@ class AssessmentController extends Controller
       );
 
         foreach (array_map(null, $request->isbn, $request->title) as [$val_isbn,$val_title]) {
-            $title_name_amazon = $search_amazon -> searchIsbn($val_isbn);
+            $goodsinfo_amazon = $search_amazon -> searchIsbn($val_isbn);
             sleep(1);
+
             $title_id = DB::table('titles')->insertGetId(
                 [
           'isbn'=>$val_isbn,
-          'title_name'=>$title_name_amazon['titlename'],
+          'title_name'=>$goodsinfo_amazon['titlename'],
           'created_at'=>now(),
           ]
         );
 
+            $market_price = $goodsinfo_amazon['usedprice'];
             $goods_id = DB::table('goods')->insertGetId(
                 [
               'title_id'=>$title_id,
+              'market_price'=>$market_price,
+              'sell_price'=>$market_price,
             ]
           );
 
