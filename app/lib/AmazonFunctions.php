@@ -86,9 +86,9 @@ class Amazonfunctions
             $getdata['producturl']	= $item->DetailPageURL;
 
             // 取得した商品情報の表示用(今回は取得した情報のタイトルと価格のみを表示)
-            $curDate = sprintf("%04d%02d%02d", date("Y"), date("n"), date("j"))
-            . "_" . sprintf("%02d%02d%02d", date("G"), date("i"), date("s"));
-            $temWord = mb_convert_encoding($getdata['titlename'], "SJIS", "UTF-8");
+            // $curDate = sprintf("%04d%02d%02d", date("Y"), date("n"), date("j"))
+            // . "_" . sprintf("%02d%02d%02d", date("G"), date("i"), date("s"));
+            // $temWord = mb_convert_encoding($getdata['titlename'], "SJIS", "UTF-8");
             //         printf(
             //             "Time=[%s], ASIN=[%s], Title=[%s], Price=[%s], UsedPrice=[%s], title=[%s]\n",
             //             $curDate,
@@ -102,7 +102,7 @@ class Amazonfunctions
             $title = $getdata['titlename'];
             $usedprice = $getdata['usedprice'];
 
-            return [$title,$usedprice];
+            return $getdata;
         }
     }
 
@@ -118,9 +118,14 @@ class Amazonfunctions
 //     '9784478490273',
 //     '0012417437',
 //     '9784820116226'
-// );
-// foreach ($b_items as $item) {
+    // );
+    // foreach ($b_items as $item) {
 //     searchIsbn($item);
 //     sleep(1);
-// }
+    // }
+
+    public function insertISBN($isbn)
+    {
+        $this->searchIsbn($isbn);
+    }
 }

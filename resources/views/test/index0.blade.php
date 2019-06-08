@@ -14,7 +14,7 @@
 <body>
     タイトルと中古価格を表示する。
     @foreach($titles as $title)
-    {{$title}}
+    {{$title['isbn']}}:{{$title['titlename']}}
     @endforeach
 </body>
 

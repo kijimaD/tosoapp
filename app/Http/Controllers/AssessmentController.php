@@ -32,6 +32,7 @@ class AssessmentController extends Controller
 
     public function create(Request $request)
     {
+        $search_amazon = new \App\lib\Amazonfunctions;
         $shippingcost_id = DB::table('shippingCosts')->insertGetId(
             [
           'shippingcost_type'=>$request->shippingcost_type,
@@ -51,11 +52,13 @@ class AssessmentController extends Controller
       );
 
         foreach (array_map(null, $request->isbn, $request->title) as [$val_isbn,$val_title]) {
+            $title_name_amazon = $search_amazon -> searchIsbn($val_isbn);
+            sleep(1);
             $title_id = DB::table('titles')->insertGetId(
                 [
           'isbn'=>$val_isbn,
-          'title_name'=>$val_title,
-          'created_at'=> now(),
+          'title_name'=>$title_name_amazon['titlename'],
+          'created_at'=>now(),
           ]
         );
 
