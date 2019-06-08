@@ -81,7 +81,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 @if(Auth::check())
-                                <a class="dropdown-item" href="{{ route('logout')}}">ログアウト</a>
+                                <a class="dropdown-item" href="{{ route('admin.logout')}}">ログアウト</a>
                                 @else
                                 <a class="dropdown-item" href="{{ route('login')}}">ログイン</a>
                                 <a class="dropdown-item" href="{{ route('register')}}">会員登録</a>
