@@ -14,8 +14,8 @@
                     <th>査定明細ID</th>
                     <th>ISBN</th>
                     <th>タイトル</th>
-                    <th>状態説明文</th>
                     <th>コンディションID</th>
+                    <th>状態説明文</th>
                     <th>市場価格</th>
                     <th>買取価格</th>
                     <th>売価</th>
@@ -30,8 +30,16 @@
                     <td>{{$item->id}}</td>
                     <td><input type="text" name="isbn[]" value="{{$item->goods->title->isbn}}" /></td>
                     <td><input type="text" name="title_name[]" value="{{$item->goods->title->title_name}}" /></td>
+                    <td>
+                        <select name="condition_id[]">
+                            @foreach ($conditions as $condition)
+                            <option value='{{$condition->id}}' @if($item->goods->condition_id == $condition->id) selected
+                                @endif>
+                                    {{$condition->condition_code}}(x{{$condition->condition_percent}})
+                            </option>
+                            @endforeach
+                    </td>
                     <td><input type="text" name="description[]" value="{{$item->goods->description}}" /></td>
-                    <td><input type="text" name="condition_id[]" value="{{$item->goods->condition_id}}" /></td>
                     <td><input type="text" name="market_price[]" value="{{$item->goods->market_price}}" /></td>
                     <td><input type="text" name="get_price[]" value="{{$item->goods->get_price}}" /></td>
                     <td><input type="text" name="sell_price[]" value="{{$item->goods->sell_price}}" /></td>
@@ -51,6 +59,11 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="form-group">
+        <input class="form-check-input" type="checkbox" name="flag_get_price" />
+        <label class="form-check-label" for="flag_get_price">査定価格取得</label>
     </div>
 
     <div class="form-group">
