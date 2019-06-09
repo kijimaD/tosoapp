@@ -39,8 +39,8 @@ class AddressBookController extends Controller
     public function edit(Request $request)
     {
         $address = Addressbook::find($request->id);
-        $prefecture = prefecture::get();
-        $param = ['form' => $address, 'items' => $prefecture];
+        $prefectures = prefecture::get();
+        $param = ['form' => $address, 'prefectures' => $prefectures];
         return view('address.edit', $param);
     }
 
