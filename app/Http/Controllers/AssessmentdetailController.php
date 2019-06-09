@@ -9,6 +9,7 @@ use App\Assessment;
 use App\Assessmentdetail;
 use App\Goods;
 use App\Title;
+use App\Condition;
 
 class AssessmentdetailController extends Controller
 {
@@ -22,6 +23,7 @@ class AssessmentdetailController extends Controller
     public function edit(Request $request)
     {
         $items = Assessmentdetail::where('assessment_id', $request->id)->get();
+        $conditions = Condition::get();
         $sum_get_price = DB::table('assessmentdetails')
         ->where('assessment_id', $request->id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
@@ -38,6 +40,7 @@ class AssessmentdetailController extends Controller
         ->sum('sell_price');
 
         $param = ['items' => $items,
+                  'conditions' => $conditions,
                   'sum_get_price' => $sum_get_price,
                   'sum_market_price' => $sum_market_price,
                   'sum_sell_price' => $sum_sell_price,
