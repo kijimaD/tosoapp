@@ -3,7 +3,7 @@
 @section('title','承認画面')
 
 @section('content')
-<form action="/assessmentdetail/edit" method="post">
+<form action="/approve/add" method="post">
     {{csrf_field()}}
 
     <div class="table-responsive">
@@ -24,24 +24,25 @@
                 @foreach ($items as $item)
                 <input type="hidden" name="assessmentdetail_id[]" value="{{$item->id}}" />
                 <tr>
-                    <td>{{$i++}}</td>
+                    <td>{{$i + '1'}}</td>
                     <td>{{$item->goods->title->isbn}}</td>
                     <td>{{$item->goods->title->title_name}}</td>
                     <td>{{$item->goods->condition->condition_code}}</td>
                     <td>￥{{$item->goods->get_price}}</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_ok{{$i}}" value="approve_ok" checked />
-                            <label class="form-check-label" for="approve_ok{{$i}}"></label>
+                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_yes{{$i}}" value="yes" checked />
+                            <label class="form-check-label" for="approve_yes{{$i}}"></label>
                         </div>
                     </td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_no{{$i}}" value="approve_no" />
+                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_no{{$i}}" value="no" />
                             <label class="form-check-label" for="approve_no{{$i}}"></label>
                         </div>
                     </td>
                 </tr>
+                <?php $i++ ?>
                 @endforeach
                 <tr>
                     <td><b>合計</b></td>

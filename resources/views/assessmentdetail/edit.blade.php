@@ -32,12 +32,17 @@
                     <td><input type="text" name="title_name[]" value="{{$item->goods->title->title_name}}" /></td>
                     <td>
                         <select name="condition_id[]">
-                            @foreach ($conditions as $condition)
-                            <option value='{{$condition->id}}' @if($item->goods->condition_id == $condition->id) selected
-                                @endif>
-                                    {{$condition->condition_code}}(x{{$condition->condition_percent}})
-                            </option>
-                            @endforeach
+                            @if(empty($item->goods->condition_id))
+                                <option value="" selected>
+                                    未選択
+                                </option>
+                                @endif
+                                @foreach ($conditions as $condition)
+                                <option value='{{$condition->id}}' @if($item->goods->condition_id == $condition->id) selected
+                                    @endif>
+                                        {{$condition->condition_code}}(x{{$condition->condition_percent}})
+                                </option>
+                                @endforeach
                     </td>
                     <td><input type="text" name="description[]" value="{{$item->goods->description}}" /></td>
                     <td><input type="text" name="market_price[]" value="{{$item->goods->market_price}}" /></td>

@@ -10,7 +10,7 @@ use App\Condition;
 
 class ApproveController extends Controller
 {
-    public function index(Request $request)
+    public function add(Request $request)
     {
         $items = Assessmentdetail::where('assessment_id', $request->id)->get();
         $conditions = Condition::get();
@@ -22,20 +22,38 @@ class ApproveController extends Controller
                   'conditions' => $conditions,
                   'sum_get_price' => $sum_get_price,
       ];
-        return view('approve.index', $param);
+        return view('approve.add', $param);
     }
 
-    public function approve(Reqeust $request)
+    public function create(Request $request)
     {
         foreach (array_map(
-          null,
-          $request->assessmentdetail_id,
-          $request->approve
+            null,
+            $request->assessmentdetail_id,
+            $request->approve
         )
         as
         [$val_assessmentdetail_id,
          $val_approve,
       ]) {
+            if ($val_approve == "yes") {
+                DB::table('approveGoods')->insert(
+                    [
+                  'assessmentdetail_id' => $val_assessmentdetail_id,
+                  'created_at' => now(),
+                ]
+              );
+            }
+            if ($val_approve == "no") {
+                DB::table('resendGoods')->insert(
+                    [
+                  'assessmentdetail_id' => $val_assessmentdetail_id,
+
+                  'created_at' => now(),
+                ]
+              );
+            }
         }
+        return redirect('/entry');
     }
 }

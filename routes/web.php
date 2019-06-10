@@ -64,7 +64,8 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::get('/entry/del', 'EntryController@delete');
     Route::post('/entry/del', 'EntryController@remove');
 
-    Route::get('/approve', 'ApproveController@index');
+    Route::get('/approve/add', 'ApproveController@add');
+    Route::post('/approve/add', 'ApproveController@create');
 });
 
 /*

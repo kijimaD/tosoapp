@@ -258,7 +258,6 @@ class CreateUsersTable extends Migration
         // 返送
         Schema::create('resendGoods', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('why_resend');
             $table->timestamps();
         });
 

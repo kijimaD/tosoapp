@@ -317,11 +317,6 @@ class AddForeignKey extends Migration
             ->references('id')
             ->on('assessmentDetails')
             ->onDelete('cascade');
-            $table->integer('useraddress_id')->unsigned();
-            $table->foreign('useraddress_id')
-            ->references('id')
-            ->on('userAddresses')
-            ->onDelete('cascade');
         });
     }
 
