@@ -92,6 +92,17 @@ class AssessmentdetailController extends Controller
               'isbn' => $val_isbn,
             ]
           );
+            // 査定価格取得にチェックがあったら実行する
+            if (isset($request->flag_get_price)) {
+                $condition = Condition::where('id', $request->condition_id)->first();
+                $condition_percent = $condition->condition_percent;
+                $get_price = $val_market_price * $condition_percent;
+                Goods::find($val_goods_id)->update(
+                    [
+                    'get_price' => $get_price,
+                  ]
+                );
+            }
         }
 
         return redirect('/assessment/admin_index');

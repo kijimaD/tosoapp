@@ -63,7 +63,7 @@
 
     <div class="form-group">
         <input class="form-check-input" type="checkbox" name="flag_get_price" />
-        <label class="form-check-label" for="flag_get_price">査定価格取得</label>
+        <label class="form-check-label" for="flag_get_price">買取価格自動計算（コンディションIDを入れたあと）</label>
     </div>
 
     <div class="form-group">
