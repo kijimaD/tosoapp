@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::post('/entry/edit', 'EntryController@update');
     Route::get('/entry/del', 'EntryController@delete');
     Route::post('/entry/del', 'EntryController@remove');
+
+    Route::get('/approve', 'ApproveController@index');
 });
 
 /*
