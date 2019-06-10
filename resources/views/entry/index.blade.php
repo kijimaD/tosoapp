@@ -20,7 +20,9 @@
                     買取数:　点<br>
                     入金額合計:　円<br>
                     入金方法:{{$item->paymentway->payment_way}}<br>
-                    査定承認画面:
+                    @if(isset($item->assessmentdone->id) && empty($item->approvedone->id))
+                        <a href="/approve/add?id={{$item->assessment->id}}">査定承認画面</a>
+                        @endif
                 </p>
             </div>
             <div class="card-footer bg-white">

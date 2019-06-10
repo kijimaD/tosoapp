@@ -31,12 +31,12 @@
                 @endif
 
                 @if (isset($item->assessment->id))
-                <td>査定完了</td>
+                <td>査定着手</td>
                 @else
-                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
+                <td><a href="/assessment/add?entry_id={{$item->id}}">未</a></td>
                 @endif
 
-                @if (isset($item->assessment->assessmentdone->id))
+                @if (isset($item->assessmentdone->id))
                 <td>査定送信完了</td>
                 @else
                 <td class="text-danger">査定未送信</td>

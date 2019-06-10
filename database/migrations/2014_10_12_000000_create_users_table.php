@@ -167,6 +167,12 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        // 査定完了
+        Schema::create('assessmentDones', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->timestamps();
+        });
+
         // 了承確認済み
         Schema::create('approveDones', function (Blueprint $table) {
             $table->Increments('id');
@@ -190,12 +196,6 @@ class CreateUsersTable extends Migration
         Schema::create('assessments', function (Blueprint $table) {
             $table->Increments('id');
             // $table->integer('sum_price');
-            $table->timestamps();
-        });
-
-        // 査定完了
-        Schema::create('assessmentDones', function (Blueprint $table) {
-            $table->Increments('id');
             $table->timestamps();
         });
 

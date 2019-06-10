@@ -5,6 +5,7 @@
 @section('content')
 <form action="/approve/add" method="post">
     {{csrf_field()}}
+    <input type="hidden" name="assessment_id" value="{{$assessment_id}}">
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">

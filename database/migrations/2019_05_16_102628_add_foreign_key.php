@@ -201,6 +201,15 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
+        // 査定完了
+        Schema::table('assessmentDones', function (Blueprint $table) {
+            $table->integer('entry_id')->unsigned();
+            $table->foreign('entry_id')
+            ->references('id')
+            ->on('entries')
+            ->onDelete('cascade');
+        });
+
         // 了承確認済み
         Schema::table('approveDones', function (Blueprint $table) {
             $table->integer('entry_id')->unsigned();
@@ -246,14 +255,6 @@ class AddForeignKey extends Migration
             $table->foreign('shippingcost_id')
             ->references('id')
             ->on('shippingCosts')
-            ->onDelete('cascade');
-        });
-
-        Schema::table('assessmentDones', function (Blueprint $table) {
-            $table->integer('assessment_id')->unsigned();
-            $table->foreign('assessment_id')
-            ->references('id')
-            ->on('assessments')
             ->onDelete('cascade');
         });
 
