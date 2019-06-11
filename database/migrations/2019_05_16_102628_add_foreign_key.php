@@ -319,6 +319,15 @@ class AddForeignKey extends Migration
             ->on('assessmentDetails')
             ->onDelete('cascade');
         });
+
+        // 返送完了
+        Schema::table('resenddoneGoods', function (Blueprint $table) {
+            $table->integer('resendgoods_id')->unsigned();
+            $table->foreign('resendgoods_id')
+            ->references('id')
+            ->on('resendgoods')
+            ->onDelete('cascade');
+        });
     }
 
     /**

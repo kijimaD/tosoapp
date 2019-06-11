@@ -46,6 +46,7 @@
                                 <a class="dropdown-item" href="/collection/admin_index">集荷一覧</a>
                                 <a class="dropdown-item" href="/assessment/admin_index">査定一覧</a>
                                 <a class="dropdown-item" href="/assessmentdetail/admin_index">査定明細一覧</a>
+                                <a class="dropdown-item" href="/resend/admin_index">返送商品一覧</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

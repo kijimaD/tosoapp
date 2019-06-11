@@ -116,4 +116,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('assessmentdetail/edit', 'AssessmentdetailController@update');
     Route::get('assessmentdetail/del', 'AssessmentdetailController@delete');
     Route::post('assessmentdetail/del', 'AssessmentdetailController@remove');
+
+    Route::get('resend/admin_index', 'ResendgoodsController@admin_index');
+    Route::post('resend/add', 'ResendgoodsController@resenddonegoods_create');
 });

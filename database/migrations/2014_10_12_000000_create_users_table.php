@@ -261,6 +261,14 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        // 返送完了
+        Schema::create('resenddoneGoods', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->timestamps();
+        });
+
+        // 入庫
+
         // Schema::create('', function (Blueprint $table) {
         //     $table->Increments('id');
         //     $table->timestamps();
