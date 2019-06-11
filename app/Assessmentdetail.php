@@ -15,4 +15,14 @@ class Assessmentdetail extends Model
     {
         return $this->belongsTo('App\Goods')->withDefault();
     }
+
+    public function approvegoods()
+    {
+        return $this->hasone('App\Approvegoods')->withDefault();
+    }
+
+    public function resendgoods()
+    {
+        return $this->hasone('App\Resendgoods')->withDefault();
+    }
 }
