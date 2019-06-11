@@ -14,13 +14,13 @@ class ApproveController extends Controller
     public function add(Request $request)
     {
         $items = Assessmentdetail::where('assessment_id', $request->id)->get();
-        $conditions = Condition::get();
+        $info = Assessment::find($request->id)->first();
         $sum_get_price = DB::table('assessmentdetails')
         ->where('assessment_id', $request->id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('get_price');
         $param = ['items' => $items,
-                  'conditions' => $conditions,
+                  'info' => $info,
                   'sum_get_price' => $sum_get_price,
                   'assessment_id' => $request->id,
       ];

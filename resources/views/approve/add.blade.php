@@ -3,7 +3,36 @@
 @section('title','承認画面')
 
 @section('content')
-<form action="/approve/add" method="post">
+<script>
+    function total(){
+      var prices = [];
+      var total;
+      <?php $j=0;?>
+      @foreach($items as $item)
+       if(document.forms.approve.approve_yes{{$j}}.checked){
+        prices.push({{$item->goods->get_price}});
+      }else{
+        prices.push(0);
+      }
+      <?php $j++;?>
+      @endforeach
+
+      total = prices.reduce((a,x) => a+=x,0);
+      $(".total").text(total);
+
+      coupen_total = parseInt(total * {{$info->coupen->coupen_value}});
+      $(".coupen_total").text(coupen_total);
+
+      final_total = coupen_total + {{$info->shippingcost->apply_cost}};
+      $(".final_total").text(final_total);
+}
+
+window.onload = function(){
+  total();
+}
+</script>
+
+<form action="/approve/add" method="post" id="approve">
     {{csrf_field()}}
     <input type="hidden" name="assessment_id" value="{{$assessment_id}}">
 
@@ -14,7 +43,7 @@
                     <th>番号</th>
                     <th>ISBN</th>
                     <th>タイトル</th>
-                    <th>コンディションID</th>
+                    <th>ランク</th>
                     <th>買取価格</th>
                     <th>了承</th>
                     <th>返送</th>
@@ -32,13 +61,13 @@
                     <td>￥{{$item->goods->get_price}}</td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_yes{{$i}}" value="yes" checked />
+                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_yes{{$i}}" value="yes" onChange="total()" checked />
                             <label class="form-check-label" for="approve_yes{{$i}}"></label>
                         </div>
                     </td>
                     <td>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_no{{$i}}" value="no" />
+                            <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_no{{$i}}" value="no" onChange="total()" />
                             <label class="form-check-label" for="approve_no{{$i}}"></label>
                         </div>
                     </td>
@@ -46,11 +75,39 @@
                 <?php $i++ ?>
                 @endforeach
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>小計</b></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-success">￥<b class="total text-success"></b></td>
+                </tr>
+                <tr>
+                    <td>クーポン適用</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{$info->coupen->coupen_name}}</td>
+                    <td>￥<span class="coupen_total"></span></td>
+                </tr>
+                <tr>
+                    <td>送料</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>-￥{{$info->shippingcost->apply_cost}}</td>
+                </tr>
+                <tr>
                     <td><b>合計</b></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><b>￥{{$sum_get_price}}</b></td>
+                    <td>￥<span class="final_total"></td>
                 </tr>
             </tbody>
         </table>

@@ -33,7 +33,7 @@
                 @if (isset($item->assessment->id))
                 <td>査定着手</td>
                 @else
-                <td><a href="/assessment/add?entry_id={{$item->id}}">未</a></td>
+                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
                 @endif
 
                 @if (isset($item->assessmentdone->id))

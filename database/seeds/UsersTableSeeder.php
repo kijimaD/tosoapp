@@ -75,7 +75,7 @@ class UsersTableSeeder extends Seeder
 
         \App\Assessment::create([
           'entry_id' => '1',
-          'coupen_id' => '1',
+          'coupen_id' => '2',
           'shippingcost_id' => '1',
         ]);
 
@@ -107,24 +107,28 @@ class UsersTableSeeder extends Seeder
           'sell_price' => '1000',
           'get_price' => '300',
           'title_id' => '1',
+          'condition_id' => '1',
         ]);
         \App\Goods::create([
           'market_price' => '1200',
           'sell_price' => '1200',
           'get_price' => '350',
           'title_id' => '2',
+          'condition_id' => '2',
         ]);
         \App\Goods::create([
           'market_price' => '1500',
           'sell_price' => '1440',
           'get_price' => '400',
           'title_id' => '3',
+          'condition_id' => '4',
         ]);
         \App\Goods::create([
           'market_price' => '400',
           'sell_price' => '400',
           'get_price' => '120',
           'title_id' => '4',
+          'condition_id' => '2',
         ]);
 
         \App\Title::create([
@@ -186,11 +190,11 @@ class UsersTableSeeder extends Seeder
         ]);
         \App\Coupen::create([
           'coupen_name' => 'Ti0020',
-          'coupen_value' => '1.15',
+          'coupen_value' => '1.05',
         ]);
         \App\Coupen::create([
           'coupen_name' => 'Te0022',
-          'coupen_value' => '1.15',
+          'coupen_value' => '1.05',
         ]);
 
         DB::table('prefectures')->insert([
