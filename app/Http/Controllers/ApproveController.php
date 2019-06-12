@@ -55,7 +55,7 @@ class ApproveController extends Controller
               );
             }
         }
-        // approvedonesにinsertする。
+        // 商品個別フラグであるapprovedonesにinsertする。
         $assessment = Assessment::find($request->assessment_id);
         $entry_id = $assessment->entry->id;
         DB::table('approvedones')->insert(
@@ -64,6 +64,12 @@ class ApproveController extends Controller
             'created_at' => now(),
           ]
         );
+
+        // 入金予定額をinsertする
+        $form_as = ['sum_price'=>$request->sum_price];
+        $assessment->fill($form_as)->save();
+
+
         return redirect('/entry');
     }
 }

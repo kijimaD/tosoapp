@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp_admin')
 
-@section('title','集荷情報ビュー')
+@section('title','入金ビュー')
 
 @section('content')
 <div class="table-responsive">
@@ -19,7 +19,7 @@
             @foreach ($items as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td></td>
+                <td>￥{{$item->assessment->sum_price}}</td>
                 <td>{{$item->paymentway->payment_way}}</td>
                 @if($item->paymentway->id =='2')
                     <td>{{$item->user->email}}</td>

@@ -25,16 +25,18 @@
 
       final_total = coupen_total + {{$info->shippingcost->apply_cost}};
       $(".final_total").text(final_total);
+      $('.sum_price').val(final_total);
 }
 
 window.onload = function(){
-  total();
+total();
 }
 </script>
 
 <form action="/approve/add" method="post" id="approve">
     {{csrf_field()}}
     <input type="hidden" name="assessment_id" value="{{$assessment_id}}">
+    <input type="hidden" name="sum_price" class="sum_price">
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
@@ -60,11 +62,11 @@ window.onload = function(){
                     <td>{{$item->goods->condition->condition_code}}</td>
                     <td>￥{{$item->goods->get_price}}</td>
                     <td>
+
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_yes{{$i}}" value="yes" onChange="total()" checked />
                             <label class="form-check-label" for="approve_yes{{$i}}"></label>
                         </div>
-
                     </td>
                     <td>
                         <div class="form-check">
