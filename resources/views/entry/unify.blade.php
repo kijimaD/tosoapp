@@ -10,7 +10,6 @@
                 <th><a href="">案件ID</a></th>
                 <th><a href="">ユーザID</a></th>
                 <th><a href="">集荷委託</a></th>
-                <th><a href="">査定</a></th>
                 <th><a href="">査定送信</a></th>
                 <th><a href="">了承</a></th>
                 <th><a href="">入金</a></th>
@@ -25,45 +24,41 @@
                 <td>{{$item->user_id}}</td>
 
                 @if (isset($item->applydone->id))
-                <td>完了</td>
-                @else
-                <td>未</td>
-                @endif
+                <td class="text-success">完了</td>
+                @elseif($item->shippingway->id != '1')
+                    <td class="text-success">自動完了</td>
+                    @else
+                    <td class="text-danger">未</td>
+                    @endif
 
-                @if (isset($item->assessment->id))
-                <td>査定着手</td>
-                @else
-                <td><a href="/assessment/add?entry_id={{$item->id}}">査定</a></td>
-                @endif
+                    @if (isset($item->assessmentdone->id))
+                    <td class="text-success">完了</td>
+                    @else
+                    <td class="text-danger">未</td>
+                    @endif
 
-                @if (isset($item->assessmentdone->id))
-                <td>査定送信完了</td>
-                @else
-                <td class="text-danger">査定未送信</td>
-                @endif
+                    @if (isset($item->approvedone->id))
+                    <td class="text-success">完了</td>
+                    @else
+                    <td class="text-danger">未</td>
+                    @endif
 
-                @if (isset($item->approvedone->id))
-                <td>完了</td>
-                @else
-                <td>未</td>
-                @endif
+                    @if (isset($item->paymentdone->id))
+                    <td class="text-success">完了</td>
+                    @else
+                    <td class="text-danger">未</td>
+                    @endif
 
-                @if (isset($item->paymentdone->id))
-                <td>完了</td>
-                @else
-                <td>未</td>
-                @endif
+                    @if (isset($item->cancel->id))
+                    <td class="text-danger">キャンセル</td>
+                    @else
+                    <td class="text-success">アクティブ</td>
+                    @endif
 
-                @if (isset($item->cancel->id))
-                <td>キャンセル</td>
-                @else
-                <td>アクティブ</td>
-                @endif
+                    <td>{{$item->created_at}}</td>
 
-                <td>{{$item->created_at}}</td>
-
-                {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}
+                    {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
+                    <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>

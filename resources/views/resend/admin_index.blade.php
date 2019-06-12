@@ -24,7 +24,7 @@
                 <td>{{$item->assessmentdetail->assessment->entry->applygoods->id}}</td>
                 <td>{{$item->assessmentdetail->goods->title->title_name}}</td>
                 <td>{{$item->assessmentdetail->goods->title->isbn}}</td>
-                @if(isset($item->resendgoodsdone->id))
+                @if(isset($item->assessmentdetail->resendgoods->resenddonegoods->id))
                     <td>返送完了</td>
                     @else
                     <form action="/resend/add" method="post">
