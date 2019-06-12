@@ -118,5 +118,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::post('assessmentdetail/del', 'AssessmentdetailController@remove');
 
     Route::get('resend/admin_index', 'ResendgoodsController@admin_index');
-    Route::post('resend/add', 'ResendgoodsController@resenddonegoods_create');
+    Route::post('resend/add', 'ResendgoodsController@create');
+
+    Route::get('paymentdone/admin_index', 'paymentdoneController@admin_index');
+    Route::post('paymentdone/add', 'paymentdoneController@create');
 });

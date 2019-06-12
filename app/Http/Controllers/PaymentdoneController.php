@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Resendgoods;
-use App\Resenddonegoods;
+use App\Entry;
+use App\Paymentdone;
 
-class ResendgoodsController extends Controller
+class PaymentdoneController extends Controller
 {
     public function admin_index(Request $request)
     {
-        $items = Resendgoods::get();
+        $items = Entry::get();
         $param = ['items' => $items];
-        return view('resend.admin_index', $param);
+        return view('paymentdone.admin_index', $param);
     }
 
     public function create(Request $request)
     {
-        $resenddonegoods = new Resenddonegoods;
+        $paymentdones = new Paymentdone;
         $form = $request->all();
-        $resenddonegoods->fill($form)->save();
-        return redirect('resend/admin_index');
+        $paymentdones->fill($form)->save();
+        return redirect('paymentdone/admin_index');
     }
 }

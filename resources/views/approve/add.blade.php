@@ -64,6 +64,7 @@ window.onload = function(){
                             <input class="form-check-input" type="radio" name="approve[{{$i}}]" id="approve_yes{{$i}}" value="yes" onChange="total()" checked />
                             <label class="form-check-label" for="approve_yes{{$i}}"></label>
                         </div>
+
                     </td>
                     <td>
                         <div class="form-check">
@@ -86,14 +87,15 @@ window.onload = function(){
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="text-success">￥<b class="total text-success"></b></td>
+                    <td>￥<b class="total"></b></td>
                 </tr>
                 <tr>
                     <td>クーポン適用</td>
                     <td></td>
                     <td></td>
                     <td>{{$info->coupen->coupen_name}}</td>
-                    <td>￥<span class="coupen_total"></span></td>
+                    <td>￥<span class="
+                          coupen_total"></span></td>
                 </tr>
                 <tr>
                     <td>送料</td>
@@ -107,7 +109,7 @@ window.onload = function(){
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>￥<span class="final_total"></td>
+                    <td>￥<b><span class="final_total text-success"><b></td>
                 </tr>
             </tbody>
         </table>

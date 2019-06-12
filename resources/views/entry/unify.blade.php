@@ -7,14 +7,14 @@
     <table class="table table-striped table-bordered table-sm">
         <thead>
             <tr>
-                <th><a href="">案件ID</a></th>
-                <th><a href="">ユーザID</a></th>
-                <th><a href="">集荷委託</a></th>
-                <th><a href="">査定送信</a></th>
-                <th><a href="">了承</a></th>
-                <th><a href="">入金</a></th>
-                <th><a href="">キャンセル</a></th>
-                <th><a href="">申請時刻</a></th>
+                <th>案件ID</a></th>
+                <th>ユーザID</a></th>
+                <th>集荷委託</a></th>
+                <th>査定送信</a></th>
+                <th>了承</a></th>
+                <th>入金</a></th>
+                <th>キャンセル</a></th>
+                <th>申請時刻</a></th>
             </tr>
         </thead>
         <tbody>
