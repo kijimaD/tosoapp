@@ -16,6 +16,7 @@
                 <th>入金</a></th>
                 <th>キャンセル</a></th>
                 <th>申請時刻</a></th>
+                <th>入庫</th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +64,7 @@
                         @endif
 
                         <td>{{$item->created_at}}</td>
+                        <td><a href="/receipt/add?id={{$item->assessment->id}}">入庫</td>
 
                         {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
                         <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}

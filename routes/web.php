@@ -125,4 +125,5 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('receipt/admin_index', 'ReceiptController@admin_index');
     Route::get('receipt/add', 'ReceiptController@add');
+    Route::post('receipt/add', 'ReceiptController@create');
 });

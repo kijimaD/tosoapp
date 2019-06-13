@@ -103,6 +103,7 @@ class AssessmentdetailController extends Controller
                   ]
                 );
             }
+            // タイトル取得にチェックがあったら実行する
         }
 
         return redirect('/assessment/admin_index');

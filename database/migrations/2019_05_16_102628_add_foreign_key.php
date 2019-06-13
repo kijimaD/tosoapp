@@ -343,8 +343,8 @@ class AddForeignKey extends Migration
             ->on('goods')
             ->onDelete('cascade');
 
-            $table->integer('storageStructure_id')->unsigned();
-            $table->foreign('storageStructure_id')
+            $table->integer('storagestructure_id')->unsigned();
+            $table->foreign('storagestructure_id')
             ->references('id')
             ->on('storageStructures')
             ->onDelete('cascade');
@@ -357,10 +357,10 @@ class AddForeignKey extends Migration
             ->on('warehouses')
             ->onDelete('cascade');
 
-            $table->integer('shelf_id')->unsigned();
-            $table->foreign('shelf_id')
+            $table->integer('rack_id')->unsigned();
+            $table->foreign('rack_id')
             ->references('id')
-            ->on('shelfs')
+            ->on('racks')
             ->onDelete('cascade');
 
             $table->integer('stage_id')->unsigned();
@@ -373,7 +373,7 @@ class AddForeignKey extends Migration
         Schema::table('warehouses', function (Blueprint $table) {
         });
 
-        Schema::table('shelfs', function (Blueprint $table) {
+        Schema::table('racks', function (Blueprint $table) {
         });
 
         Schema::table('stages', function (Blueprint $table) {

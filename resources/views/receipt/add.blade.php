@@ -1,16 +1,15 @@
 @extends('layouts.tosoapp_admin')
 
-@section('title','入庫画面')
+@section('title','新規入庫画面')
 
 @section('content')
-<form action="/assessmentdetail/edit" method="post">
+<form action="/receipt/add" method="post">
     {{csrf_field()}}
-
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
             <thead>
                 <tr>
-                    <th>案件ID</th>
+                    <th>査定明細ID</th>
                     <th>タイトル</th>
                     <th>ISBN</th>
                     <th>倉庫番号</th>
@@ -20,21 +19,19 @@
             </thead>
             <tbody>
                 @foreach ($items as $item)
+                <input type="hidden" name="approvegoods_id[]" value="{{$item->approvegoods->id}}">
+                <input type="hidden" name="goods_id[]" value="{{$item->goods->id}}">
                 <tr>
-                    <td>{{$item->assessmentdetail->assessment->entry->id}}</td>
-                    <td>{{$item->assessmentdetail->goods->title->title_name}}</td>
-                    <td></td>
-                    <td><input type="text" name="isbn[]" value="" /></td>
-                    <td><input type="text" name="title_name[]" value="" /></td>
-                    <td>
-                    </td>
-                    <td><input type="text" name="description[]" value="" /></td>
-
-                    <td><a href="/assessmentdetail/del?id={{$item->id}}">消去</a></td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->goods->title->title_name}}</td>
+                    <td>{{$item->goods->title->isbn}}</td>
+                    <td><input type="text" name="warehouse_id[]" value="" /></td>
+                    <td><input type="text" name="rack_id[]" value="" /></td>
+                    <td><input type="text" name="stage_id[]" value="" /></td>
                 </tr>
                 @endforeach
                 <tr>
-                    <td>計:{{$items->count()}}</td>
+                    <td>{{$items->count()}}点</td>
 
 
                 </tr>

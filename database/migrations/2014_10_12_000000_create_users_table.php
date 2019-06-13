@@ -288,7 +288,7 @@ class CreateUsersTable extends Migration
         });
 
         // 棚(x)
-        Schema::create('shelfs', function (Blueprint $table) {
+        Schema::create('racks', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name');
             $table->timestamps();

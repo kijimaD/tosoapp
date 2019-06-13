@@ -197,6 +197,45 @@ class UsersTableSeeder extends Seeder
           'coupen_value' => '1.05',
         ]);
 
+        \App\Warehouse::create([
+          'name' => '唐湊',
+        ]);
+        \App\Warehouse::create([
+          'name' => '阿久根',
+        ]);
+
+        \App\Rack::create([
+          'name' => 'A',
+        ]);
+        \App\Rack::create([
+          'name' => 'B',
+        ]);
+        \App\Rack::create([
+          'name' => 'C',
+        ]);
+
+        \App\Stage::create([
+          'name' => '1',
+        ]);
+        \App\Stage::create([
+          'name' => '2',
+        ]);
+        \App\Stage::create([
+          'name' => '3',
+        ]);
+        \App\Stage::create([
+          'name' => '4',
+        ]);
+        \App\Stage::create([
+          'name' => '5',
+        ]);
+        \App\Stage::create([
+          'name' => '6',
+        ]);
+        \App\Stage::create([
+          'name' => '7',
+        ]);
+
         DB::table('prefectures')->insert([
           [
           'prefecture_code' => '01',
