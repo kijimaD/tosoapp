@@ -328,6 +328,56 @@ class AddForeignKey extends Migration
             ->on('resendgoods')
             ->onDelete('cascade');
         });
+
+        // 入庫系　=============
+        Schema::table('receipts', function (Blueprint $table) {
+            $table->integer('approvegoods_id')->unsigned();
+            $table->foreign('approvegoods_id')
+            ->references('id')
+            ->on('approvegoods')
+            ->onDelete('cascade');
+
+            $table->integer('goods_id')->unsigned();
+            $table->foreign('goods_id')
+            ->references('id')
+            ->on('goods')
+            ->onDelete('cascade');
+
+            $table->integer('storageStructure_id')->unsigned();
+            $table->foreign('storageStructure_id')
+            ->references('id')
+            ->on('storageStructures')
+            ->onDelete('cascade');
+        });
+
+        Schema::table('storageStructures', function (Blueprint $table) {
+            $table->integer('warehouse_id')->unsigned();
+            $table->foreign('warehouse_id')
+            ->references('id')
+            ->on('warehouses')
+            ->onDelete('cascade');
+
+            $table->integer('shelf_id')->unsigned();
+            $table->foreign('shelf_id')
+            ->references('id')
+            ->on('shelfs')
+            ->onDelete('cascade');
+
+            $table->integer('stage_id')->unsigned();
+            $table->foreign('stage_id')
+            ->references('id')
+            ->on('stages')
+            ->onDelete('cascade');
+        });
+
+        Schema::table('warehouses', function (Blueprint $table) {
+        });
+
+        Schema::table('shelfs', function (Blueprint $table) {
+        });
+
+        Schema::table('stages', function (Blueprint $table) {
+        });
     }
 
     /**

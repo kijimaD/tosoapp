@@ -48,6 +48,7 @@
                                 <a class="dropdown-item" href="/assessmentdetail/admin_index">査定明細一覧</a>
                                 <a class="dropdown-item" href="/resend/admin_index">返送商品一覧</a>
                                 <a class="dropdown-item" href="/paymentdone/admin_index">入金一覧</a>
+                                <a class="dropdown-item" href="/receipt/admin_index">入庫一覧</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

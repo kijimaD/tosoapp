@@ -120,6 +120,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('resend/admin_index', 'ResendgoodsController@admin_index');
     Route::post('resend/add', 'ResendgoodsController@create');
 
-    Route::get('paymentdone/admin_index', 'paymentdoneController@admin_index');
-    Route::post('paymentdone/add', 'paymentdoneController@create');
+    Route::get('paymentdone/admin_index', 'PaymentdoneController@admin_index');
+    Route::post('paymentdone/add', 'PaymentdoneController@create');
+
+    Route::get('receipt/admin_index', 'ReceiptController@admin_index');
+    Route::get('receipt/add', 'ReceiptController@add');
 });

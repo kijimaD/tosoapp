@@ -15,7 +15,7 @@ class AssessmentdetailController extends Controller
 {
     public function admin_index(Request $request)
     {
-        $items = assessmentdetail::get();
+        $items = Assessmentdetail::get();
         $param = ['items' => $items];
         return view('assessmentdetail.admin_index', $param);
     }

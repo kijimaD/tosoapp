@@ -267,7 +267,39 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
+        // 入庫系 ==============
         // 入庫
+        Schema::create('receipts', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->timestamps();
+        });
+
+        // 保管構造
+        Schema::create('storagestructures', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->timestamps();
+        });
+
+        // 倉庫
+        Schema::create('warehouses', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        // 棚(x)
+        Schema::create('shelfs', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        // 段数(y)
+        Schema::create('stages', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
 
         // Schema::create('', function (Blueprint $table) {
         //     $table->Increments('id');
