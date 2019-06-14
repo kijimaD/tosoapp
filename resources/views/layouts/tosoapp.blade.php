@@ -33,15 +33,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="vanbar-nav mr-auto">
+                    </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                管理者メニュー
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ route('admin.home')}}">adminログイン</a>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 インフォメニュー
@@ -103,7 +97,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-8 bg-white">
+            <div class="col-sm-8 bg-white">
                 @yield('content')
             </div>
         </div>

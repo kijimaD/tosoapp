@@ -50,10 +50,7 @@ class AssessmentdetailController extends Controller
 
     public function update(Request $request)
     {
-        // $items = assessmentdetail::where('assessment_id', $request->id)->get();
-        // $form = $request->all();
-        // $items->fill($form)->save();
-
+        $search_amazon = new \App\lib\Amazonfunctions;
         foreach (array_map(
             null,
             $request->goods_id,
@@ -104,6 +101,17 @@ class AssessmentdetailController extends Controller
                 );
             }
             // タイトル取得にチェックがあったら実行する
+            if (isset($request->flag_get_title)) {
+                $goodsinfo_amazon = $search_amazon -> searchIsbn($val_isbn);
+                sleep(1);
+
+                Title::find($val_title_id)->update(
+                  [
+                  'title_name' => $goodsinfo_amazon['titlename'],
+                  'updated_at' => now(),
+                ]
+              );
+            }
         }
 
         return redirect('/assessment/admin_index');

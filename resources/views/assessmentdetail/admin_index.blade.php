@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp_admin')
 
-@section('title','査定一覧')
+@section('title','査定明細一覧')
 
 @section('content')
 

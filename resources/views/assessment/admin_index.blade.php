@@ -16,7 +16,6 @@
                 <th>価格上昇割合</th>
                 <th>数量</th>
                 <th>査定小計</th>
-                <th>合計金額</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +30,6 @@
                 <td>{{$item->coupen->coupen_value}}</td>
                 <td>{{$item->assessmentdetails->count()}}</td>
                 <td>{{$item->sumPrice()}}</td>
-                <td></td>
                 @if(isset($item->entry->assessmentdone->id))
                     <td>査定完了</td>
                     @else

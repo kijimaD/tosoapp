@@ -72,6 +72,11 @@
     </div>
 
     <div class="form-group">
+        <input class="form-check-input" type="checkbox" name="flag_get_title" />
+        <label class="form-check-label" for="flag_get_price">タイトル自動取得（ISBNを入れたあと）詳細内のタイトルをすべて更新するので、多用しない。</label>
+    </div>
+
+    <div class="form-group">
         <button class="btn btn-primary" type="submit">送信</button>
     </div>
 </form>

@@ -90,11 +90,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('admin/logout', 'Admin\LoginController@logout')->name('admin.logout');
     Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
 
-    Route::get('admin/user', 'UserController@index');
-    Route::get('user/edit', 'UserController@edit');
-    Route::post('user/edit', 'UserController@update');
-    Route::get('user/del', 'UserController@delete');
-    Route::post('user/del', 'UserController@remove');
+    // Route::get('admin/user', 'UserController@index');
+    // Route::get('user/edit', 'UserController@edit');
+    // Route::post('user/edit', 'UserController@update');
+    // Route::get('user/del', 'UserController@delete');
+    // Route::post('user/del', 'UserController@remove');
 
     Route::get('entry/admin_index', 'EntryController@admin_index');
     Route::get('entry/unify', 'EntryController@unify');

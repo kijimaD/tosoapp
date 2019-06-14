@@ -8,8 +8,8 @@
     <table class="table table-striped table-bordered table-sm">
         <thead>
             <tr>
-                <th>タイトル</th>
                 <th>ISBN</th>
+                <th>タイトル</th>
                 <th>状態</th>
                 <th>倉庫名</th>
                 <th>棚番号</th>
@@ -19,8 +19,8 @@
         <tbody>
             @foreach ($items as $item)
             <tr>
-                <td>{{$item->goods->title->title_name}}</td>
                 <td>{{$item->goods->title->isbn}}</td>
+                <td>{{$item->goods->title->title_name}}</td>
                 <td>{{$item->goods->description}}</td>
                 <td>{{$item->storagestructure->warehouse->name}}</td>
                 <td>{{$item->storagestructure->rack->name}}</td>
