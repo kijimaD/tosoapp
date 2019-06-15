@@ -34,6 +34,8 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 <script>
     function payment(){
   	radio = document.getElementsByName('paymentway_id')
+    document.getElementById('payment_firstbox').style.display = "none";
+  	document.getElementById('payment_secondbox').style.display = "none";
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('payment_firstbox').style.display = "";
@@ -48,6 +50,9 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 
     function shipping(){
   	radio = document.getElementsByName('shippingway_id')
+    document.getElementById('shipping_firstbox').style.display = "none";
+  	document.getElementById('shipping_secondbox').style.display = "none";
+  	document.getElementById('shipping_thirdbox').style.display = "none";
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
   		document.getElementById('shipping_firstbox').style.display = "";
@@ -63,7 +68,6 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
   		document.getElementById('shipping_secondbox').style.display = "none";
   		document.getElementById('shipping_thirdbox').style.display = "";
     }
-
   }
 
   // window.onload = shipping;// は上書きされてしまうので以下を使用する。
@@ -83,7 +87,7 @@ shipping();
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">入金方法</label>
         <div>
-            <input type="radio" name="paymentway_id" value="1" onclick="payment();" checked="checked" />銀行口座<br>
+            <input type="radio" name="paymentway_id" value="1" onclick="payment();" />銀行口座<br>
             <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
             <div id="payment_firstbox" class="row">
                 @foreach($banks as $bank)
@@ -119,7 +123,7 @@ shipping();
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
         <div>
-            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" checked="checked" />集荷<br>
+            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" />集荷<br>
             <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br>
             <input type="radio" name="shippingway_id" value="3" onclick="shipping()" />自分で送る
 

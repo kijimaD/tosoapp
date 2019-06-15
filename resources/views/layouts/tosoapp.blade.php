@@ -41,15 +41,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="Navbar">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        {{-- <li class="nav-item active">
                             <a class="nav-link" href="#">ホーム <span class="sr-only">(現位置)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">リンク</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">無効</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -58,11 +55,41 @@
                                 <a class="dropdown-item" href="#">リンク3</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インフォ</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">リンク2</a>
+                                <a class="dropdown-item" href="#">リンク3</a>
+                            </div>
+                        </li>
                     </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="検索..." aria-label="検索...">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-                    </form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if(Auth::check())
+                                {{\Auth::user()->family_name}}{{ \Auth::user()->name}}
+                                @else
+                                ゲスト
+                                @endif
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @if(Auth::check())
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                    {{ __('ログアウト') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                @else
+                                <a class="dropdown-item" href="{{ route('login')}}">ログイン</a>
+                                <a class="dropdown-item" href="{{ route('register')}}">会員登録</a>
+                                <a class="dropdown-item" href="">*パスワードを忘れた</a>
+                            </div>
+                            @endif
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -71,95 +98,93 @@
     <main role="main" class="container">
         <h2 class="page-header mt-2">@yield('title')</h2>
         @yield('content')
-        </div>
-
     </main>
 
-    <footer class="page-footer font-small bg-secondary text-white">
+    <footer class="page-footer font-small bg-dark text-white mt-4 pt-2">
         <div class="container">
             <!-- Footer Links -->
-            <div class="container-fluid text-center text-md-left">
+            {{-- <div class="container-fluid text-center text-md-left"> --}}
 
-                <!-- Grid row -->
-                <div class="row">
+            <!-- Grid row -->
+            <div class="row">
 
-                    <!-- Grid column -->
-                    <div class="col-md-6 mt-md-0 mt-3">
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
 
-                        <!-- Content -->
-                        <h5 class="text-uppercase">Footer Content</h5>
-                        <p>Here you can use rows and columns to organize your footer content.</p>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <hr class="clearfix w-100 d-md-none pb-3">
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 mb-md-0 mb-3">
-
-                        <!-- Links -->
-                        <h5 class="text-uppercase">アカウント</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="" href="{{route('user.mypage')}}">マイページ</a>
-                            </li>
-                            <li>
-                                <a class="" href="/address">住所管理</a>
-                            </li>
-                            <li>
-                                <a class="" href="/bank">口座管理</a>
-                            </li>
-                            <li>
-                                <a class="" href="/entry/add">買取申込</a>
-                            </li>
-                            <li>
-                                <a class="" href="/entry">買取履歴</a>
-                            </li>
-                            <li>
-                                <a class="" href="">進行状況確認</a>
-                            </li>
-                            <li>
-                                <a class="" href="">査定承認</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 mb-md-0 mb-3">
-
-                        <!-- Links -->
-                        <h5 class="text-uppercase">インフォ</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="" href="/">トップページ</a>
-                            </li>
-                            <li>
-                                <a class="" href="/home">ホーム</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <!-- Grid column -->
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns to organize your footer content.</p>
 
                 </div>
-                <!-- Grid row -->
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">アカウント</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="" href="{{route('user.mypage')}}">マイページ</a>
+                        </li>
+                        <li>
+                            <a class="" href="/address">住所管理</a>
+                        </li>
+                        <li>
+                            <a class="" href="/bank">口座管理</a>
+                        </li>
+                        <li>
+                            <a class="" href="/entry/add">買取申込</a>
+                        </li>
+                        <li>
+                            <a class="" href="/entry">買取履歴</a>
+                        </li>
+                        <li>
+                            <a class="" href="">進行状況確認</a>
+                        </li>
+                        <li>
+                            <a class="" href="">査定承認</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">インフォ</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="" href="/">トップページ</a>
+                        </li>
+                        <li>
+                            <a class="" href="/home">ホーム</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
 
             </div>
+            <!-- Grid row -->
+
+            {{-- </div> --}}
             <!-- Footer Links -->
 
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <div class="footer-copyright py-3">© 2019 Copyright:
                 <a href="https://とそ.com">とそ.com</a>
             </div>
             <!-- Copyright -->
