@@ -1,6 +1,15 @@
 <style>
-    .jumbotron {
+    div#top.jumbotron {
         background: url("../img/jumbotron2.png") no-repeat center center;
+    }
+
+    div#second.jumbotron {
+        background: url("../img/jumbotron3.jpg") no-repeat center center;
+    }
+
+    div#third.jumbotron {
+        background: url("../img/jumbotron4.jpg") no-repeat center center;
+    }
 </style>
 
 @extends('layouts.tosoapp')
@@ -9,31 +18,32 @@
 
 @section('content')
 
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" id="top">
+    <div class="container mt-5">
+        <h1 class="display-3">あたらしい買取</h1>
+        <p class="">
+            とそブックスは、革新的な買取サービスを提供します。<br>安全、簡単、公正、スピーディで買取をより身近なものにし、環境に配慮した新たなライフスタイルを支援します。
+        </p>
+        <a href="/register" class="btn btn-success btn-large mt-5">とそブックスに登録する</a>
+    </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid" id="second">
     <div class="container">
-        <h1 class="display-3">あたらしい、買取。</h1>
-        <p class="lead">これは全幅ジャンボトロン</p>
-        <p>
-            とそブックスでは、配送料無料（20点以上）、価格にご満足いただけない場合の返送料無料で、安心の本、ゲーム、CD、DVDの高価買取を承っております。
-
-            かさばり、処分方法に困るメディア商品ですが、ひとまとめに売ってすっきりしませんか？
-
-            当店では簡単・安心・高価な買取を行っております。ぜひご利用ください。
-        </p>
-        <h3>1．段ボールにつめる</h3>
-        <p>
-            商品を段ボールにつめ、初回ご利用の場合は本人確認書類のコピーを同封します。詳しく
-            ※送付前にめやすの買取額を知ることもできます。WEB査定フォーム　LINE査定
-        </p>
-        <h3>2．フォームに入力</h3>
-        <p>
-            フォームに入力します。ヤマト運輸様に集荷手配いたします。ご自宅にて集荷ドライバーに段ボールを渡します。詳しく
-        </p>
-        <h3>3．入金！</h3>
-        <p>
-            査定完了後Eメールにてレポートを送信します。レポートメールに返信いただき了承確認（返送商品をご指定）とし、入金を開始します。詳しく
+        <h1 class="display-5">公正な取引</h1>
+        <p class="">
+            査定結果をネットで確認。個別にチェックし査定価格に満足しなければ、無料で返送します。
         </p>
     </div>
 </div>
 
+<div class="jumbotron jumbotron-fluid" id="third">
+    <div class="container">
+        <h1 class="display-5">輸送効率化</h1>
+        <p class="">
+            ネットワークと連動したロッカーで、買取をより身近にします。
+        </p>
+    </div>
+</div>
+<a href="{{route('user.mypage',['id' => Crypt::encrypt('1') ])}}">パラメータ暗号化テスト</a>
 @endsection
