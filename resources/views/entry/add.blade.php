@@ -110,7 +110,7 @@ shipping();
                 @endforeach
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <p><a href="">新規追加する</a></p>
+                        <p><a href="/bank/add">新規追加する</a></p>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@ shipping();
                     @endforeach
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <p><a href="">新規追加する</a></p>
+                            <p><a href="/address/add">新規追加する</a></p>
                         </div>
                     </div>
                 </div>

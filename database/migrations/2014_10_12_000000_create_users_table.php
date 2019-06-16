@@ -196,6 +196,7 @@ class CreateUsersTable extends Migration
         Schema::create('assessments', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('sum_price')->nullable();
+            $table->integer('goods_count')->nullable();
             $table->timestamps();
         });
 

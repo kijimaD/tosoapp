@@ -302,7 +302,7 @@ class AddForeignKey extends Migration
         Schema::table('titles', function (Blueprint $table) {
         });
 
-        // 了承
+        // 了承商品
         Schema::table('approveGoods', function (Blueprint $table) {
             $table->integer('assessmentdetail_id')->unsigned();
             $table->foreign('assessmentdetail_id')
@@ -311,7 +311,7 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
-        // 返送
+        // 返送商品
         Schema::table('resendGoods', function (Blueprint $table) {
             $table->integer('assessmentdetail_id')->unsigned();
             $table->foreign('assessmentdetail_id')
@@ -320,7 +320,7 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
-        // 返送完了
+        // 返送完了商品
         Schema::table('resenddoneGoods', function (Blueprint $table) {
             $table->integer('resendgoods_id')->unsigned();
             $table->foreign('resendgoods_id')

@@ -65,8 +65,10 @@ class ApproveController extends Controller
           ]
         );
 
-        // 入金予定額をinsertする
-        $form_as = ['sum_price'=>$request->sum_price];
+        // 入金予定額をassessmentsにinsertする
+        $form_as = ['sum_price'=>$request->sum_price,
+                    'goods_count'=>$request->goods_count,
+      ];
         $assessment->fill($form_as)->save();
 
 

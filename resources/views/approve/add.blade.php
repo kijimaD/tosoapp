@@ -6,11 +6,13 @@
 <script>
     function total(){
       var prices = [];
+      var count = 0;
       var total;
       <?php $j=0;?>
       @foreach($items as $item)
        if(document.forms.approve.approve_yes{{$j}}.checked){
         prices.push({{$item->goods->get_price}});
+        count++;
       }else{
         prices.push(0);
       }
@@ -26,6 +28,9 @@
       final_total = coupen_total + {{$info->shippingcost->apply_cost}};
       $(".final_total").text(final_total);
       $('.sum_price').val(final_total);
+// valはhiddenの値をセットする
+      $('.count').text(count);
+      $('.count').val(count);
 }
 
 window.onload = function(){
@@ -37,6 +42,7 @@ total();
     {{csrf_field()}}
     <input type="hidden" name="assessment_id" value="{{$assessment_id}}">
     <input type="hidden" name="sum_price" class="sum_price">
+    <input type="hidden" name="goods_count" class="count">
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
@@ -88,7 +94,7 @@ total();
                     <td><b>小計</b></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td><span class="count"></span>点</td>
                     <td>￥<b class="total"></b></td>
                 </tr>
                 <tr>

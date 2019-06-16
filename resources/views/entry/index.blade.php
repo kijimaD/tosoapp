@@ -18,18 +18,18 @@
             <div class="card-body">
                 <p class="card-text">
                     @if(isset($item->approvedone->id))
-                        買取数: 点<br>
-                        入金額合計:　円<br>
-                        入金方法:{{$item->paymentway->payment_way}}<br>
+                        買取数 {{$item->assessment->goods_count}}点<br>
+                        入金額 ￥{{$item->assessment->sum_price}}<br>
+                        入金方法 {{$item->paymentway->payment_way}}<br>
                         @endif
                         @if(isset($item->assessmentdone->id) && empty($item->approvedone->id))
                             <a href="/approve/add?id={{$item->assessment->id}}">査定承認画面</a>
                             @endif
                 </p>
             </div>
-            <div class="card-footer bg-white">
+            {{-- <div class="card-footer bg-white">
 
-            </div>
+            </div> --}}
         </div>
         @endforeach
     </div>
