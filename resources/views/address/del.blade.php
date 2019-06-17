@@ -17,10 +17,10 @@
         <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
         <div>
             <select name="prefecture_id">
-                @foreach ($items as $item)
-                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
-                @endif >
-                {{$item->prefecture_name}}</option>
+                @foreach ($prefectures as $prefecture)
+                <option value="{{$prefecture->id}}" @if($form->prefecture_id == $prefecture->id) selected
+                    @endif >
+                    {{$prefecture->prefecture_name}}</option>
                 @endforeach
             </select>
         </div>

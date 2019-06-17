@@ -13,8 +13,10 @@ class ApproveController extends Controller
 {
     public function add(Request $request)
     {
-        $items = Assessmentdetail::where('assessment_id', $request->id)->get();
-        $info = Assessment::find($request->id)->first();
+        $assessment_id = \Crypt::decrypt($request->id);
+
+        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
+        $info = Assessment::find($assessment_id)->first();
         $sum_get_price = DB::table('assessmentdetails')
         ->where('assessment_id', $request->id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
@@ -22,7 +24,7 @@ class ApproveController extends Controller
         $param = ['items' => $items,
                   'info' => $info,
                   'sum_get_price' => $sum_get_price,
-                  'assessment_id' => $request->id,
+                  'assessment_id' => $assessment_id,
       ];
         return view('approve.add', $param);
     }

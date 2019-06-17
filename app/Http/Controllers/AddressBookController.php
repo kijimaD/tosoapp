@@ -38,9 +38,10 @@ class AddressBookController extends Controller
 
     public function edit(Request $request)
     {
-        $address = Addressbook::find($request->id);
+        $address_id = \Crypt::decrypt($request->id);
+        $form= Addressbook::find($address_id);
         $prefectures = prefecture::get();
-        $param = ['form' => $address, 'prefectures' => $prefectures];
+        $param = ['form' => $form, 'prefectures' => $prefectures];
         return view('address.edit', $param);
     }
 
@@ -55,9 +56,10 @@ class AddressBookController extends Controller
 
     public function delete(Request $request)
     {
-        $form = Addressbook::find($request->id);
-        $prefecture = prefecture::get();
-        $param = ['form' => $form, 'items' => $prefecture];
+        $address_id = \Crypt::decrypt($request->id);
+        $form = Addressbook::find($address_id);
+        $prefectures = prefecture::get();
+        $param = ['form' => $form, 'prefectures' => $prefectures];
         return view('/address/del', $param);
     }
 
@@ -69,11 +71,16 @@ class AddressBookController extends Controller
 
     public function defaultCreate(Request $request)
     {
-        Useraddress::where('user_id', $request->user_id)->delete();
+        $addressBook_id = session()->pull('addressBook_id');
+        $user_id = session()->pull('user_id');
+        Useraddress::where('user_id', $user_id)->delete();
 
         $default_address = new Useraddress;
-        $form = $request->all();
-        unset($form['_token']);
+        $form = [
+          'addressBook_id' => $addressBook_id,
+          'user_id' => $user_id,
+          'created_at' => now()
+        ];
         $default_address->fill($form)->save();
         return redirect('/address');
     }

@@ -23,7 +23,8 @@
                         入金方法 {{$item->paymentway->payment_way}}<br>
                         @endif
                         @if(isset($item->assessmentdone->id) && empty($item->approvedone->id))
-                            <a href="/approve/add?id={{$item->assessment->id}}">査定承認画面</a>
+                            <a href="/approve/add?id={{Crypt::encrypt($item->assessment->id)}}">査定承認画面</a>
+                            {{-- <a href="/approve/add?id={{$item->assessment->id}}">査定承認画面</a> --}}
                             @endif
                 </p>
             </div>
