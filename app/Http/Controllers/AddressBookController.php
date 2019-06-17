@@ -47,7 +47,8 @@ class AddressBookController extends Controller
 
     public function update(Request $request)
     {
-        $address = Addressbook::find($request->id);
+        $addressbook_id = session()->pull('addressbook_id');
+        $address = Addressbook::find($addressbook_id);
         $form = $request->all();
         unset($form['_token']);
         $address->fill($form)->save();
@@ -65,7 +66,8 @@ class AddressBookController extends Controller
 
     public function remove(Request $request)
     {
-        Addressbook::find($request->id)->delete();
+        $addressbook_id = session()->pull('addressbook_id');
+        Addressbook::find($addressbook_id)->delete();
         return redirect('/address');
     }
 

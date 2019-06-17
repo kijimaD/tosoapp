@@ -34,10 +34,8 @@
                 @else
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
-                    {{-- <input type="hidden" name="addressBook_id" value="{{$item->id}}" /> --}}
                     {{session()->put(['addressBook_id'=>$item->id])}}
                     {{session()->put(['user_id'=>$user->id])}}
-                    {{-- <input type="hidden" name="user_id" value="{{$user->id}}" /> --}}
                     <input type="submit" value="既定にする" class="btn btn-outline-dark" />
                 </form>
                 @endif
