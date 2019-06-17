@@ -4,9 +4,6 @@
 
 @section('content')
 
-
-
-
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>
@@ -41,8 +38,8 @@
                             <span class="text-danger">返送</span>
                             @endif
                 </td>
-                <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
+                {{-- <td><a href="/assessment/edit?id={{Crypt::encrypt($item->id)}}">修正</a></td>
+                <td><a href="/assessment/del?id={{Crypt::encrypt($item->id)}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>

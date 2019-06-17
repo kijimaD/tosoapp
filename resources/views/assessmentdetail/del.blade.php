@@ -7,7 +7,8 @@
 <p>以下を削除します。</p>
 <form action="/assessmentdetail/del" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="id" value="{{$item->id}}" />
+    {{-- <input type="hidden" name="id" value="{{$item->id}}" /> --}}
+    {{session()->put(['assessmentdetail_id'=>$item->id])}}
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">

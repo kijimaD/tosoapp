@@ -22,20 +22,21 @@ class AssessmentdetailController extends Controller
 
     public function edit(Request $request)
     {
-        $items = Assessmentdetail::where('assessment_id', $request->id)->get();
+        $assessmentdetail_id = \Crypt::decrypt($request->id);
+        $items = Assessmentdetail::where('assessment_id', $assessmentdetail_id)->get();
         $conditions = Condition::get();
         $sum_get_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $request->id)
+        ->where('assessment_id', $assessmentdetail_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('get_price');
 
         $sum_market_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $request->id)
+        ->where('assessment_id', $assessmentdetail_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('market_price');
 
         $sum_sell_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $request->id)
+        ->where('assessment_id', $assessmentdetail_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('sell_price');
 
@@ -50,11 +51,13 @@ class AssessmentdetailController extends Controller
 
     public function update(Request $request)
     {
+        $goods_id = session()->pull('goods_id');
+        $title_id = session()->pull('title_id');
         $search_amazon = new \App\lib\Amazonfunctions;
         foreach (array_map(
             null,
-            $request->goods_id,
-            $request->title_id,
+            $goods_id,
+            $title_id,
             $request->isbn,
             $request->title_name,
             $request->description,
@@ -64,7 +67,8 @@ class AssessmentdetailController extends Controller
             $request->sell_price
             )
             as
-          [$val_goods_id,
+          [
+            $val_goods_id,
             $val_title_id,
             $val_isbn,
             $val_title_name,
@@ -91,12 +95,13 @@ class AssessmentdetailController extends Controller
           );
             // 査定価格取得にチェックがあったら実行する
             if (isset($request->flag_get_price)) {
-                $condition = Condition::where('id', $request->condition_id)->first();
+                $condition = Condition::where('id', $val_condition_id)->first();
                 $condition_percent = $condition->condition_percent;
                 $get_price = $val_market_price * $condition_percent;
                 Goods::find($val_goods_id)->update(
                     [
                     'get_price' => $get_price,
+                    'sell_price' => $val_market_price,
                   ]
                 );
             }
@@ -106,7 +111,7 @@ class AssessmentdetailController extends Controller
                 sleep(1);
 
                 Title::find($val_title_id)->update(
-                  [
+                    [
                   'title_name' => $goodsinfo_amazon['titlename'],
                   'updated_at' => now(),
                 ]
@@ -119,13 +124,15 @@ class AssessmentdetailController extends Controller
 
     public function delete(Request $request)
     {
-        $form = Assessmentdetail::find($request->id);
+        $assessmentdetail_id = \Crypt::decrypt($request->id);
+        $form = Assessmentdetail::find($assessmentdetail_id);
         return view('assessmentdetail/del')->with('item', $form);
     }
 
     public function remove(Request $request)
     {
-        Assessmentdetail::find($request->id)->delete();
+        $assessment_id = session()->pull('assessmentdetail_id');
+        Assessmentdetail::find($assessment_id)->delete();
         return redirect('/assessmentdetail/admin_index');
     }
 }

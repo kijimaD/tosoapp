@@ -5,6 +5,8 @@
 @section('content')
 <form action="/assessmentdetail/edit" method="post">
     {{csrf_field()}}
+    {{session()->forget('goods_id')}}
+    {{session()->forget('title_id')}}
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">
@@ -23,8 +25,9 @@
             </thead>
             <tbody>
                 @foreach ($items as $item)
-                <input type="hidden" name="goods_id[]" value="{{$item->goods->id}}" />
-                <input type="hidden" name="title_id[]" value="{{$item->goods->title->id}}" />
+                {{session()->push('goods_id',$item->goods->id)}}
+                {{session()->push('title_id',$item->goods->title->id)}}
+                {{-- {{session()->put(['assessment_id'=>$form->id])}} --}}
                 <tr>
                     <td>{{$item->assessment->id}}</td>
                     <td>{{$item->id}}</td>
@@ -48,7 +51,7 @@
                     <td><input type="text" name="market_price[]" value="{{$item->goods->market_price}}" /></td>
                     <td><input type="text" name="get_price[]" value="{{$item->goods->get_price}}" /></td>
                     <td><input type="text" name="sell_price[]" value="{{$item->goods->sell_price}}" /></td>
-                    <td><a href="/assessmentdetail/del?id={{$item->id}}">消去</a></td>
+                    <td><a href="/assessmentdetail/del?id={{\Crypt::encrypt($item->id)}}">消去</a></td>
                 </tr>
                 @endforeach
                 <tr>
