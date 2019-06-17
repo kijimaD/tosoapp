@@ -36,8 +36,9 @@ class BankController extends Controller
 
     public function edit(Request $request)
     {
-        $bank = Bank::find($request->id);
-        $param = ['form' => $bank];
+        $bank_id = \Crypt::decrypt($request->id);
+        $form = Bank::find($bank_id);
+        $param = ['form' => $form];
         return view('bank.edit', $param);
     }
 
@@ -52,7 +53,8 @@ class BankController extends Controller
 
     public function delete(Request $request)
     {
-        $form = Bank::find($request->id);
+        $bank_id = \Crypt::decrypt($request->id);
+        $form = Bank::find($bank_id);
         return view('/bank/del')->with('form', $form);
     }
 
@@ -64,11 +66,17 @@ class BankController extends Controller
 
     public function defaultCreate(Request $request)
     {
-        Defaultbank::where('user_id', $request->user_id)->delete();
+        $bank_id = session()->pull('bank_id');
+        debug($bank_id);
+        $user_id = session()->pull('user_id');
+        Defaultbank::where('user_id', $user_id)->delete();
 
         $default_bank = new Defaultbank;
-        $form = $request->all();
-        unset($form['_token']);
+        $form = [
+          'bank_id' => $bank_id,
+          'user_id' => $user_id,
+          'created_at' => now(),
+        ];
         $default_bank->fill($form)->save();
         return redirect('/bank');
     }

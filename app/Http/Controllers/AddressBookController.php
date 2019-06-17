@@ -29,9 +29,15 @@ class AddressBookController extends Controller
 
     public function create(Request $request)
     {
+        $user_id = session()->pull('user_id');
         $address = new Addressbook;
-        $form = $request->all();
-        unset($form['_token']);
+        $form = [
+          'zip' => $request->zip,
+          'prefecture_id' => $request->prefecture_id,
+          'city' => $request->city,
+          'address' => $request->address,
+          'user_id' => $user_id,
+        ];
         $address->fill($form)->save();
         return redirect('/address');
     }
@@ -73,15 +79,15 @@ class AddressBookController extends Controller
 
     public function defaultCreate(Request $request)
     {
-        $addressBook_id = session()->pull('addressBook_id');
+        $addressbook_id = session()->pull('addressbook_id');
         $user_id = session()->pull('user_id');
         Useraddress::where('user_id', $user_id)->delete();
 
         $default_address = new Useraddress;
         $form = [
-          'addressBook_id' => $addressBook_id,
+          'addressbook_id' => $addressbook_id,
           'user_id' => $user_id,
-          'created_at' => now()
+          'created_at' => now(),
         ];
         $default_address->fill($form)->save();
         return redirect('/address');

@@ -16,8 +16,8 @@
             <div class="card-header bg-white">
                 {{-- <h5 class="card-title">{{$item->user->family_name}}{{$item->user->name}}</h5> --}}
                 <div>
-                    <a class="btn btn-outline-dark btn-sm" href="/bank/edit?id={{$item->id}}">修正</a>
-                    <a class="btn btn-outline-dark btn-sm" href="/bank/del?id={{$item->id}}">削除</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/bank/edit?id={{Crypt::encrypt($item->id)}}">修正</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/bank/del?id={{Crypt::encrypt($item->id)}}">削除</a>
                 </div>
             </div>
             <div class="card-body">
@@ -34,8 +34,8 @@
                 @else
                 <form action="/bank/default/add" method="post">
                     {{ csrf_field() }}
-                    <input type="hidden" name="bank_id" value="{{$item->id}}" />
-                    <input type="hidden" name="user_id" value="{{$user->id}}" />
+                    {{session()->put(['bank_id'=>$item->id])}}
+                    {{session()->put(['user_id'=>$user->id])}}
                     <input type="submit" value="既定にする" class="btn btn-outline-dark" />
                 </form>
                 @endif

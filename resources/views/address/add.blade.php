@@ -5,7 +5,7 @@
 @section('content')
 <form action="/address/add" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="user_id" value="{{$user->id}}">
+    {{session()->put(['user_id'=>$user->id])}}
 
     <div class="form-group">
         <label for="zip" class="col-form-label text-md-left">郵便番号</label>

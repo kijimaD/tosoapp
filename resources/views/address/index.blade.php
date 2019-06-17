@@ -34,7 +34,7 @@
                 @else
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
-                    {{session()->put(['addressBook_id'=>$item->id])}}
+                    {{session()->put(['addressbook_id'=>$item->id])}}
                     {{session()->put(['user_id'=>$user->id])}}
                     <input type="submit" value="既定にする" class="btn btn-outline-dark" />
                 </form>
