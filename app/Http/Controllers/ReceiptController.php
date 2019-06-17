@@ -20,7 +20,8 @@ class ReceiptController extends Controller
 
     public function add(Request $request)
     {
-        $items = Assessmentdetail::where('assessment_id', $request->id)->get();
+        $assessment_id = \Crypt::decrypt($request->id);
+        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $param = ['items' => $items];
         return view('receipt.add', $param);
     }

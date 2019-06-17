@@ -82,7 +82,7 @@ shipping();
 
 <form action="/entry/add" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="user_id" value="{{$user->id}}">
+    {{session()->put(['user_id'=>$user->id])}}
 
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">入金方法</label>

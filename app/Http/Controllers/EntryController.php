@@ -39,9 +39,10 @@ class EntryController extends Controller
 
     public function create(Request $request)
     {
+        $user_id = session()->pull('user_id');
         $entry_id = DB::table('entries')->insertGetId(
             [
-      'user_id'=>$request->user_id,
+      'user_id'=>$user_id,
       'paymentWay_id'=>$request->paymentway_id,
       'shippingWay_id'=>$request->shippingway_id,
       'created_at'=>now(),
@@ -82,7 +83,8 @@ class EntryController extends Controller
 
     public function edit(Request $request)
     {
-        $entry = Entry::find($request->id);
+        $entry_id = \Crypt::decrypt($request->id);
+        $entry = Entry::find($entry_id);
         $param = ['form' => $entry];
         return view('entry.edit', $param);
     }
@@ -98,13 +100,15 @@ class EntryController extends Controller
 
     public function delete(Request $request)
     {
-        $form = Entry::find($request->id);
+        $entry_id = \Crypt::decrypt($request->id);
+        $form = Entry::find($entry_id);
         return view('entry/del')->with('form', $form);
     }
 
     public function remove(Request $request)
     {
-        Entry::find($request->id)->delete();
+        $entry_id = session()->pull('entry_id');
+        Entry::find($entry_id)->delete();
         return redirect('/entry');
     }
 

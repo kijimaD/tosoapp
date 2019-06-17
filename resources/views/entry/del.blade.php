@@ -5,7 +5,7 @@
 @section('content')
 <form action="/bank/del" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="id" value="{{$form->id}}" />
+    {{session()->put(['entry_id'=>$form->id])}}
 
     <div class="form-group">
         <label for="bank_name" class="col-form-label text-md-left">銀行名</label>

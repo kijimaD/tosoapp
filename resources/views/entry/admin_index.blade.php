@@ -46,8 +46,8 @@
                 <td>{{$item->applygoods->collection->box_num}}</td>
                 <td>{{$item->created_at}}</td>
 
-                {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}
+                {{-- <td><a href="/entry/edit?id={{Crypt::encrypt($item->id)}}">修正</a></td> --}}
+                {{-- <td><a href="/entry/del?id={{Crypt::encrypt($item->id)}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>

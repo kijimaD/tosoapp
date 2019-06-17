@@ -24,9 +24,10 @@ class AssessmentController extends Controller
 
     public function add(Request $request)
     {
+        $entry_id = \Crypt::decrypt($request->entry_id);
         $items = Assessment::get();
         $coupens = Coupen::get();
-        $param = ['items' => $items,'coupens' => $coupens,'entry_id' => $request->entry_id];
+        $param = ['items' => $items,'coupens' => $coupens,'entry_id' => $entry_id];
         return view('assessment.add', $param);
     }
 

@@ -36,7 +36,7 @@
                     @if(isset($item->assessment->id))
                         <td class="text-success">開始</td>
                         @else
-                        <td class="text-danger"><a href="/assessment/add?entry_id={{$item->id}}">査定</td>
+                        <td class="text-danger"><a href="/assessment/add?entry_id={{Crypt::encrypt($item->id)}}">査定</td>
                         @endif
 
                         @if (isset($item->assessmentdone->id))
@@ -64,7 +64,7 @@
                         @endif
 
                         <td>{{$item->created_at}}</td>
-                        <td><a href="/receipt/add?id={{$item->assessment->id}}">入庫</td>
+                        <td><a href="/receipt/add?id={{Crypt::encrypt($item->assessment->id)}}">入庫</td>
 
                         {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
                         <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}
