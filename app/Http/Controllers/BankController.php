@@ -27,9 +27,15 @@ class BankController extends Controller
 
     public function create(Request $request)
     {
+        $user_id = session()->pull('user_id');
         $bank = new Bank;
-        $form = $request->all();
-        unset($form['_token']);
+        $form = [
+          'bank_name' => $request->bank_name,
+          'bank_branch' => $request->bank_branch,
+          'bank_type' => $request->bank_type,
+          'bank_num' => $request->bank_num,
+          'user_id' => $user_id,
+        ];
         $bank->fill($form)->save();
         return redirect('/bank');
     }
@@ -44,7 +50,8 @@ class BankController extends Controller
 
     public function update(Request $request)
     {
-        $bank = Bank::find($request->id);
+        $bank_id = session()->pull('id');
+        $bank = Bank::find($bank_id);
         $form = $request->all();
         unset($form['_token']);
         $bank->fill($form)->save();
@@ -60,14 +67,14 @@ class BankController extends Controller
 
     public function remove(Request $request)
     {
-        Bank::find($request->id)->delete();
+        $bank_id = session()->pull('id');
+        Bank::find($bank_id)->delete();
         return redirect('/bank');
     }
 
     public function defaultCreate(Request $request)
     {
         $bank_id = session()->pull('bank_id');
-        debug($bank_id);
         $user_id = session()->pull('user_id');
         Defaultbank::where('user_id', $user_id)->delete();
 
