@@ -17,7 +17,6 @@ class AssessmentController extends Controller
     public function admin_index(Request $request)
     {
         $items = Assessment::get();
-
         $param = ['items' => $items];
         return view('assessment.admin_index', $param);
     }
@@ -33,6 +32,7 @@ class AssessmentController extends Controller
 
     public function create(Request $request)
     {
+        $entry_id = session()->pull('entry_id');
         $search_amazon = new \App\lib\Amazonfunctions;
         $shippingcost_id = DB::table('shippingCosts')->insertGetId(
             [
@@ -45,7 +45,7 @@ class AssessmentController extends Controller
 
         $assessment_id = DB::table('assessments')->insertGetId(
             [
-          'entry_id'=>$request->entry_id,
+          'entry_id'=>$entry_id,
           'coupen_id'=>$request->coupen_id,
           'shippingcost_id'=>$shippingcost_id,
           'created_at'=>now(),
@@ -86,20 +86,22 @@ class AssessmentController extends Controller
 
     public function edit(Request $request)
     {
-        $assessment = Assessment::find($request->id);
+        $assessment_id = \Crypt::decrypt($request->id);
+        $assessment = Assessment::find($assessment_id);
         $param = ['form' => $assessment];
         return view('assessment.edit', $param);
     }
 
     public function update(Request $request)
     {
+        $assessment_id = session()->pull('assessment_id');
         $items = Assessment::get();
 
-        $assessment = Assessment::find($request->id);
+        $assessment = Assessment::find($assessment_id);
         $form_as = ['coupen_id'=>$request->coupen_id];
         $assessment->fill($form_as)->save();
 
-        $shippingcost = Shippingcost::find($request->id);
+        $shippingcost = Shippingcost::find($assessment_id);
         $shippingcost->fill([
                     'cost'=>$request->cost,
                     'apply_cost'=>$request->apply_cost,
@@ -124,7 +126,7 @@ class AssessmentController extends Controller
                 $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
                     [
                 'goods_id'=>$goods_id,
-                'assessment_id'=>$request->id,
+                'assessment_id'=>$assessment_id,
               ]
             );
             }
@@ -135,13 +137,15 @@ class AssessmentController extends Controller
 
     public function delete(Request $request)
     {
-        $form = Assessment::find($request->id);
+        $assessment_id = \Crypt::decrypt($request->id);
+        $form = Assessment::find($assessment_id);
         return view('assessment/del')->with('form', $form);
     }
 
     public function remove(Request $request)
     {
-        Assessment::find($request->id)->delete();
+        $assessment_id = session()->pull('assessment_id');
+        Assessment::find($assessment_id)->delete();
         return redirect('/assessment/admin_index');
     }
 

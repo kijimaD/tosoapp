@@ -6,7 +6,7 @@
 <form action="/assessment/del" method="post">
     {{csrf_field()}}
 
-    <input type="hidden" name="id" value="{{$form->id}}" />
+    {{session()->put(['assessment_id'=>$form->id])}}
 
     <div class="form-group">
         <label for="cost" class="col-form-label text-md-left">送料費用</label>

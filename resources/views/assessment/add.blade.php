@@ -58,8 +58,7 @@ function removearea(obj){
 
 <form action="/assessment/add" method="post">
     {{csrf_field()}}
-
-    <input type="hidden" name="entry_id" value="{{$entry_id}}">
+    {{session()->put(['entry_id'=>$entry_id])}}
 
     <div class="form-group">
         <label for="cost" class="col-form-label text-md-left">送料費用</label>

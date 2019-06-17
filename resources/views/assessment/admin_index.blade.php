@@ -38,9 +38,9 @@
                         <input type="hidden" name="entry_id" value="{{$item->id}}" />
                         <td><input type="submit" value="査定完了"></td>
                         @endif
-                        <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
-                        <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
-                        <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
+                        <td><a href="/assessmentdetail/edit?id={{Crypt::encrypt($item->id)}}">明細</a></td>
+                        <td><a href="/assessment/edit?id={{Crypt::encrypt($item->id)}}">修正</a></td>
+                        <td><a href="/assessment/del?id={{Crypt::encrypt($item->id)}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>
