@@ -19,8 +19,11 @@ class CollectionController extends Controller
 
     public function applydone_create(Request $request)
     {
+        $entry_id = session()->pull('entry_id');
         $applydone = new Applydone;
-        $form = $request->all();
+        $form = [
+          'entry_id' => $entry_id
+        ];
         $applydone->fill($form)->save();
         return redirect('collection/admin_index');
     }

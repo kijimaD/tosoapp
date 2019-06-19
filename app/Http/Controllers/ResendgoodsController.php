@@ -19,8 +19,11 @@ class ResendgoodsController extends Controller
 
     public function create(Request $request)
     {
+        $resendgoods_id = session()->pull('resendgoods_id');
         $resenddonegoods = new Resenddonegoods;
-        $form = $request->all();
+        $form = [
+          'resendgoods_id' => $resendgoods_id,
+        ];
         $resenddonegoods->fill($form)->save();
         return redirect('resend/admin_index');
     }

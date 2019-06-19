@@ -93,7 +93,7 @@ total();
                     <td></td>
                     <td></td>
                     <td><span class="count"></span>点</td>
-                    <td>￥<b class="total"></b></td>
+                    <td>￥<span class="total"></span></td>
                 </tr>
                 <tr>
                     <td>クーポン適用</td>

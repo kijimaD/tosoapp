@@ -19,8 +19,11 @@ class PaymentdoneController extends Controller
 
     public function create(Request $request)
     {
+        $entry_id = session()->pull('entry_id');
         $paymentdones = new Paymentdone;
-        $form = $request->all();
+        $form = [
+          'entry_id' => $entry_id,
+        ];
         $paymentdones->fill($form)->save();
         return redirect('paymentdone/admin_index');
     }

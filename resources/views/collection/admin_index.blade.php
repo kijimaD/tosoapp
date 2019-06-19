@@ -37,7 +37,7 @@
                 @else
                 <form action="/collection/applydone_add" method="post">
                     {{ csrf_field() }}
-                    <input type="hidden" name="entry_id" value="{{$item->id}}" />
+                    {{session()->put(['entry_id'=>$item->id])}}
                     <td><input type="submit" value="委託完了" /></td>
                 </form>
                 @endif

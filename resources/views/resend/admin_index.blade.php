@@ -25,17 +25,16 @@
                 <td>{{$item->assessmentdetail->goods->title->title_name}}</td>
                 <td>{{$item->assessmentdetail->goods->title->isbn}}</td>
                 @if(isset($item->assessmentdetail->resendgoods->resenddonegoods->id))
-                    <td>返送完了</td>
+                    <td class="text-success">返送完了({{$item->assessmentdetail->resendgoods->resenddonegoods->created_at}})</td>
                     @else
                     <form action="/resend/add" method="post">
                         {{csrf_field()}}
-                        <input type="hidden" name="resendgoods_id" value="{{$item->id}}" />
-                        <td><input type="submit" value="返送完了"></td>
+                        {{session()->put(['resendgoods_id'=>$item->id])}}
+                        <td><input type="submit" value="返送が完了した"></td>
                         @endif
-
-                        <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
+                        {{-- <td><a href="/assessmentdetail/edit?id={{$item->id}}">明細</a></td>
                         <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
-                        <td><a href="/assessment/del?id={{$item->id}}">消去</a></td>
+                        <td><a href="/assessment/del?id={{$item->id}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>

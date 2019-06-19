@@ -56,6 +56,7 @@ class ApproveController extends Controller
         //  案件フラグであるapprovedonesにinsertする。
         $assessment = Assessment::find($assessment_id);
         $entry_id = $assessment->entry->id;
+
         DB::table('approvedones')->insert(
             [
             'entry_id' => $entry_id,
@@ -70,13 +71,16 @@ class ApproveController extends Controller
         // ];
         //   $assessment->fill($form_as)->save();
 
-        // 了承商品から額と数量の合計を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。
+        // 了承商品から額と数量の合計を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。**クーポンが計算に入っていない…。
         $sum_price = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->join('approvegoods', 'assessmentdetails.id', '=', 'approvegoods.assessmentdetail_id')
         ->where('assessment_id', $assessment_id)
         ->sum('get_price');
+
+        $coupen_value = $assessment->coupen->coupen_value;
+        $total_price = floor($coupen_value * $sum_price);
 
         $count = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
@@ -86,7 +90,7 @@ class ApproveController extends Controller
         ->count();
 
         $val = [
-          'sum_price' => $sum_price,
+          'sum_price' => $total_price,
           'goods_count' => $count,
           'created_at' => now(),
         ];

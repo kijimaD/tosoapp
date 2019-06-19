@@ -26,23 +26,27 @@
                     @else
                     <td></td>
                     @endif
+
                     @if($item->paymentway->id == '1')
                         <td>{{$item->paymentbank->bank->bank_name}}{{$item->paymentbank->bank->bank_branch}}{{$item->paymentbank->bank->bank_type}}{{$item->paymentbank->bank->bank_num}}</td>
                         @else
                         <td></td>
                         @endif
-                        @if (isset($item->paymentdone->id))
-                        <td>入金完了({{$item->paymentdone->created_at}})</td>
-                        @else
-                        <form action="/paymentdone/add" method="post">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="entry_id" value="{{$item->id}}" />
-                            <td><input type="submit" value="入金完了" /></td>
-                        </form>
-                        @endif
 
-                        {{-- <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
-                        <td><a href="/address/del?id={{$item->id}}">消去</a></td> --}}
+                        @if (isset($item->paymentdone->id))
+                        <td class="text-success">入金完了({{$item->paymentdone->created_at}})</td>
+                        @elseif(isset($item->assessmentdone->id))
+                            <form action="/paymentdone/add" method="post">
+                                {{ csrf_field() }}
+                                {{session()->put(['entry_id'=>$item->id])}}
+                                <td><input type="submit" value="入金が完了した" /></td>
+                            </form>
+                            @else
+                            <td>未査定</td>
+                            @endif
+
+                            {{-- <td><a href="/address/edit?id={{$item->id}}">修正</a></td>
+                            <td><a href="/address/del?id={{$item->id}}">消去</a></td> --}}
             </tr>
             @endforeach
         </tbody>
