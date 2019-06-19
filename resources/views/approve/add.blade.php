@@ -27,10 +27,10 @@
 
       final_total = coupen_total + {{$info->shippingcost->apply_cost}};
       $(".final_total").text(final_total);
-      $('.sum_price').val(final_total);
+
 // valはhiddenの値をセットする
       $('.count').text(count);
-      $('.count').val(count);
+
 }
 
 window.onload = function(){
@@ -40,9 +40,7 @@ total();
 
 <form action="/approve/add" method="post" id="approve">
     {{csrf_field()}}
-    <input type="hidden" name="assessment_id" value="{{$assessment_id}}">
-    <input type="hidden" name="sum_price" class="sum_price">
-    <input type="hidden" name="goods_count" class="count">
+    {{session()->put(['assessment_id'=>$assessment_id])}}
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-sm">

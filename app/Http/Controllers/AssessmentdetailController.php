@@ -22,21 +22,21 @@ class AssessmentdetailController extends Controller
 
     public function edit(Request $request)
     {
-        $assessmentdetail_id = \Crypt::decrypt($request->id);
-        $items = Assessmentdetail::where('assessment_id', $assessmentdetail_id)->get();
+        $assessment_id = \Crypt::decrypt($request->id);
+        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $conditions = Condition::get();
         $sum_get_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessmentdetail_id)
+        ->where('assessment_id', $assessment_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('get_price');
 
         $sum_market_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessmentdetail_id)
+        ->where('assessment_id', $assessment_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('market_price');
 
         $sum_sell_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessmentdetail_id)
+        ->where('assessment_id', $assessment_id)
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
         ->sum('sell_price');
 

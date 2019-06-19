@@ -17,13 +17,8 @@ class ApproveController extends Controller
 
         $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $info = Assessment::find($assessment_id)->first();
-        $sum_get_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $request->id)
-        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
-        ->sum('get_price');
         $param = ['items' => $items,
                   'info' => $info,
-                  'sum_get_price' => $sum_get_price,
                   'assessment_id' => $assessment_id,
       ];
         return view('approve.add', $param);
@@ -31,6 +26,7 @@ class ApproveController extends Controller
 
     public function create(Request $request)
     {
+        $assessment_id = session()->pull('assessment_id');
         foreach (array_map(
             null,
             $request->assessmentdetail_id,
@@ -57,8 +53,8 @@ class ApproveController extends Controller
               );
             }
         }
-        // 商品個別フラグであるapprovedonesにinsertする。
-        $assessment = Assessment::find($request->assessment_id);
+        //  案件フラグであるapprovedonesにinsertする。
+        $assessment = Assessment::find($assessment_id);
         $entry_id = $assessment->entry->id;
         DB::table('approvedones')->insert(
             [
@@ -68,11 +64,33 @@ class ApproveController extends Controller
         );
 
         // 入金予定額をassessmentsにinsertする
-        $form_as = ['sum_price'=>$request->sum_price,
-                    'goods_count'=>$request->goods_count,
-      ];
-        $assessment->fill($form_as)->save();
+        //   $form_as = [
+        //     'sum_price'=>$request->sum_price,
+        //     'goods_count'=>$request->goods_count,
+        // ];
+        //   $assessment->fill($form_as)->save();
 
+        // 了承商品から額と数量の合計を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。
+        $sum_price = DB::table('assessmentdetails')
+        ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->join('approvegoods', 'assessmentdetails.id', '=', 'approvegoods.assessmentdetail_id')
+        ->where('assessment_id', $assessment_id)
+        ->sum('get_price');
+
+        $count = DB::table('assessmentdetails')
+        ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
+        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+        ->join('approvegoods', 'assessmentdetails.id', '=', 'approvegoods.assessmentdetail_id')
+        ->where('assessment_id', $assessment_id)
+        ->count();
+
+        $val = [
+          'sum_price' => $sum_price,
+          'goods_count' => $count,
+          'created_at' => now(),
+        ];
+        $assessment->fill($val)->save();
 
         return redirect('/entry');
     }
