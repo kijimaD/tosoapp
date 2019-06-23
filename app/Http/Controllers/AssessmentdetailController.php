@@ -25,26 +25,16 @@ class AssessmentdetailController extends Controller
         $assessment_id = \Crypt::decrypt($request->id);
         $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $conditions = Condition::get();
-        $sum_get_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessment_id)
-        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
-        ->sum('get_price');
-
-        $sum_market_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessment_id)
-        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
-        ->sum('market_price');
-
-        $sum_sell_price = DB::table('assessmentdetails')
-        ->where('assessment_id', $assessment_id)
-        ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
-        ->sum('sell_price');
+        $db_operations = new \App\lib\DbOperations;
 
         $param = ['items' => $items,
                   'conditions' => $conditions,
-                  'sum_get_price' => $sum_get_price,
-                  'sum_market_price' => $sum_market_price,
-                  'sum_sell_price' => $sum_sell_price,
+                  'sum_get_price' => $db_operations
+                  ->sum_assessment_price_column('get_price', $assessment_id),
+                  'sum_market_price' => $db_operations
+                  ->sum_assessment_price_column('market_price', $assessment_id),
+                  'sum_sell_price' => $db_operations
+                  ->sum_assessment_price_column('sell_price', $assessment_id),
       ];
         return view('assessmentdetail.edit', $param);
     }
