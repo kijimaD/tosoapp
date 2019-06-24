@@ -1,14 +1,17 @@
 <?php
-namespace App\lib;
+namespace App\Service;
 
 use Illuminate\Support\Facades\DB;
 use App\Goods;
 use App\Title;
 use App\Condition;
+use App\Assessmentdetail;
 
-class DbOperations
+// 改善点: もっと一般的なメソッドにしたいが、わからない。固有のものばかりになっていて、再利用できないものばかりになっている
+
+class AssessmentdetailService
 {
-    // assessmentdetailsのカラムの合計額を計算する
+    // カラムの合計額を計算する
     public function sum_assessment_price_column($column, $request)
     {
         $assessment_id = \Crypt::decrypt($request->id);
@@ -19,8 +22,27 @@ class DbOperations
         return $sum;
     }
 
+    // editビューに必要な値を準備する
+    public function edit($request)
+    {
+        $assessment_id = \Crypt::decrypt($request->id);
+        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
+        $conditions = Condition::get();
+
+        $param = ['items' => $items,
+                  'conditions' => $conditions,
+                  'sum_get_price' =>
+                  $this->sum_assessment_price_column('get_price', $request),
+                  'sum_market_price' =>
+                  $this->sum_assessment_price_column('market_price', $request),
+                  'sum_sell_price' =>
+                  $this->sum_assessment_price_column('sell_price', $request),
+      ];
+        return $param;
+    }
+
     // assessmentdetailsの各データをupdateする
-    public function assessmentdetails_update($request)
+    public function update($request)
     {
         $goods_id = session()->pull('goods_id');
         $title_id = session()->pull('title_id');
@@ -77,7 +99,8 @@ class DbOperations
     }
 
     // 査定価格を計算・保存する
-    public function calc_get_price($val_condition_id, $val_market_price, $val_goods_id) // メソッド内の変数を再利用したいが、やり方がわからない。
+    // Think: 計算と保存は分離すべきか？
+    public function calc_get_price($val_condition_id, $val_market_price, $val_goods_id) // メソッド内の変数を再利用したいが、やり方がわからない。引数を入れるのが面倒だ。
     {
         $condition = Condition::where('id', $val_condition_id)->first();
         $condition_percent = $condition->condition_percent;
@@ -94,7 +117,7 @@ class DbOperations
     public function obtain_info_by_amazon($val_isbn, $val_title_id, $val_goods_id)
     {
         $search_amazon = new \App\lib\Amazonfunctions;
-        $goodsinfo_amazon = $search_amazon -> searchIsbn($val_isbn);
+        $goodsinfo_amazon = $search_amazon->searchIsbn($val_isbn);
         sleep(1);
 
         Title::find($val_title_id)->update(

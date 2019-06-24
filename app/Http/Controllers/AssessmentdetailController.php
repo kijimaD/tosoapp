@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Service\AssessmentdetailService;
 use App\Assessment;
 use App\Assessmentdetail;
 use App\Condition;
 
 class AssessmentdetailController extends Controller
 {
+    protected $service;
+
+    public function __construct(AssessmentdetailService $service)
+    {
+        $this->service = $service;
+    }
+
     public function admin_index(Request $request)
     {
         $items = Assessmentdetail::get();
@@ -20,28 +28,12 @@ class AssessmentdetailController extends Controller
 
     public function edit(Request $request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
-        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
-        $conditions = Condition::get();
-        $db_operations = new \App\lib\DbOperations;
-
-        $param = ['items' => $items,
-                  'conditions' => $conditions,
-                  'sum_get_price' => $db_operations
-                  ->sum_assessment_price_column('get_price', $request),
-                  'sum_market_price' => $db_operations
-                  ->sum_assessment_price_column('market_price', $request),
-                  'sum_sell_price' => $db_operations
-                  ->sum_assessment_price_column('sell_price', $request),
-      ];
-        return view('assessmentdetail.edit', $param);
+        return view('assessmentdetail.edit', $this->service->edit($request));
     }
 
     public function update(Request $request)
     {
-        $db_operations = new \App\lib\DbOperations;
-        $db_operations->assessmentdetails_update($request);
-
+        $this->service->update($request);
         return redirect('/assessment/admin_index');
     }
 
@@ -54,8 +46,8 @@ class AssessmentdetailController extends Controller
 
     public function remove(Request $request)
     {
-        $assessment_id = session()->pull('assessmentdetail_id');
-        Assessmentdetail::find($assessment_id)->delete();
+        $assessmentdetail_id = session()->pull('assessmentdetail_id');
+        Assessmentdetail::find($assessmentdetail_id)->delete();
         return redirect('/assessmentdetail/admin_index');
     }
 }

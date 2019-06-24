@@ -71,7 +71,7 @@ class ApproveController extends Controller
         // ];
         //   $assessment->fill($form_as)->save();
 
-        // 了承商品から額と数量の合計を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。**クーポンが計算に入っていない…。
+        // 了承商品から額と買い取り数を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。
         $sum_price = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
