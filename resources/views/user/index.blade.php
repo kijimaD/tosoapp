@@ -8,8 +8,7 @@
         <thead>
             <tr>
                 <th><a href="/hello?sort=age">ユーザID</a></th>
-                <th><a href="/hello?sort=age">姓</a></th>
-                <th><a href="/hello?sort=age">名</a></th>
+                <th><a href="/hello?sort=age">名前</a></th>
                 <th><a href="/hello?sort=age">eメール</a></th>
                 <th><a href="/hello?sort=age">eメール認証</a></th>
                 <th><a href="/hello?sort=age">登録日</a></th>
@@ -19,7 +18,6 @@
             @foreach ($items as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->family_name}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->email_verified_at}}</td>

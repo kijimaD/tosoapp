@@ -9,7 +9,7 @@
         @foreach ($items as $item)
         <div class="card col-sm-12 mr-3 mb-3" style="width: 18rem;">
             <div class="card-header bg-white">
-                {{-- <h5 class="card-title">{{$item->user->family_name}}{{$item->user->name}}</h5> --}}
+                {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
                     申込日時:{{$item->created_at}}<br>
                     渡し方法:{{$item->shippingway->shipping_way}}

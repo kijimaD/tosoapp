@@ -28,7 +28,6 @@ class AddUserRequest extends FormRequest
     public function rules()
     {
         return [
-          'family_name' => 'required',
           'name' => 'required',
           'email' => 'required|email',
           'password' => 'required|confirmed',

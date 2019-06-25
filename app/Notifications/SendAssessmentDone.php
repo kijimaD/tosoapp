@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+// 案件ユーザに査定完了通知を送信する
 class SendAssessmentDone extends Notification
 {
     use Queueable;

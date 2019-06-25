@@ -67,7 +67,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @if(Auth::check())
-                                {{\Auth::user()->family_name}}{{ \Auth::user()->name}}
+                                {{ \Auth::user()->name}}
                                 @else
                                 ゲスト
                                 @endif

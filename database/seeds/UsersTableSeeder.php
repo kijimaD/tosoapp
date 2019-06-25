@@ -14,16 +14,14 @@ class UsersTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // 外部キー制約を無視
 
         \App\User::create([
-        'family_name' => '佐藤',
-        'name' => '一太郎',
+        'name' => '佐藤一太郎',
         'email' => 'norimaking777@gmail.com',
         'password' => bcrypt('11qqaazz'),
         'email_verified_at' => '2019-05-19 18:17:15'
       ]);
 
         \App\User::create([
-        'family_name' => '藤原',
-        'name' => '次郎',
+        'name' => '藤原次郎',
         'email' => 'k9887039@kadai.jp',
         'password' => bcrypt('11qqaazz'),
         'email_verified_at' => '2019-05-19 18:17:15'

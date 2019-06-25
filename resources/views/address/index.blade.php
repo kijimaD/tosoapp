@@ -14,7 +14,7 @@
         @foreach ($items as $item)
         <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
             <div class="card-header bg-white">
-                {{-- <h5 class="card-title">{{$item->user->family_name}}{{$item->user->name}}</h5> --}}
+                {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
                     <a class="btn btn-outline-dark btn-sm" href="/address/edit?id={{Crypt::encrypt($item->id)}}">修正</a>
                     <a class="btn btn-outline-dark btn-sm" href="/address/del?id={{Crypt::encrypt($item->id)}}">削除</a>

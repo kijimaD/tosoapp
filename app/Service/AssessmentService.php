@@ -144,6 +144,6 @@ class AssessmentService
         $entry = \App\Entry::find($entry_id);
         $assessment_id = Crypt::encrypt($entry->assessment->id);
         $user = $entry->user;
-        $user->SendAssessmentDone($user->family_name . $user->name, $assessment_id);
+        $user->SendAssessmentDone($user->name, $assessment_id);
     }
 }

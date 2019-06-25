@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">{{ __('メール認証') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))
@@ -14,8 +14,8 @@
                     </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    {{ __('認証メールを送信しました。メールのリンクをクリックして本登録してください。') }}<br>
+                    {{ __('メールを受け取っていないときは、') }} <a href="{{ route('verification.resend') }}">{{ __('ここをクリックすると再送信します') }}</a>.
                 </div>
             </div>
         </div>

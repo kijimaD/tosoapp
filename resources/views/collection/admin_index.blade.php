@@ -23,7 +23,7 @@
             @foreach ($items as $item)
             <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->user->family_name}}{{$item->user->name}}</td>
+                <td>{{$item->user->name}}</td>
                 <td>{{$item->applygoods->collection->addressbook->zip}}</td>
                 <td>{{$item->applygoods->collection->addressbook->prefecture->prefecture_name}}</td>
                 <td>{{$item->applygoods->collection->addressbook->city}}</td>

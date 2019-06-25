@@ -7,14 +7,7 @@
     {{csrf_field()}}
 
     <div class="form-group">
-        <label for="family_name" class="col-form-label text-md-left">姓</label>
-        <div>
-            <input type="text" name="family_name" value="{{old('family_name')}}" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="name" class="col-form-label text-md-left">名</label>
+        <label for="name" class="col-form-label text-md-left">名前</label>
         <div>
             <input type="text" name="name" value="{{old('name')}}" />
         </div>
