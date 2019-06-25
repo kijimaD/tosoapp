@@ -11,7 +11,6 @@ use App\Coupen;
 use App\Shippingcost;
 use App\Title;
 use App\Goods;
-use App\Assessmentdone;
 
 class AssessmentController extends Controller
 {
@@ -67,9 +66,7 @@ class AssessmentController extends Controller
 
     public function assessmentdone_create(Request $request)
     {
-        $assessmentdone = new Assessmentdone;
-        $form = $request->all();
-        $assessmentdone->fill($form)->save();
+        $this->service->done_create($request);
         return redirect('assessment/admin_index');
     }
 }

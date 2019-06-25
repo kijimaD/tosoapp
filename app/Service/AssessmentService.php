@@ -1,13 +1,19 @@
 <?php
 namespace App\Service;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Crypt;
 use App\Assessment;
+use App\AssessmentDone;
 use App\Coupen;
 use App\Shippingcost;
 
 class AssessmentService
 {
+
+  // 追加に必要な値を返す。
     public function add($request)
     {
         $entry_id = \Crypt::decrypt($request->entry_id);
@@ -17,6 +23,7 @@ class AssessmentService
         return $param;
     }
 
+    // 査定関係に関係するテーブルへ新規レコードを作成する。
     public function create($request)
     {
         $entry_id = session()->pull('entry_id');
@@ -68,6 +75,8 @@ class AssessmentService
             );
         }
     }
+
+    // 必要な値を返す。
     public function edit($request)
     {
         $assessment_id = \Crypt::decrypt($request->id);
@@ -75,6 +84,8 @@ class AssessmentService
         $param = ['form' => $assessment];
         return $param;
     }
+
+    // 各テーブルを更新する。
     public function update($request)
     {
         $assessment_id = session()->pull('assessment_id');
@@ -113,5 +124,26 @@ class AssessmentService
             );
             }
         } //if節
+    }
+
+    // 査定完了テーブルへ書き込む
+    public function done_create($request)
+    {
+        $entry_id = session()->pull('entry_id');
+        $form = $request->all();
+        $form += array('entry_id'=>$entry_id); // $entry_idはall()に入れらないので、後付けする。
+        // Memo: メール送信のデバッグ用にDBに格納しない！
+        $assessmentdone = new Assessmentdone;
+        $assessmentdone->fill($form)->save();
+        $this->done_send($entry_id);
+    }
+
+    // 査定完了通知を送信する
+    public function done_send($entry_id)
+    {
+        $entry = \App\Entry::find($entry_id);
+        $assessment_id = Crypt::encrypt($entry->assessment->id);
+        $user = $entry->user;
+        $user->SendAssessmentDone($user->family_name . $user->name);
     }
 }

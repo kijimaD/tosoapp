@@ -31,12 +31,13 @@
                 <td>{{$item->assessmentdetails->count()}}</td>
                 <td>{{$item->sumPrice()}}</td>
                 @if(isset($item->entry->assessmentdone->id))
-                    <td>査定完了</td>
+                    <td class="text-success">査定完了</td>
                     @else
                     <form action="/assessment/assessmentdone_add" method="post">
                         {{csrf_field()}}
-                        <input type="hidden" name="entry_id" value="{{$item->id}}" />
-                        <td><input type="submit" value="査定完了"></td>
+                        {{-- <input type="hidden" name="entry_id" value="{{$item->id}}" /> --}}
+                        {{session()->put(['entry_id'=>$item->id])}}
+                        <td><input type="submit" value="査定完了した"></td>
                         @endif
                         <td><a href="/assessmentdetail/edit?id={{Crypt::encrypt($item->id)}}">明細</a></td>
                         <td><a href="/assessment/edit?id={{Crypt::encrypt($item->id)}}">修正</a></td>

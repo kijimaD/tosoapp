@@ -37,4 +37,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function SendAssessmentDone($user_name) //送信テスト。
+    {
+        $this->notify(new \App\Notifications\SendAssessmentDone($user_name));
+        // notifyメソッドは通知インスタンスを受け取る
+        // クラスごとに違う送信をする感じか。
+        // $thisからnotifyで通じるのは継承しているから？
+    }
 }
