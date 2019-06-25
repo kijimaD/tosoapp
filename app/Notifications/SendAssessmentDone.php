@@ -16,9 +16,10 @@ class SendAssessmentDone extends Notification
      *
      * @return void
      */
-    public function __construct($user_name)
+    public function __construct($user_name, $assessment_id)
     {
         $this->user_name= $user_name;
+        $this->assessment_id = $assessment_id;
         // tips:引数をプロパティに格納してクラス内のどこでも使用できるようにする。
         // アクセスは $this->user_name で。
     }
@@ -46,7 +47,7 @@ class SendAssessmentDone extends Notification
         //             ->line('The introduction to the notification.')
         //             ->action('Notification Action', url('/'))
         //             ->line('Thank you for using our application!');
-        $url = ('https://とそ.com/assessment/');
+        $url = ("https://とそ.com/approve/add?id={$this->assessment_id}");
 
         $mail = new MailMessage();
         // Todo: 文面は適当です

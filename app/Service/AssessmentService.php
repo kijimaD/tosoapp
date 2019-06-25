@@ -133,17 +133,17 @@ class AssessmentService
         $form = $request->all();
         $form += array('entry_id'=>$entry_id); // $entry_idはall()に入れらないので、後付けする。
         // Memo: メール送信のデバッグ用にDBに格納しない！
-        $assessmentdone = new Assessmentdone;
-        $assessmentdone->fill($form)->save();
+        // $assessmentdone = new Assessmentdone;
+        // $assessmentdone->fill($form)->save();
         $this->done_send($entry_id);
     }
 
-    // 査定完了通知を送信する
+    // 案件ユーザに査定完了通知を送信する
     public function done_send($entry_id)
     {
         $entry = \App\Entry::find($entry_id);
         $assessment_id = Crypt::encrypt($entry->assessment->id);
         $user = $entry->user;
-        $user->SendAssessmentDone($user->family_name . $user->name);
+        $user->SendAssessmentDone($user->family_name . $user->name, $assessment_id);
     }
 }
