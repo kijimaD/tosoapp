@@ -5,86 +5,60 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Service\BankService;
 use App\Bank;
 use App\Defaultbank;
 
 class BankController extends Controller
 {
+    protected $service;
+
+    public function __construct(BankService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index(Request $request)
     {
-        $user = Auth::user();
-        $items = Bank::where('user_id', 'like', $user["id"])->get();
-        $param = ['items' => $items, 'user' => $user];
-        return view('bank.index', $param);
+        return view('bank.index', $this->service->index());
     }
 
     public function add(Request $request)
     {
-        $user = Auth::user();
-        $param = ['user' => $user];
-        return view('bank.add', $param);
+        return view('bank.add', $this->service->add());
     }
 
     public function create(Request $request)
     {
-        $user_id = session()->pull('user_id');
-        $bank = new Bank;
-        $form = [
-          'bank_name' => $request->bank_name,
-          'bank_branch' => $request->bank_branch,
-          'bank_type' => $request->bank_type,
-          'bank_num' => $request->bank_num,
-          'user_id' => $user_id,
-        ];
-        $bank->fill($form)->save();
+        $this->service->create($request);
         return redirect('/bank');
     }
 
     public function edit(Request $request)
     {
-        $bank_id = \Crypt::decrypt($request->id);
-        $form = Bank::find($bank_id);
-        $param = ['form' => $form];
-        return view('bank.edit', $param);
+        return view('bank.edit', $this->service->edit($request));
     }
 
     public function update(Request $request)
     {
-        $bank_id = session()->pull('id');
-        $bank = Bank::find($bank_id);
-        $form = $request->all();
-        unset($form['_token']);
-        $bank->fill($form)->save();
+        $this->service->update($request);
         return redirect('/bank');
     }
 
     public function delete(Request $request)
     {
-        $bank_id = \Crypt::decrypt($request->id);
-        $form = Bank::find($bank_id);
-        return view('/bank/del')->with('form', $form);
+        return view('/bank/del', $this->service->edit($request));
     }
 
     public function remove(Request $request)
     {
-        $bank_id = session()->pull('id');
-        Bank::find($bank_id)->delete();
+        $this->service->remove();
         return redirect('/bank');
     }
 
     public function defaultCreate(Request $request)
     {
-        $bank_id = session()->pull('bank_id');
-        $user_id = session()->pull('user_id');
-        Defaultbank::where('user_id', $user_id)->delete();
-
-        $default_bank = new Defaultbank;
-        $form = [
-          'bank_id' => $bank_id,
-          'user_id' => $user_id,
-          'created_at' => now(),
-        ];
-        $default_bank->fill($form)->save();
+        $this->service->defaultCreate();
         return redirect('/bank');
     }
 }
