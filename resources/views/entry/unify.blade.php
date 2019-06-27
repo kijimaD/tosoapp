@@ -36,7 +36,7 @@
                     @if(isset($item->assessment->id))
                         <td class="text-success">開始</td>
                         @else
-                        <td class="text-danger"><a href="/assessment/add?entry_id={{Crypt::encrypt($item->id)}}">査定</td>
+                        <td class="text-danger"><a href="/assessment/add?id={{Crypt::encrypt('entry_id' . $item->id)}}">査定</td>
                         @endif
 
                         @if (isset($item->assessmentdone->id))

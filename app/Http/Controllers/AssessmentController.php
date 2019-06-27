@@ -52,15 +52,12 @@ class AssessmentController extends Controller
 
     public function delete(Request $request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
-        $form = Assessment::find($assessment_id);
-        return view('assessment/del')->with('form', $form);
+        return view('assessment/del')->with('form', $this->service->delete($request));
     }
 
     public function remove(Request $request)
     {
-        $assessment_id = session()->pull('assessment_id');
-        Assessment::find($assessment_id)->delete();
+        $this->service->remove();
         return redirect('/assessment/admin_index');
     }
 

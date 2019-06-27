@@ -16,8 +16,8 @@
             <div class="card-header bg-white">
                 {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
-                    <a class="btn btn-outline-dark btn-sm" href="/bank/edit?id={{Crypt::encrypt($item->id)}}">修正</a>
-                    <a class="btn btn-outline-dark btn-sm" href="/bank/del?id={{Crypt::encrypt($item->id)}}">削除</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/bank/edit?id={{Crypt::encrypt('bank_id' . $item->id)}}">修正</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/bank/del?id={{Crypt::encrypt('bank_id' . $item->id)}}">削除</a>
                 </div>
             </div>
             <div class="card-body">

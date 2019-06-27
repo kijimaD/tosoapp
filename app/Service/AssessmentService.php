@@ -13,10 +13,11 @@ use App\Shippingcost;
 class AssessmentService
 {
 
-  // 追加に必要な値を返す。
+  // 追加ビューに必要な値を返す。
     public function add($request)
     {
-        $entry_id = \Crypt::decrypt($request->entry_id);
+        $entry_id = get_salted_id($request, 'entry_id');
+
         $items = Assessment::get();
         $coupens = Coupen::get();
         $param = ['items' => $items,'coupens' => $coupens,'entry_id' => $entry_id];
@@ -79,13 +80,14 @@ class AssessmentService
     // 必要な値を返す。
     public function edit($request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
+        $assessment_id = get_salted_id($request, 'assessment_id');
         $assessment = Assessment::find($assessment_id);
         $param = ['form' => $assessment];
         return $param;
     }
 
     // 各テーブルを更新する。
+    // memo: 大きすぎるので、いつか分離する
     public function update($request)
     {
         $assessment_id = session()->pull('assessment_id');
@@ -124,6 +126,19 @@ class AssessmentService
             );
             }
         } //if節
+    }
+
+    public function delete($request)
+    {
+        $assessment_id = get_salted_id($request, 'assessment_id');
+        $form = Assessment::find($assessment_id);
+        return $form;
+    }
+
+    public function remove()
+    {
+        $assessment_id = session()->pull('assessment_id');
+        Assessment::find($assessment_id)->delete();
     }
 
     // 査定完了テーブルへ書き込む

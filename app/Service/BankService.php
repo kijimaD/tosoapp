@@ -9,6 +9,10 @@ use App\DefaultBank;
 
 class BankService
 {
+    public function admin_index(Request $request)
+    {
+    }
+
     public function index()
     {
         $user = Auth::user();
@@ -37,7 +41,7 @@ class BankService
     // 不安: editとdeleteはまったく同じなので共用している(いいのか？)
     public function edit($request)
     {
-        $bank_id = \Crypt::decrypt($request->id);
+        $bank_id = get_salted_id($request, 'bank_id');
         $form = Bank::find($bank_id);
         $param = ['form' => $form];
         return $param;
@@ -53,7 +57,7 @@ class BankService
     // memo: 未使用(editを使っている)
     public function delete($request)
     {
-        $bank_id = \Crypt::decrypt($request->id);
+        $bank_id = get_salted_id($request, 'bank_id');
         $form = Bank::find($bank_id);
         $param = ['form' => $form];
         return $param;
