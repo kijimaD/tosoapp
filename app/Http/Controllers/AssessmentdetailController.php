@@ -21,9 +21,7 @@ class AssessmentdetailController extends Controller
 
     public function admin_index(Request $request)
     {
-        $items = Assessmentdetail::get();
-        $param = ['items' => $items];
-        return view('assessmentdetail.admin_index', $param);
+        return view('assessmentdetail.admin_index', $this->service->admin_index($request));
     }
 
     public function edit(Request $request)
@@ -39,15 +37,12 @@ class AssessmentdetailController extends Controller
 
     public function delete(Request $request)
     {
-        $assessmentdetail_id = \Crypt::decrypt($request->id);
-        $form = Assessmentdetail::find($assessmentdetail_id);
-        return view('assessmentdetail/del')->with('item', $form);
+        return view('assessmentdetail/del', $this->service->delete($request));
     }
 
     public function remove(Request $request)
     {
-        $assessmentdetail_id = session()->pull('assessmentdetail_id');
-        Assessmentdetail::find($assessmentdetail_id)->delete();
-        return redirect('/assessmentdetail/admin_index');
+        $this->service->remove();
+        return redirect('/assessment/admin_index');
     }
 }

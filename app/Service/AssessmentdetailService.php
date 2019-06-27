@@ -11,21 +11,19 @@ use App\Assessmentdetail;
 
 class AssessmentdetailService
 {
-    // カラムの合計額を計算する
-    public function sum_assessment_price_column($column, $request)
+    // CRUD ==========
+    // editビューに必要な値を準備する
+    public function admin_index($request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
-        $sum = DB::table('assessmentdetails')
-          ->where('assessment_id', $assessment_id)
-          ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
-          ->sum($column);
-        return $sum;
+        $items = Assessmentdetail::get();
+        $param = ['items' => $items];
+        return $param;
     }
 
-    // editビューに必要な値を準備する
     public function edit($request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
+        $assessment_id = $this->get_salted_id($request, 'assessment_id');
+
         $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $conditions = Condition::get();
 
@@ -98,6 +96,21 @@ class AssessmentdetailService
         }
     }
 
+    public function delete($request)
+    {
+        $assessmentdetail_id = $this->get_salted_id($request, 'assessmentdetail_id');
+        $item = Assessmentdetail::find($assessmentdetail_id);
+        $param = ['item'=>$item];
+        return $param;
+    }
+
+    public function remove()
+    {
+        $assessmentdetail_id = session()->pull('assessmentdetail_id');
+        Assessmentdetail::find($assessmentdetail_id)->delete();
+    }
+    // ユーティリティ============
+
     // 査定価格を計算・保存する
     // Think: 計算と保存は分離すべきか？
     public function calc_get_price($val_condition_id, $val_market_price, $val_goods_id) // メソッド内の変数を再利用したいが、やり方がわからない。引数を入れるのが面倒だ。
@@ -132,5 +145,24 @@ class AssessmentdetailService
             'updated_at' => now(),
           ]
         );
+    }
+
+    // 復号してソルトを取り除く
+    public function get_salted_id($request, $goal_id)
+    {
+        $salted = \Crypt::decrypt($request->id);
+        $id = str_replace($goal_id, '', $salted);
+        return $id;
+    }
+
+    // カラムの合計額を計算する
+    public function sum_assessment_price_column($column, $request)
+    {
+        $assessment_id = $this->get_salted_id($request, 'assessment_id');
+        $sum = DB::table('assessmentdetails')
+          ->where('assessment_id', $assessment_id)
+          ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
+          ->sum($column);
+        return $sum;
     }
 }
