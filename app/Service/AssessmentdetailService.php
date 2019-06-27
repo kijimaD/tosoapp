@@ -22,7 +22,7 @@ class AssessmentdetailService
 
     public function edit($request)
     {
-        $assessment_id = $this->get_salted_id($request, 'assessment_id');
+        $assessment_id = get_salted_id($request, 'assessment_id');
 
         $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
         $conditions = Condition::get();
@@ -98,7 +98,7 @@ class AssessmentdetailService
 
     public function delete($request)
     {
-        $assessmentdetail_id = $this->get_salted_id($request, 'assessmentdetail_id');
+        $assessmentdetail_id = get_salted_id($request, 'assessmentdetail_id');
         $item = Assessmentdetail::find($assessmentdetail_id);
         $param = ['item'=>$item];
         return $param;
@@ -147,18 +147,10 @@ class AssessmentdetailService
         );
     }
 
-    // 復号してソルトを取り除く
-    public function get_salted_id($request, $goal_id)
-    {
-        $salted = \Crypt::decrypt($request->id);
-        $id = str_replace($goal_id, '', $salted);
-        return $id;
-    }
-
     // カラムの合計額を計算する
     public function sum_assessment_price_column($column, $request)
     {
-        $assessment_id = $this->get_salted_id($request, 'assessment_id');
+        $assessment_id = get_salted_id($request, 'assessment_id');
         $sum = DB::table('assessmentdetails')
           ->where('assessment_id', $assessment_id)
           ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
