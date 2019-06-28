@@ -1,11 +1,10 @@
-@extends('layouts.tosoapp')
+@extends('layouts.tosoapp_admin')
 
-@section('title','コメント修正')
+@section('title','案件修正')
 
 @section('content')
 <form action="/bank/edit" method="post">
     {{csrf_field()}}
-    <input type="hidden" name="id" value="{{$form->id}}" />
     {{session()->put(['entry_id'=>$form->id])}}
 
     <div class="form-group">

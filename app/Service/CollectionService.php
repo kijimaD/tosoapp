@@ -3,8 +3,8 @@ namespace App\Service;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Entry;
 use Crypt;
+use App\Entry;
 use App\Applydone;
 
 class CollectionService

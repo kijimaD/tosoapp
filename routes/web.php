@@ -59,10 +59,6 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::get('/entry', 'EntryController@index');
     Route::get('/entry/add', 'EntryController@add');
     Route::post('/entry/add', 'EntryController@create');
-    Route::get('/entry/edit', 'EntryController@edit');
-    Route::post('/entry/edit', 'EntryController@update');
-    Route::get('/entry/del', 'EntryController@delete');
-    Route::post('/entry/del', 'EntryController@remove');
 
     Route::get('/approve/add', 'ApproveController@add');
     Route::post('/approve/add', 'ApproveController@create');
@@ -97,6 +93,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     // Route::post('user/del', 'UserController@remove');
 
     Route::get('entry/admin_index', 'EntryController@admin_index');
+    Route::get('/entry/edit', 'EntryController@edit'); // 未実装
+    Route::post('/entry/edit', 'EntryController@update');
+    Route::get('/entry/del', 'EntryController@delete'); // 未実装
+    Route::post('/entry/del', 'EntryController@remove');
     Route::get('entry/unify', 'EntryController@unify');
 
     Route::get('collection/admin_index', 'CollectionController@admin_index');
