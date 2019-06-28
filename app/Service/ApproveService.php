@@ -37,7 +37,8 @@ class ApproveService
         $this->create_approvedone($assessment);
 
         // 計算結果を格納する
-        $this->create_calc_result($assessment_id);
+        // 改善:引数の渡し方がヘン？うしろのメソッドに続けるために延々と引数が…。
+        $this->create_calc_result($assessment_id, $assessment);
     }
 
     // 承認、返送テーブルへ格納
@@ -85,7 +86,7 @@ class ApproveService
     }
 
     // sumを導出する
-    public function calc_sum($assessment_id)
+    public function calc_sum($assessment_id, $assessment)
     {
         $sum_price = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
@@ -101,7 +102,7 @@ class ApproveService
     }
 
     // countを導出する
-    public function calc_count($assessment_id)
+    public function calc_count($assessment_id, $assessment)
     {
         $count = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
@@ -114,11 +115,11 @@ class ApproveService
     }
 
     // 導出項目をcreateする
-    public function create_calc_result($assessment_id)
+    public function create_calc_result($assessment_id, $assessment)
     {
         $val = [
-          'sum_price' => $this->calc_sum($assessment_id),
-          'goods_count' => $this->calc_count($assessment_id),
+          'sum_price' => $this->calc_sum($assessment_id, $assessment),
+          'goods_count' => $this->calc_count($assessment_id, $assessment),
           'created_at' => now(),
         ];
         $assessment->fill($val)->save();
