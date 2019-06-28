@@ -23,10 +23,26 @@ class ApproveService
         return $param;
     }
 
-    // 要改善:巨大すぎる
+    // 表示用のjavascriptからは値を一切取得しない！のでやや複雑になっている。
+    // まず了承・返送を格納。それを元に各値を計算して計算結果を合計カラムに格納する。
     public function create($request)
     {
         $assessment_id = session()->pull('assessment_id');
+        $assessment = Assessment::find($assessment_id);
+
+        // 詳細部分を格納する
+        $this->create_detail_part($request);
+
+        // 完了フラグ
+        $this->create_approvedone($assessment);
+
+        // 計算結果を格納する
+        $this->create_calc_result($assessment_id);
+    }
+
+    // 承認、返送テーブルへ格納
+    public function create_detail_part($request)
+    {
         foreach (array_map(
             null,
             $request->assessmentdetail_id,
@@ -53,8 +69,11 @@ class ApproveService
               );
             }
         }
-        //  案件フラグであるapprovedonesにinsertする。
-        $assessment = Assessment::find($assessment_id);
+    }
+
+    //  案件フラグであるapprovedonesにinsertする。
+    public function create_approvedone($assessment)
+    {
         $entry_id = $assessment->entry->id;
 
         DB::table('approvedones')->insert(
@@ -63,8 +82,11 @@ class ApproveService
             'created_at' => now(),
           ]
         );
+    }
 
-        // 了承商品から額と買い取り数を導出してassessmentsにinsertする。子側にjoinする方法がわからないので、親側を起点にしている。
+    // sumを導出する
+    public function calc_sum($assessment_id)
+    {
         $sum_price = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
@@ -72,9 +94,15 @@ class ApproveService
         ->where('assessment_id', $assessment_id)
         ->sum('get_price');
 
-        $coupen_value = $assessment->coupen->coupen_value;
-        $total_price = floor($coupen_value * $sum_price);
+        $coupen_value = $assessment->coupen->coupen_value; // クーポンの価格上昇率
+        $total_price = floor($coupen_value * $sum_price); // クーポンを加味した合計値
 
+        return $total_price;
+    }
+
+    // countを導出する
+    public function calc_count($assessment_id)
+    {
         $count = DB::table('assessmentdetails')
         ->join('assessments', 'assessments.id', '=', 'assessmentdetails.assessment_id')
         ->join('goods', 'goods.id', '=', 'assessmentdetails.goods_id')
@@ -82,9 +110,15 @@ class ApproveService
         ->where('assessment_id', $assessment_id)
         ->count();
 
+        return $count;
+    }
+
+    // 導出項目をcreateする
+    public function create_calc_result($assessment_id)
+    {
         $val = [
-          'sum_price' => $total_price,
-          'goods_count' => $count,
+          'sum_price' => $this->calc_sum($assessment_id),
+          'goods_count' => $this->calc_count($assessment_id),
           'created_at' => now(),
         ];
         $assessment->fill($val)->save();
