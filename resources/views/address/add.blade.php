@@ -18,8 +18,9 @@
         <label for="prefecture_id" class="cl-form-label text-md-left">都道府県</label>
         <div>
             <select name="prefecture_id">
+                <option value="" selected disabled></option>
                 @foreach ($items as $item)
-                <option value="{{$item->id}}" @if(old('prefecture_id') == '{{$item->id}}') selected
+                <option value="{{$item->id}}" @if('prefecture_id') == '{{$item->id}}'
                 @endif >
                 {{$item->prefecture_name}}</option>
                 @endforeach

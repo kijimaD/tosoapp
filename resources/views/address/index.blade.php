@@ -16,8 +16,8 @@
             <div class="card-header bg-white">
                 {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
-                    <a class="btn btn-outline-dark btn-sm" href="/address/edit?id={{Crypt::encrypt($item->id)}}">修正</a>
-                    <a class="btn btn-outline-dark btn-sm" href="/address/del?id={{Crypt::encrypt($item->id)}}">削除</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/address/edit?id={{Crypt::encrypt('address_id' . $item->id)}}">修正</a>
+                    <a class="btn btn-outline-dark btn-sm" href="/address/del?id={{Crypt::encrypt('address_id' . $item->id)}}">削除</a>
                 </div>
             </div>
             <div class="card-body">
@@ -34,8 +34,7 @@
                 @else
                 <form action="/address/default/add" method="post">
                     {{ csrf_field() }}
-                    {{session()->put(['addressbook_id'=>$item->id])}}
-                    {{session()->put(['user_id'=>$user->id])}}
+                    <input type="hidden" name="id" value="{{Crypt::encrypt('addressbook_id' . $item->id)}}">
                     <input type="submit" value="既定にする" class="btn btn-outline-dark" />
                 </form>
                 @endif
