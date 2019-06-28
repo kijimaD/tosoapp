@@ -34,8 +34,7 @@
                 @else
                 <form action="/bank/default/add" method="post">
                     {{ csrf_field() }}
-                    {{session()->put(['bank_id'=>$item->id])}}
-                    {{session()->put(['user_id'=>$user->id])}}
+                    <input type="hidden" name="id" value="{{Crypt::encrypt('bank_id' . $item->id)}}">
                     <input type="submit" value="既定にする" class="btn btn-outline-dark" />
                 </form>
                 @endif

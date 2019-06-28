@@ -69,17 +69,16 @@ class BankService
         Bank::find($bank_id)->delete();
     }
 
-    // 要注意: バグがある！
-    public function defaultCreate()
+    public function defaultCreate($request)
     {
-        $bank_id = session()->pull('bank_id');
-        $user_id = session()->pull('user_id');
-        Defaultbank::where('user_id', $user_id)->delete();
+        $user = Auth::user();
+        $bank_id = get_salted_id($request, 'bank_id');
+        Defaultbank::where('user_id', $user->id)->delete();
 
         $default_bank = new Defaultbank;
         $form = [
           'bank_id' => $bank_id,
-          'user_id' => $user_id,
+          'user_id' => $user->id,
           'created_at' => now(),
         ];
         $default_bank->fill($form)->save();

@@ -72,7 +72,6 @@ class AddressbookService
         Addressbook::find($addressbook_id)->delete();
     }
 
-    // 注意!:バグがある
     public function defaultCreate($request)
     {
         $user = Auth::user();

@@ -58,7 +58,7 @@ class BankController extends Controller
 
     public function defaultCreate(Request $request)
     {
-        $this->service->defaultCreate();
+        $this->service->defaultCreate($request);
         return redirect('/bank');
     }
 }
