@@ -13,7 +13,7 @@ use App\Shippingcost;
 class AssessmentService
 {
 
-  // 追加ビューに必要な値を返す。
+    // 追加ビューに必要な値を返す。
     public function add($request)
     {
         $entry_id = get_salted_id($request, 'entry_id');
@@ -147,9 +147,9 @@ class AssessmentService
         $entry_id = session()->pull('entry_id');
         $form = $request->all();
         $form += array('entry_id'=>$entry_id); // $entry_idはall()に入れらないので、後付けする。
-        // Memo: メール送信のデバッグ用にDBに格納しない！
-        // $assessmentdone = new Assessmentdone;
-        // $assessmentdone->fill($form)->save();
+        // Memo: メール送信のデバッグ用にDBに格納しないしないときはコメントアウト！
+        $assessmentdone = new Assessmentdone;
+        $assessmentdone->fill($form)->save();
         $this->done_send($entry_id);
     }
 
