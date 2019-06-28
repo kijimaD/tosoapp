@@ -38,7 +38,7 @@
                         @elseif(isset($item->assessmentdone->id))
                             <form action="/paymentdone/add" method="post">
                                 {{ csrf_field() }}
-                                {{session()->put(['entry_id'=>$item->id])}}
+                                <input type="hidden" name="id" value="{{Crypt::encrypt('entry_id' . $item->id)}}">
                                 <td><input type="submit" value="入金が完了した" /></td>
                             </form>
                             @else

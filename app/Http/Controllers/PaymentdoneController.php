@@ -22,7 +22,7 @@ class PaymentdoneController extends Controller
 
     public function create(Request $request)
     {
-        $this->service->create();
+        $this->service->create($request);
         return redirect('paymentdone/admin_index');
     }
 }

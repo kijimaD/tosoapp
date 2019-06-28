@@ -16,9 +16,9 @@ class PaymentdoneService
         return $param;
     }
 
-    public function create()
+    public function create($request)
     {
-        $entry_id = session()->pull('entry_id');
+        $entry_id = get_salted_id($request, 'entry_id');
         $paymentdones = new Paymentdone;
         $paymentdones->fill([
           'entry_id' => $entry_id,
