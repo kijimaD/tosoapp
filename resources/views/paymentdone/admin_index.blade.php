@@ -21,12 +21,15 @@
                 <td>{{$item->id}}</td>
                 <td>￥{{$item->assessment->sum_price}}</td>
                 <td>{{$item->paymentway->payment_way}}</td>
+
+                {{-- 支払い方法がギフト券の場合 --}}
                 @if($item->paymentway->id =='2')
                     <td>{{$item->user->email}}</td>
                     @else
                     <td></td>
                     @endif
 
+                    {{-- 支払い方法が銀行口座の場合 --}}
                     @if($item->paymentway->id == '1')
                         <td>{{$item->paymentbank->bank->bank_name}}{{$item->paymentbank->bank->bank_branch}}{{$item->paymentbank->bank->bank_type}}{{$item->paymentbank->bank->bank_num}}</td>
                         @else

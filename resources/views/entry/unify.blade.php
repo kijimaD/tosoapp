@@ -64,7 +64,7 @@
                         @endif
 
                         <td>{{$item->created_at}}</td>
-                        <td><a href="/receipt/add?id={{Crypt::encrypt($item->assessment->id)}}">入庫</td>
+                        <td><a href="/receipt/add?id={{Crypt::encrypt('assessment_id' . $item->assessment->id)}}">入庫</td>
 
                         {{-- <td><a href="/entry/edit?id={{$item->id}}">修正</a></td>
                         <td><a href="/entry/del?id={{$item->id}}">消去</a></td> --}}

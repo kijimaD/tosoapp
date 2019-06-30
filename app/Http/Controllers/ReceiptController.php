@@ -5,61 +5,39 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Service\ReceiptService;
 use App\Receipt;
 use App\Assessmentdetail;
 use App\Entry;
 
 class ReceiptController extends Controller
 {
+    protected $service;
+
+    public function __construct(ReceiptService $service)
+    {
+        $this->service = $service;
+    }
+
     public function admin_index(Request $request)
     {
-        $items = Receipt::get();
-        $param = ['items' => $items];
-        return view('receipt.admin_index', $param);
+        return view('receipt.admin_index', $this->service->admin_index());
     }
 
     public function add(Request $request)
     {
-        $assessment_id = \Crypt::decrypt($request->id);
-        $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
-        $param = ['items' => $items];
-        return view('receipt.add', $param);
+        return view('receipt.add', $this->service->add($request));
     }
 
-    // あったら新規追加型のcreate
+    // 要追加:個別editやdeleteを実装する
     public function create(Request $request)
     {
-        foreach (array_map(
-            null,
-            $request->approvegoods_id,
-            $request->goods_id,
-            $request->warehouse_id,
-            $request->rack_id,
-            $request->stage_id,
-            )
-      as
-      [$val_approvegoods_id,
-       $val_goods_id,
-       $val_warehouse_id,
-       $val_rack_id,
-       $val_stage_id,
-     ]) {
-            $storagestructure_id = DB::table('storageStructures')->insertGetId(
-                [
-              'warehouse_id' => $val_warehouse_id,
-              'rack_id' => $val_rack_id,
-              'stage_id' => $val_stage_id,
-              ]
-            );
-
-            $receipt_id = DB::table('receipts')->insertGetId(
-                [
-             'storagestructure_id' => $storagestructure_id,
-             'approvegoods_id' => $val_approvegoods_id,
-             'goods_id' => $val_goods_id,
-         ]
-       );
-        }
+        $this->service->create($request);
         return redirect('receipt/admin_index');
+    }
+
+    public function edit(Request $request)
+    {
+        return view('receipt.edit', $this->service->edit($request));
     }
 }
