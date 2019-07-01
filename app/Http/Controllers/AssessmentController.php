@@ -64,7 +64,6 @@ class AssessmentController extends Controller
     public function assessmentdone_create(Request $request)
     {
         $this->service->done_create($request);
-        session()->flash('done_message', '送信しました');
         return redirect('assessment/admin_index');
     }
 }

@@ -149,6 +149,7 @@ class ApproveService
         $assessment = \App\Assessment::find($assessment_id);
         $user = $assessment->entry->user;
 
+        // 注意:臨時的にID=1の管理者ユーザーに送信している！！
         $admin = \App\Admin::find('1');
         $admin->SendApproveDone_admin($user->name);
     }
