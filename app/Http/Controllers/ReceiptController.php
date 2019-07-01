@@ -29,15 +29,21 @@ class ReceiptController extends Controller
         return view('receipt.add', $this->service->add($request));
     }
 
-    // 要追加:個別editやdeleteを実装する
     public function create(Request $request)
     {
         $this->service->create($request);
         return redirect('receipt/admin_index');
     }
 
+    // 要追加:個別editやdeleteを実装する
     public function edit(Request $request)
     {
         return view('receipt.edit', $this->service->edit($request));
+    }
+
+    public function update(Request $request)
+    {
+        $this->service->update($request);
+        return redirect('receipt/admin_index');
     }
 }

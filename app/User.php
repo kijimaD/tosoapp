@@ -43,4 +43,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new \App\Notifications\SendAssessmentDone($user_name, $assessment_id));
         // サービスクラスから受け取り、Notificationの継承クラスに送る。メールアドレスが自動で追加される。
     }
+
+    public function SendApproveDone($user_name)
+    {
+        $this->notify(new \App\Notifications\SendApproveDone($user_name));
+    }
 }

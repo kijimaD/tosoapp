@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Assessmentdetail;
 use App\Receipt;
+use App\Storagestructure;
 use Crypt;
 
 class ReceiptService
@@ -66,5 +67,13 @@ class ReceiptService
         $form = Receipt::find($receipt_id);
         $param = ['form' => $form];
         return $param;
+    }
+
+    // 表示時とinsert時で使用モデルが異なる。
+    public function update($request)
+    {
+        $form = $request->all();
+        $receipt = Storagestructure::find(session()->pull('storagestructure_id'));
+        $receipt->fill($form)->save();
     }
 }

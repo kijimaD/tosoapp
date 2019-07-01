@@ -10,6 +10,7 @@ use Crypt;
 
 class ApproveService
 {
+    // CRUD====================
     public function add($request)
     {
         $assessment_id = get_salted_id($request, 'assessment_id');
@@ -39,7 +40,14 @@ class ApproveService
         // 計算結果を格納する
         // 改善:引数の渡し方がヘン？うしろのメソッドに続けるために延々と引数が…。
         $this->create_calc_result($assessment_id, $assessment);
+
+        // 了承通知をユーザに送信する
+        $this->done_send($assessment_id);
+
+        // 通知を管理者に通知する
     }
+
+    // Utility====================
 
     // 承認、返送テーブルへ格納
     public function create_detail_part($request)
@@ -123,5 +131,14 @@ class ApproveService
           'created_at' => now(),
         ];
         $assessment->fill($val)->save();
+    }
+
+    // 案件ユーザに了承確認通知を送信する
+    public function done_send($assessment_id)
+    {
+        $assessment = \App\Assessment::find($assessment_id);
+        // ダミー
+        $user = $assessment->entry->user;
+        $user->SendApproveDone($user->name);
     }
 }

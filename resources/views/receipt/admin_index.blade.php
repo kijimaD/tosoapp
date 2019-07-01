@@ -33,8 +33,8 @@
                             <span class="text-danger">返送</span>
                             @endif --}}
                 </td>
-                {{-- <td><a href="/assessment/edit?id={{$item->id}}">修正</a></td>
-                <td><a href="/assessment/del?id={{$item->id}}">消去</a></td> --}}
+                <td><a href="/receipt/edit?id={{Crypt::encrypt('receipt_id' . $item->id)}}">修正</a></td>
+                <td><a href="/receipt/del?id={{Crypt::encrypt('receipt_id' . $item->id)}}">消去</a></td>
             </tr>
             @endforeach
         </tbody>
