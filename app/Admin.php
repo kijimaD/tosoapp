@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Authenticatable
 {
@@ -26,4 +27,9 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function SendApproveDone_admin($user_name)
+    {
+        $this->notify(new \App\Notifications\SendApproveDone_admin($user_name));
+    }
 }

@@ -38,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function SendAssessmentDone($user_name, $assessment_id) //送信テスト。
+    public function SendAssessmentDone($user_name, $assessment_id)
     {
         $this->notify(new \App\Notifications\SendAssessmentDone($user_name, $assessment_id));
         // サービスクラスから受け取り、Notificationの継承クラスに送る。メールアドレスが自動で追加される。

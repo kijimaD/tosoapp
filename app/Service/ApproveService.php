@@ -45,6 +45,7 @@ class ApproveService
         $this->done_send($assessment_id);
 
         // 通知を管理者に通知する
+        $this->done_send_admin($assessment_id);
     }
 
     // Utility====================
@@ -140,5 +141,15 @@ class ApproveService
         // ダミー
         $user = $assessment->entry->user;
         $user->SendApproveDone($user->name);
+    }
+
+    // 管理者ユーザに了承完了を通知する
+    public function done_send_admin($assessment_id)
+    {
+        $assessment = \App\Assessment::find($assessment_id);
+        $user = $assessment->entry->user;
+
+        $admin = \App\Admin::find('1');
+        $admin->SendApproveDone_admin($user->name);
     }
 }
