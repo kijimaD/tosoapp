@@ -3,7 +3,6 @@
 @section('title',' 履歴一覧')
 
 @section('content')
-<a href="/entry/add">新規追加</a>
 <div class="container">
     <div class="row">
         @foreach ($items as $item)

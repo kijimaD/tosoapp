@@ -31,20 +31,42 @@ $day6 = date('Y/m/d',strtotime("+6 day"));
 $day7 = date('Y/m/d',strtotime("+7 day"));
 ?>
 
+<style type="text/css">
+    #payment_firstbox {
+        display: none;
+    }
+
+    #payment_secondbox {
+        display: none;
+    }
+
+    #shipping_firstbox {
+        display: none;
+    }
+
+    #shipping_secondbox {
+        display: none;
+    }
+
+    #shipping_thirdbox {
+        display: none;
+    }
+</style>
+
 <script>
+
     function payment(){
   	radio = document.getElementsByName('paymentway_id')
     document.getElementById('payment_firstbox').style.display = "none";
   	document.getElementById('payment_secondbox').style.display = "none";
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
-  		document.getElementById('payment_firstbox').style.display = "";
+  		document.getElementById('payment_firstbox').style.display = "inline";
   		document.getElementById('payment_secondbox').style.display = "none";
   	}else if(radio[1].checked) {
   		//B.2つ目が選択されたら下記を実行
   		document.getElementById('payment_firstbox').style.display = "none";
-  		document.getElementById('payment_secondbox').style.display = "";
-      Field.clear('bank_radio');
+  		document.getElementById('payment_secondbox').style.display = "inline";
   	}
   }
 
@@ -55,28 +77,20 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
   	document.getElementById('shipping_thirdbox').style.display = "none";
   	if(radio[0].checked) {
   		//A.1つ目が選択されたら下記を実行
-  		document.getElementById('shipping_firstbox').style.display = "";
+  		document.getElementById('shipping_firstbox').style.display = "inline";
   		document.getElementById('shipping_secondbox').style.display = "none";
   		document.getElementById('shipping_thirdbox').style.display = "none";
   	}else if(radio[1].checked) {
   		//B.2つ目が選択されたら下記を実行
   		document.getElementById('shipping_firstbox').style.display = "none";
-  		document.getElementById('shipping_secondbox').style.display = "";
+  		document.getElementById('shipping_secondbox').style.display = "inline";
   		document.getElementById('shipping_thirdbox').style.display = "none";
   	}else if(radio[2].checked) {
       document.getElementById('shipping_firstbox').style.display = "none";
   		document.getElementById('shipping_secondbox').style.display = "none";
-  		document.getElementById('shipping_thirdbox').style.display = "";
+  		document.getElementById('shipping_thirdbox').style.display = "inline";
     }
   }
-
-  // window.onload = shipping;// は上書きされてしまうので以下を使用する。
-window.addEventListener('load', function(){
-payment();
-});
-window.addEventListener('load', function(){
-shipping();
-});
 
 </script>
 
@@ -89,28 +103,30 @@ shipping();
         <div>
             <input type="radio" name="paymentway_id" value="1" onclick="payment();" />銀行口座<br>
             <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
-            <div id="payment_firstbox" class="row">
-                @foreach($banks as $bank)
-                <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
-                    <div class="card-header bg-white">
-                        <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" />
+            <div id="payment_firstbox" class="">
+                <div class="row">
+                    @foreach($banks as $bank)
+                    <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
+                        <div class="card-header bg-white">
+                            <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" />
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                {{$bank->bank_name}}
+                                {{$bank->bank_branch}}
+                                {{$bank->bank_type}}
+                                {{$bank->bank_num}}
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            Footer
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>
-                            {{$bank->bank_name}}
-                            {{$bank->bank_branch}}
-                            {{$bank->bank_type}}
-                            {{$bank->bank_num}}
-                        </p>
-                    </div>
-                    <div class="card-footer bg-white">
-                        Footer
-                    </div>
-                </div>
-                @endforeach
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <p><a href="/bank/add">新規追加する</a></p>
+                    @endforeach
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <p><a href="/bank/add">新規追加する</a></p>
+                        </div>
                     </div>
                 </div>
             </div>

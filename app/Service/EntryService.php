@@ -14,7 +14,10 @@ class EntryService
     public function index()
     {
         $user = Auth::user();
-        $items = Entry::where('user_id', 'like', $user['id'])->get();
+        $items = Entry::where('user_id', $user->id)
+        ->orderBy('id', 'desc')
+        ->get();
+
         $param = ['items' => $items, 'user' => $user];
         return $param;
     }
