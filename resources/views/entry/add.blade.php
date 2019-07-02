@@ -208,11 +208,11 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
             </div>
 
             <div id="shipping_secondbox">
-                iii
+                <p>iii</p>
             </div>
 
             <div id="shipping_thirdbox">
-                uuu
+                <p>uuu</p>
             </div>
         </div>
     </div>
