@@ -15,6 +15,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            // 遷移前の、直前にクリックしたURLはどうやって保存する？
+            // Session::put('intended', URL::full());
+            // session()->put(['intended'=>url()->previous()]);
             return route('login');
         }
     }
