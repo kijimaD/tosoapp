@@ -31,7 +31,11 @@ class BankController extends Controller
     public function create(Request $request)
     {
         $this->service->create($request);
-        return redirect('/bank');
+        if ($request->session()->pull('origin') == 'entry') {
+            return redirect('/entry/add');
+        } else {
+            return redirect('/bank');
+        }
     }
 
     public function edit(Request $request)

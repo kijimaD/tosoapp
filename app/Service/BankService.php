@@ -15,6 +15,7 @@ class BankService
 
     public function index()
     {
+        session()->forget('origin');
         $user = Auth::user();
         $items = Bank::where('user_id', 'like', $user["id"])->get();
         $param = ['items' => $items, 'user' => $user];
