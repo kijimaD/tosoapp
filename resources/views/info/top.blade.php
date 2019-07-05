@@ -45,5 +45,4 @@
         </p>
     </div>
 </div>
-<a href="{{route('user.mypage',['id' => Crypt::encrypt('1') ])}}">パラメータ暗号化テスト</a>
 @endsection

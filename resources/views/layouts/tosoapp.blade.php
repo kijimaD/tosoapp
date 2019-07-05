@@ -10,13 +10,17 @@
         body {
             /* background-color: silver; */
         }
+        h2 {
+          border-bottom: solid 1px #343A40;
+          /* margin-bottom: 16px; */
+        }
 
         li {
-            list-style: none;
+          list-style: none;
         }
 
         .table-responsive th {
-            white-space: nowrap;
+          white-space: nowrap;
         }
 
         .page-footer a:link{
@@ -47,50 +51,54 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">リンク</a>
                         </li> --}}
-                        <li class="nav-item dropdown">
+
+                        {{-- <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ドロップダウン</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('user.mypage')}}">リンク1</a>
-                                <a class="dropdown-item" href="#">リンク2</a>
-                                <a class="dropdown-item" href="#">リンク3</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
+                        <a class="dropdown-item" href="#">リンク2</a>
+                        <a class="dropdown-item" href="#">リンク3</a>
+                </div>
+                </li> --}}
+
+                {{-- <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インフォ</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">リンク2</a>
                                 <a class="dropdown-item" href="#">リンク3</a>
                             </div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(Auth::check())
-                                {{ \Auth::user()->name}}
-                                @else
-                                ゲスト
-                                @endif
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @if(Auth::check())
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                       document.getElementById('logout-form').submit();">
-                                    {{ __('ログアウト') }}
-                                </a>
+                        </li> --}}
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                                @else
-                                <a class="dropdown-item" href="{{ route('login')}}">ログイン</a>
-                                <a class="dropdown-item" href="{{ route('register')}}">会員登録</a>
-                                <a class="dropdown-item" href="">*パスワードを忘れた</a>
-                            </div>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        @if(Auth::check())
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ \Auth::user()->name}}
+                            @else
+                            <a class="text-white" href="{{ route('login')}}">ログイン</a>
+                            <a class="text-white">｜</a>
+                            <a class="text-white" href="{{ route('register')}}">新規登録</a>
                             @endif
-                        </li>
-                    </ul>
-                </div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @if(Auth::check())
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                {{ __('ログアウト') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            @else
+
+                            <a class="dropdown-item" href="{{ route('register')}}">会員登録</a>
+                        </div>
+                        @endif
+                    </li>
+                </ul>
+            </div>
             </div>
         </nav>
     </header>
@@ -112,8 +120,12 @@
                 <div class="col-md-6 mt-md-0 mt-3">
 
                     <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
+                    <h5 class="text-uppercase">とそブックス</h5>
+                    <p>送信先住所:〒890-0081
+                        鹿児島県鹿児島市<br>
+                        唐湊4丁目14-26
+                        塩満アパート102号室<br>
+                    </p>
 
                 </div>
                 <!-- Grid column -->

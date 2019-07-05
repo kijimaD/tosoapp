@@ -99,7 +99,9 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     {{session()->put(['user_id'=>$user->id])}}
 
     <div class="form-group">
-        <label for="payment_way" class="col-form-label text-md-left">入金方法</label>
+        <label for="payment_way" class="col-form-label text-md-left">
+            <h5>▶入金方法</h5>
+        </label>
         <div>
             <input type="radio" name="paymentway_id" value="1" onclick="payment();" />銀行口座<br>
             <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
@@ -119,7 +121,7 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
                             </p>
                         </div>
                         <div class="card-footer bg-white">
-                            Footer
+
                         </div>
                     </div>
                     @endforeach
@@ -131,17 +133,20 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
                 </div>
             </div>
             <div id="payment_secondbox">
-                <p>これはamazonギフト券です</p>
+                <p>登録したeメールアドレスにamazonギフト券を送信します。</p>
+
             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="shipping_way" class="col-form-label text-md-left">輸送方法</label>
+        <label for="shipping_way" class="col-form-label text-md-left">
+            <h5>▶輸送方法</h5>
+        </label>
         <div>
             <input type="radio" name="shippingway_id" value="1" onclick="shipping()" />集荷<br>
-            <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br>
             <input type="radio" name="shippingway_id" value="3" onclick="shipping()" />自分で送る
+            {{-- <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br> --}}
 
             <div id="shipping_firstbox" class="">
                 <div class="row">
@@ -208,7 +213,7 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
             </div>
 
             <div id="shipping_secondbox">
-                <p>iii</p>
+                <p>当店住所に、着払いにてお送りください</p>
             </div>
 
             <div id="shipping_thirdbox">
