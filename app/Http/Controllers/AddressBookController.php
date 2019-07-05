@@ -30,8 +30,8 @@ class AddressBookController extends Controller
     public function create(Request $request)
     {
         $this->service->create($request);
-        if ($request->f_entry == '1') {
-            return view('entry.add', $this->service->add());
+        if ($request->session()->pull('origin') == 'entry') {
+            return redirect('/entry/add');
         } else {
             return redirect('/address');
         }

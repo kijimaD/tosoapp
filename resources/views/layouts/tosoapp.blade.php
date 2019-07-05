@@ -143,10 +143,10 @@
                             <a class="" href="{{route('user.mypage')}}">マイページ</a>
                         </li>
                         <li>
-                            <a class="" href="/address">住所管理</a>
+                            <a class="" href="/bank">口座管理</a>
                         </li>
                         <li>
-                            <a class="" href="/bank">口座管理</a>
+                            <a class="" href="/address">住所管理</a>
                         </li>
                         <li>
                             <a class="" href="/entry/add">買取申込</a>

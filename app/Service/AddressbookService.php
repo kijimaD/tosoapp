@@ -12,6 +12,7 @@ class AddressbookService
     // CRUD ==========
     public function index()
     {
+        session()->forget('origin');
         $user = Auth::user();
         $items = Addressbook::where('user_id', $user["id"])->get();
         $param = ['items' => $items, 'user' => $user];
@@ -28,7 +29,9 @@ class AddressbookService
 
     public function create($request)
     {
+        session()->forget('origin');
         $user_id = session()->pull('user_id');
+
         $address = new Addressbook;
         $form = [
           'zip' => $request->zip,

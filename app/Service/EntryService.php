@@ -31,6 +31,7 @@ class EntryService
 
     public function add()
     {
+        session()->put('origin', 'entry');
         $user = Auth::user();
         $banks = Bank::where('user_id', $user["id"])->get();
         $addresses = Addressbook::where('user_id', $user["id"])->get();
