@@ -13,8 +13,12 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-                    You are logged in!
+                    <p>
+                        ログインしました。
+                    </p>
+                    <p>
+                        <a href="/user/mypage">マイページ</a>
+                    </p>
                 </div>
             </div>
         </div>

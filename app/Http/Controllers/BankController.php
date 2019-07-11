@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateBankRequest;
 use App\Service\BankService;
 use App\Bank;
 use App\Defaultbank;
@@ -28,7 +29,7 @@ class BankController extends Controller
         return view('bank.add', $this->service->add());
     }
 
-    public function create(Request $request)
+    public function create(CreateBankRequest $request)
     {
         $this->service->create($request);
         if ($request->session()->pull('origin') == 'entry') {

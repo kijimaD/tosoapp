@@ -230,7 +230,7 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     </div> --}}
 
     <div class="form-group">
-        <button class="btn btn-primary" type="submit">送信</button>
+        <button class="btn btn-primary" type="submit">送信 </button>
     </div>
 </form>
 
