@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateAddressRequest;
 use App\Service\AddressbookService;
 use App\UserAddress;
 
@@ -27,7 +28,7 @@ class AddressBookController extends Controller
         return view('address.add', $this->service->add());
     }
 
-    public function create(Request $request)
+    public function create(CreateAddressRequest $request)
     {
         $this->service->create($request);
         if ($request->session()->pull('origin') == 'entry') {
