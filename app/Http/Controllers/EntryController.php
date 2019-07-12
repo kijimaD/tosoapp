@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateEntryRequest;
 use App\Service\EntryService;
-use App\Bank;
-use App\Entry;
-use App\Addressbook;
-use App\Paymentway;
-use App\Shippingway;
 
 class EntryController extends Controller
 {
@@ -35,7 +31,7 @@ class EntryController extends Controller
         return view('entry.add', $this->service->add());
     }
 
-    public function create(Request $request)
+    public function create(CreateEntryRequest $request)
     {
         $this->service->create($request);
         return redirect('/entry');

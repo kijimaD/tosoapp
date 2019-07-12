@@ -55,8 +55,7 @@
             </span>
             @enderror --}}
 
-            {{-- 注意:bootstrapのバリデーションに数字がない？ので、リクエストバリデーションでフィードバックしている。 --}}
-
+            {{-- 注意:bootstrapのバリデーションに数字判別がない？ので、リクエストバリデーションでフィードバックしている。 --}}
             @if($errors->has('bank_num'))
                 {{-- デザインがよくない --}}
                 <strong>{{$errors->first('bank_num')}}</strong>

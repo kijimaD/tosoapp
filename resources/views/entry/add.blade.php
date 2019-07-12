@@ -92,6 +92,12 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
     }
   }
 
+// 注意:バリデーション後のold用に、読み込み時に表示させる。
+window.onload = function(){
+  payment();
+  shipping();
+};
+
 </script>
 
 <form action="/entry/add" method="post">
@@ -100,17 +106,22 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">
-            <h5>▶入金方法</h5>
+            <h5>入金方法</h5>
         </label>
         <div>
-            <input type="radio" name="paymentway_id" value="1" onclick="payment();" />銀行口座<br>
-            <input type="radio" name="paymentway_id" value="2" onclick="payment();" />アマゾンギフト券
+            <input type="radio" name="paymentway_id" value="1" onclick="payment();" @if(old('paymentway_id') == '1') checked
+            @endif />銀行口座<br>
+            <input type="radio" name="paymentway_id" value="2" onclick="payment();" @if(old('paymentway_id') == '2') checked
+            @endif />アマゾンギフト券
+
+            {{-- 口座部分 --}}
             <div id="payment_firstbox" class="">
                 <div class="row">
                     @foreach($banks as $bank)
                     <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                         <div class="card-header bg-white">
-                            <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" />
+                            <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
+                            @endif />
                         </div>
                         <div class="card-body">
                             <p>
@@ -132,6 +143,8 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
                     </div>
                 </div>
             </div>
+
+            {{-- ギフト券部分 --}}
             <div id="payment_secondbox">
                 <p>登録したeメールアドレスにamazonギフト券を送信します。</p>
 
@@ -141,11 +154,14 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
 
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">
-            <h5>▶輸送方法</h5>
+            <h5>輸送方法</h5>
         </label>
         <div>
-            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" />集荷<br>
-            <input type="radio" name="shippingway_id" value="3" onclick="shipping()" />自分で送る
+            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" @if(old('shippingway_id') == '1') checked onload="shipping()"
+            @endif />集荷<br>
+            <input type="radio" name="shippingway_id" value="3" onclick="shipping()" @if(old('shippingway_id') == '3') checked
+            onload="shipping()"
+            @endif />自分で送る
             {{-- <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br> --}}
 
             <div id="shipping_firstbox" class="">
@@ -153,7 +169,8 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
                     @foreach($addresses as $address)
                     <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                         <div class="card-header bg-white">
-                            <input type="radio" name="addressBook_id" value="{{$address->id}}" />
+                            <input type="radio" name="addressBook_id" value="{{$address->id}}" @if(old('addressBook_id') == $address->id) checked
+                            @endif />
                         </div>
                         <div class="card-body">
                             <p>
@@ -207,8 +224,9 @@ $day7 = date('Y/m/d',strtotime("+7 day"));
                 <div class="form-group">
                     <label for="box_num" class="col-form-label text-md-left">箱数</label>
                     <div>
-                        <input type="num" name="box_num" value="1" />
+                        <input type="number" name="box_num" value="{{old('box_num')}}" />
                     </div>
+
                 </div>
             </div>
 
