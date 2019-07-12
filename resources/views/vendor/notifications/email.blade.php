@@ -45,7 +45,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('これは送信テスト用の文面です。'),<br>{{ config('app.name') }}
+@lang('これは送信テスト用の文面です。')<br>{{ config('app.name') }}
     @endif
 
     {{-- Subcopy --}}
