@@ -334,7 +334,7 @@ class AddForeignKey extends Migration
             $table->integer('approvegoods_id')->unsigned();
             $table->foreign('approvegoods_id')
             ->references('id')
-            ->on('approvegoods')
+            ->on('approveGoods')
             ->onDelete('cascade');
 
             $table->integer('goods_id')->unsigned();
