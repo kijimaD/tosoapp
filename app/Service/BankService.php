@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Crypt;
 use App\Bank;
-use App\DefaultBank;
+use App\Defaultbank;
 
 class BankService
 {
