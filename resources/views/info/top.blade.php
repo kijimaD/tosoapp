@@ -10,6 +10,10 @@
     div#third.jumbotron {
         background: url("../img/jumbotron4.jpg") no-repeat center center;
     }
+
+    h2 {
+        display: none;
+    }
 </style>
 
 @extends('layouts.tosoapp')
