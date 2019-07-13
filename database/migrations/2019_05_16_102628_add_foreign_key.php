@@ -29,7 +29,7 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
-        Schema::table('defaultBanks', function (Blueprint $table) {
+        Schema::table('defaultbanks', function (Blueprint $table) {
             $table->integer('bank_id')->unsigned();
             $table->foreign('bank_id')
             ->references('id')
