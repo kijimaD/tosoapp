@@ -109,46 +109,61 @@ window.onload = function(){
             <h5>入金方法</h5>
         </label>
         <div>
-            <input type="radio" name="paymentway_id" value="1" onclick="payment();" @if(old('paymentway_id') == '1') checked
-            @endif />銀行口座<br>
-            <input type="radio" name="paymentway_id" value="2" onclick="payment();" @if(old('paymentway_id') == '2') checked
-            @endif />アマゾンギフト券
-
-            {{-- 口座部分 --}}
-            <div id="payment_firstbox" class="">
-                <div class="row">
-                    @foreach($banks as $bank)
-                    <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
-                        <div class="card-header bg-white">
-                            <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
-                            @endif />
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                {{$bank->bank_name}}
-                                {{$bank->bank_branch}}
-                                {{$bank->bank_type}}
-                                {{$bank->bank_num}}
-                            </p>
-                        </div>
-                        <div class="card-footer bg-white">
-
-                        </div>
-                    </div>
-                    @endforeach
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <p><a href="/bank/add">新規追加する</a></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-check">
+                <input type="radio" name="paymentway_id" value="1" onclick="payment();" @if(old('paymentway_id') == '1') checked
+                @endif />
+                <label class="form-check-label" for="paymentway_id">銀行口座</label>
             </div>
 
-            {{-- ギフト券部分 --}}
-            <div id="payment_secondbox">
-                <p>登録したeメールアドレスにamazonギフト券を送信します。</p>
-
+            <div class="form-check">
+                <input type="radio" name="paymentway_id" value="2" onclick="payment();" @if(old('paymentway_id') == '2') checked
+                @endif />
+                <label class="form-check-label" for="paymentway_id">アマゾンギフト券
             </div>
+
+            @if($errors->has('paymentway_id'))
+                <div class="text-danger">{{$errors->first('paymentway_id')}}</div>
+                @endif
+
+                @if($errors->has('paymentbank_id'))
+                    <div class="text-danger">{{$errors->first('paymentbank_id')}}</div>
+                    @endif
+
+                    {{-- 口座部分 --}}
+                    <div id="payment_firstbox" class="">
+                        <div class="row">
+                            @foreach($banks as $bank)
+                            <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
+                                <div class="card-header bg-white">
+                                    <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
+                                    @endif />
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        {{$bank->bank_name}}
+                                        {{$bank->bank_branch}}
+                                        {{$bank->bank_type}}
+                                        {{$bank->bank_num}}
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-white">
+
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p><a href="/bank/add">新規追加する</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- ギフト券部分 --}}
+                    <div id="payment_secondbox">
+                        <p>登録したeメールアドレスにamazonギフト券を送信します。</p>
+
+                    </div>
         </div>
     </div>
 
@@ -157,86 +172,110 @@ window.onload = function(){
             <h5>輸送方法</h5>
         </label>
         <div>
-            <input type="radio" name="shippingway_id" value="1" onclick="shipping()" @if(old('shippingway_id') == '1') checked onload="shipping()"
-            @endif />集荷<br>
-            <input type="radio" name="shippingway_id" value="3" onclick="shipping()" @if(old('shippingway_id') == '3') checked
-            onload="shipping()"
-            @endif />自分で送る
+            <div class="form-check">
+                <input type="radio" name="shippingway_id" value="1" onclick="shipping()" @if(old('shippingway_id') == '1') checked onload="shipping()"
+                @endif />
+                <label class="form-check-label" for="shippingway_id">集荷</label>
+            </div>
+
+            <div class="form-check">
+                <input type="radio" name="shippingway_id" value="3" onclick="shipping()" @if(old('shippingway_id') == '3') checked
+                onload="shipping()"
+                @endif />
+                <label class="form-check-label" for="shippingway_id">自分で送る</label>
+            </div>
             {{-- <input type="radio" name="shippingway_id" value="2" onclick="shipping()" />専用ロッカー<br> --}}
 
-            <div id="shipping_firstbox" class="">
-                <div class="row">
-                    @foreach($addresses as $address)
-                    <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
-                        <div class="card-header bg-white">
-                            <input type="radio" name="addressBook_id" value="{{$address->id}}" @if(old('addressBook_id') == $address->id) checked
-                            @endif />
+            @if($errors->has('shippingway_id'))
+                <div class="text-danger">{{$errors->first('shippingway_id')}}</div>
+                @endif
+
+                @if($errors->has('addressBook_id'))
+                    <div class="text-danger">{{$errors->first('addressBook_id')}}</div>
+                    @endif
+
+                    <div id="shipping_firstbox" class="">
+                        <div class="row">
+                            @foreach($addresses as $address)
+                            <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
+                                <div class="card-header bg-white">
+                                    <input type="radio" name="addressBook_id" value="{{$address->id}}" @if(old('addressBook_id') == $address->id) checked
+                                    @endif />
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        〒{{$address->zip }}<br>
+                                        {{$address->prefecture->prefecture_name}}<br>
+                                        {{$address->city}}<br>
+                                        {{$address->address}}<br>
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    Footer
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <p><a href="/address/add">新規追加する</a></p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p>
-                                〒{{$address->zip }}<br>
-                                {{$address->prefecture->prefecture_name}}<br>
-                                {{$address->city}}<br>
-                                {{$address->address}}<br>
-                            </p>
+
+                        <div class="form-group">
+                            <label for="collection_date" class="control-label col-xs-2">集荷日</label>
+                            <div class="">
+                                <select class="form-control" id="number" name="collection_day">
+                                    <option value="{{$day1}}">{{$day1}}({{$week[$date1]}})</option>
+                                    <option value="{{$day2}}">{{$day2}}({{$week[$date2]}})</option>
+                                    <option value="{{$day3}}">{{$day3}}({{$week[$date3]}})</option>
+                                    <option value="{{$day4}}">{{$day4}}({{$week[$date4]}})</option>
+                                    <option value="{{$day5}}">{{$day5}}({{$week[$date5]}})</option>
+                                    <option value="{{$day6}}">{{$day6}}({{$week[$date6]}})</option>
+                                    <option value="{{$day7}}">{{$day7}}({{$week[$date7]}})</option>
+                                </select>
+                            </div>
+                            @if($errors->has('collection_day'))
+                                <div class="text-danger">{{$errors->first('collection_day')}}</div>
+                                @endif
                         </div>
-                        <div class="card-footer bg-white">
-                            Footer
+
+                        <div class="form-group">
+                            <label for="time_zone" class="control-label col-xs-2">集荷時間帯</label>
+                            <div class="">
+                                <select class="form-control" name="collection_time">
+                                    <option value="指定なし">指定なし</option>
+                                    <option value="午前中">午前中</option>
+                                    <option value="~13時">13時まで</option>
+                                    <option value="14時~16時">14時から16時まで</option>
+                                    <option value="16時~18時">16時から18時まで</option>
+                                    <option value="17時~18時30分">17時から18時30分まで</option>
+                                </select>
+                            </div>
+                            @if($errors->has('time_zone'))
+                                <div class="text-danger">{{$errors->first('time_zone')}}</div>
+                                @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="box_num" class="col-form-label text-md-left">箱数</label>
+                            <div>
+                                <input type="number" name="box_num" value="{{old('box_num')}}" />
+                            </div>
+
+                            @if($errors->has('box_num'))
+                                <div class="text-danger">{{$errors->first('box_num')}}</div>
+                                @endif
                         </div>
                     </div>
-                    @endforeach
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <p><a href="/address/add">新規追加する</a></p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="collection_date" class="control-label col-xs-2">集荷日</label>
-                    <div class="">
-                        <select class="form-control" id="number" name="collection_day">
-                            <option value="{{$day1}}">{{$day1}}({{$week[$date1]}})</option>
-                            <option value="{{$day2}}">{{$day2}}({{$week[$date2]}})</option>
-                            <option value="{{$day3}}">{{$day3}}({{$week[$date3]}})</option>
-                            <option value="{{$day4}}">{{$day4}}({{$week[$date4]}})</option>
-                            <option value="{{$day5}}">{{$day5}}({{$week[$date5]}})</option>
-                            <option value="{{$day6}}">{{$day6}}({{$week[$date6]}})</option>
-                            <option value="{{$day7}}">{{$day7}}({{$week[$date7]}})</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="time_zone" class="control-label col-xs-2">集荷時間帯</label>
-                    <div class="">
-                        <select class="form-control" name="collection_time">
-                            <option value="指定なし">指定なし</option>
-                            <option value="午前中">午前中</option>
-                            <option value="~13時">13時まで</option>
-                            <option value="14時~16時">14時から16時まで</option>
-                            <option value="16時~18時">16時から18時まで</option>
-                            <option value="17時~18時30分">17時から18時30分まで</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="box_num" class="col-form-label text-md-left">箱数</label>
-                    <div>
-                        <input type="number" name="box_num" value="{{old('box_num')}}" />
+                    <div id="shipping_secondbox">
+                        <p>当店住所に、着払いにてお送りください</p>
                     </div>
 
-                </div>
-            </div>
-
-            <div id="shipping_secondbox">
-                <p>当店住所に、着払いにてお送りください</p>
-            </div>
-
-            <div id="shipping_thirdbox">
-                <p>uuu</p>
-            </div>
+                    <div id="shipping_thirdbox">
+                        <p>uuu</p>
+                    </div>
         </div>
     </div>
 

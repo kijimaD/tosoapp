@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\CustomResetPassword;
+use App\Notifications\VerifyEmailCustom;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,6 +43,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomResetPassword($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailCustom);
     }
 
     public function SendAssessmentDone($user_name, $assessment_id)

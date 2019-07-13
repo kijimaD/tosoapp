@@ -48,13 +48,19 @@ class CreateEntryRequest extends FormRequest
         };
 
         return $rule;
+    }
 
-        //
-        // if ($data['shippingway_id'] === 1) {
-        //     $rules['addressBook_id'] = 'numeric|required';
-        //     $rules['collection_day'] = 'date|required';
-        //     $rules['collection_time'] = 'required';
-        //     $rules['box_num'] = 'numeric|required';
-        // }
+    public function messages()
+    {
+        return [
+        'paymentway_id.required' => '選択してください',
+        'shippingway_id.required' => '選択してください',
+        'paymentbank_id.required' => '口座を選択してください',
+        'addressBook_id.required' => '住所を選択してください',
+        'collection_day.required' => '選択してください',
+        'collection_time.required' => '選択してください',
+        'box_num.required' => '入力してください',
+        'box_num.numeric' => '半角数字で入力してください',
+      ];
     }
 }

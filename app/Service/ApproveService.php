@@ -16,7 +16,7 @@ class ApproveService
         $assessment_id = get_salted_id($request, 'assessment_id');
 
         $items = Assessmentdetail::where('assessment_id', $assessment_id)->get();
-        $info = Assessment::find($assessment_id)->first();
+        $info = Assessment::find($assessment_id);
         $param = ['items' => $items,
                   'info' => $info,
                   'assessment_id' => $assessment_id,

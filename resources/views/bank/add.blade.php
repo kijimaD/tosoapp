@@ -57,7 +57,7 @@
 
             {{-- 注意:bootstrapのバリデーションに数字判別がない？ので、リクエストバリデーションでフィードバックしている。 --}}
             @if($errors->has('bank_num'))
-                {{-- デザインがよくない --}}
+                {{-- 勧告:デザインがよくない --}}
                 <strong>{{$errors->first('bank_num')}}</strong>
                 @endif
         </div>
