@@ -325,7 +325,7 @@ class AddForeignKey extends Migration
             $table->integer('resendgoods_id')->unsigned();
             $table->foreign('resendgoods_id')
             ->references('id')
-            ->on('resendgoods')
+            ->on('resendGoods')
             ->onDelete('cascade');
         });
 
