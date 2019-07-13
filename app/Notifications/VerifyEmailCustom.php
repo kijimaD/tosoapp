@@ -48,7 +48,7 @@ class VerifyEmailCustom extends Notification
                 Lang::getFromJson('メールアドレスを認証する'),
                 $this->verificationUrl($notifiable)
             )
-            ->line(Lang::getFromJson('もしこのメールに覚えが無い場合は破棄してください。'));
+            ->line(Lang::getFromJson('このメールに覚えが無い場合は破棄してください。'));
     }
 
     /**
