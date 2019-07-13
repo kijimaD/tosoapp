@@ -48,13 +48,13 @@ class CreateUsersTable extends Migration
         });
 
         // 既定の入金口座
-        Schema::create('defaultBanks', function (Blueprint $table) {
+        Schema::create('defaultbanks', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // アドレス帳
-        Schema::create('addressBooks', function (Blueprint $table) {
+        Schema::create('addressbooks', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('zip');
             $table->string('city');
@@ -63,7 +63,7 @@ class CreateUsersTable extends Migration
         });
 
         // 本住所
-        Schema::create('userAddresses', function (Blueprint $table) {
+        Schema::create('useraddresses', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
@@ -77,13 +77,13 @@ class CreateUsersTable extends Migration
 
 
         // 本人確認送信
-        Schema::create('sendPhotos', function (Blueprint $table) {
+        Schema::create('sendphotos', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 本人確認完了
-        Schema::create('verifyPhotos', function (Blueprint $table) {
+        Schema::create('verifyphotos', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
@@ -97,27 +97,27 @@ class CreateUsersTable extends Migration
         });
 
         // 入金方法
-        Schema::create('paymentWays', function (Blueprint $table) {
+        Schema::create('paymentways', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('payment_way');
             $table->timestamps();
         });
 
         // 輸送方法
-        Schema::create('shippingWays', function (Blueprint $table) {
+        Schema::create('shippingways', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('shipping_way');
             $table->timestamps();
         });
 
         // 支払い口座
-        Schema::create('paymentBanks', function (Blueprint $table) {
+        Schema::create('paymentbanks', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 荷受け申請
-        Schema::create('applyGoods', function (Blueprint $table) {
+        Schema::create('applygoods', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
@@ -138,7 +138,7 @@ class CreateUsersTable extends Migration
         // });
 
         // ロッカー予約
-        Schema::create('reserveLockers', function (Blueprint $table) {
+        Schema::create('reservelockers', function (Blueprint $table) {
             $table->Increments('id');
             $table->date('reserve_day');
             $table->string('reserve_time');
@@ -146,14 +146,14 @@ class CreateUsersTable extends Migration
         });
 
         // ロッカー番号
-        Schema::create('lockerNums', function (Blueprint $table) {
+        Schema::create('lockernums', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('num');
             $table->timestamps();
         });
 
         // ロッカー場所
-        Schema::create('lockerPlaces', function (Blueprint $table) {
+        Schema::create('lockerplaces', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('place');
             $table->timestamps();
@@ -161,19 +161,19 @@ class CreateUsersTable extends Migration
 
         // フラグ系 ===============
         // 集荷委託済み
-        Schema::create('applyDones', function (Blueprint $table) {
+        Schema::create('applydones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 査定完了
-        Schema::create('assessmentDones', function (Blueprint $table) {
+        Schema::create('assessmentdones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 了承確認済み
-        Schema::create('approveDones', function (Blueprint $table) {
+        Schema::create('approvedones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
@@ -185,7 +185,7 @@ class CreateUsersTable extends Migration
         });
 
         // 入金済み
-        Schema::create('paymentDones', function (Blueprint $table) {
+        Schema::create('paymentdones', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
@@ -200,7 +200,7 @@ class CreateUsersTable extends Migration
         });
 
         // 送料
-        Schema::create('shippingCosts', function (Blueprint $table) {
+        Schema::create('shippingcosts', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('shippingcost_type');
             $table->integer('cost');
@@ -217,7 +217,7 @@ class CreateUsersTable extends Migration
         });
 
         // 査定明細
-        Schema::create('assessmentDetails', function (Blueprint $table) {
+        Schema::create('assessmentdetails', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('price')->nullable();
             $table->timestamps();
@@ -250,19 +250,19 @@ class CreateUsersTable extends Migration
         });
 
         // 了承
-        Schema::create('approveGoods', function (Blueprint $table) {
+        Schema::create('approvegoods', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 返送
-        Schema::create('resendGoods', function (Blueprint $table) {
+        Schema::create('resendgoods', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
 
         // 返送完了
-        Schema::create('resenddoneGoods', function (Blueprint $table) {
+        Schema::create('resenddonegoods', function (Blueprint $table) {
             $table->Increments('id');
             $table->timestamps();
         });
