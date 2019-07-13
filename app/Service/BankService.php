@@ -39,7 +39,6 @@ class BankService
         $bank->fill($form)->save();
     }
 
-    // 不安: editとdeleteはまったく同じなので共用している(いいのか？)
     public function edit($request)
     {
         $bank_id = get_salted_id($request, 'bank_id');
@@ -55,7 +54,6 @@ class BankService
         $bank->fill($form)->save();
     }
 
-    // memo: 未使用(editを使っている)
     public function delete($request)
     {
         $bank_id = get_salted_id($request, 'bank_id');

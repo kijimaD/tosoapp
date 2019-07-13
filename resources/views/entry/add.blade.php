@@ -129,13 +129,13 @@ window.onload = function(){
                     <div class="text-danger">{{$errors->first('paymentbank_id')}}</div>
                     @endif
 
-                    {{-- 口座部分 --}}
+                    {{-- 分岐、口座部分 --}}
                     <div id="payment_firstbox" class="">
                         <div class="row">
                             @foreach($banks as $bank)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="paymentbank_id" value="{{$bank->id}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
+                                    <input type="radio" name="paymentbank_id" value="{{Crypt::encrypt('paymentbank_id' . $bank->id)}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
                                     @endif />
                                 </div>
                                 <div class="card-body">
@@ -159,7 +159,7 @@ window.onload = function(){
                         </div>
                     </div>
 
-                    {{-- ギフト券部分 --}}
+                    {{-- 分岐、ギフト券部分 --}}
                     <div id="payment_secondbox">
                         <p>登録したeメールアドレスにamazonギフト券を送信します。</p>
 
@@ -199,7 +199,7 @@ window.onload = function(){
                             @foreach($addresses as $address)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="addressBook_id" value="{{$address->id}}" @if(old('addressBook_id') == $address->id) checked
+                                    <input type="radio" name="addressBook_id" value="{{Crypt::encrypt('addressBook_id' . $address->id)}}" @if(old('addressBook_id') == $address->id) checked
                                     @endif />
                                 </div>
                                 <div class="card-body">

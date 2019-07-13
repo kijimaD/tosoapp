@@ -57,27 +57,31 @@ class EntryService
     ]
     );
 
-        // 受け取り方法が集荷時のときのみ
+        // 受け取り方法が集荷時のとき
         if ($request->shippingway_id == '1') {
+            $salted = \Crypt::decrypt($request->addressBook_id);
+            $goal_addressBook_id = str_replace('addressBook_id', '', $salted);
             $collection_id = DB::table('collections')->insertGetId(
                 [
       'collection_day'=>$request->collection_day,
       'collection_time'=>$request->collection_time,
       'box_num'=>$request->box_num,
       'applyGoods_id'=>$applygoods_id,
-      'addressBook_id'=>$request->addressBook_id,
+      'addressBook_id'=>$goal_addressBook_id,
     ]
     );
         }
 
-        // 入金方法が銀行振込時のときのみ
+        // 入金方法が銀行振込時のとき
         if ($request->paymentway_id == '1') {
+            $salted = \Crypt::decrypt($request->paymentbank_id);
+            $goal_paymentbank_id = str_replace('paymentbank_id', '', $salted);
             $paymentBank_id = DB::table('paymentBanks')->insertGetId(
                 [
-      'entry_id'=>$entry_id,
-      'bank_id'=>$request->paymentbank_id,
-    ]
-    );
+                    'entry_id'=>$entry_id,
+                    'bank_id'=>$goal_paymentbank_id
+                ]
+              );
         }
     }
 

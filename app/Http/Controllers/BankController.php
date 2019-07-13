@@ -52,7 +52,7 @@ class BankController extends Controller
 
     public function delete(Request $request)
     {
-        return view('/bank/del', $this->service->edit($request));
+        return view('/bank/del', $this->service->delete($request));
     }
 
     public function remove(Request $request)

@@ -2,7 +2,7 @@
 
 if (! function_exists('get_salted_id')) {
     /**
-     * ソルト入りを復号化して、ソルト文字を取り除く関数。
+     * URLパラメータで渡されたソルト入りidを復号化して、ソルト文字を取り除く関数。
      *
      * @param string $value
      * @return string
