@@ -15,6 +15,6 @@ class Bank extends Model
 
     public function defaultbank()
     {
-        return $this->hasone('App\defaultbank');
+        return $this->hasone('App\Defaultbank');
     }
 }
