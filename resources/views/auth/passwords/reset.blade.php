@@ -1,5 +1,11 @@
 @extends('layouts.tosoapp')
 
+<style>
+    h2 {
+      display:none;
+    }
+</style>
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
