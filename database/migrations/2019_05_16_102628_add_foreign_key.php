@@ -109,7 +109,7 @@ class AddForeignKey extends Migration
             $table->integer('shippingway_id')->unsigned();
             $table->foreign('shippingway_id')
             ->references('id')
-            ->on('shippingways')
+            ->on('shippingWays')
             ->onDelete('cascade');
         });
 
