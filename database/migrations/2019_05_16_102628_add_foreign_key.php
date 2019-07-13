@@ -350,7 +350,7 @@ class AddForeignKey extends Migration
             ->onDelete('cascade');
         });
 
-        Schema::table('storageStructures', function (Blueprint $table) {
+        Schema::table('storagestructures', function (Blueprint $table) {
             $table->integer('warehouse_id')->unsigned();
             $table->foreign('warehouse_id')
             ->references('id')
