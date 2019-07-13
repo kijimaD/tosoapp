@@ -346,7 +346,7 @@ class AddForeignKey extends Migration
             $table->integer('storagestructure_id')->unsigned();
             $table->foreign('storagestructure_id')
             ->references('id')
-            ->on('storageStructures')
+            ->on('storagestructures')
             ->onDelete('cascade');
         });
 
