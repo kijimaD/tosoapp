@@ -51,7 +51,7 @@ class EntryService
     ]
     );
 
-        $applygoods_id = DB::table('applyGoods')->insertGetId(
+        $applygoods_id = DB::table('applygoods')->insertGetId(
             [
           'entry_id'=>$entry_id,
     ]
@@ -66,7 +66,7 @@ class EntryService
       'collection_day'=>$request->collection_day,
       'collection_time'=>$request->collection_time,
       'box_num'=>$request->box_num,
-      'applyGoods_id'=>$applygoods_id,
+      'applygoods_id'=>$applygoods_id,
       'addressBook_id'=>$goal_addressBook_id,
     ]
     );
