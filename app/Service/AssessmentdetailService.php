@@ -55,7 +55,7 @@ class AssessmentdetailService
             $request->condition_id,
             $request->market_price,
             $request->get_price,
-            $request->sell_price,
+            $request->sell_price
             )
             as
           [
