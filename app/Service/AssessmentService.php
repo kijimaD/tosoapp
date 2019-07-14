@@ -68,7 +68,7 @@ class AssessmentService
             ]
           );
 
-            $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+            $assessmentdetail_id = DB::table('assessmentdetails')->insertGetId(
                 [
                 'goods_id'=>$goods_id,
                 'assessment_id'=>$assessment_id,
@@ -118,7 +118,7 @@ class AssessmentService
             ]
           );
 
-                $assessmentdetail_id = DB::table('assessmentDetails')->insertGetId(
+                $assessmentdetail_id = DB::table('assessmentdetails')->insertGetId(
                     [
                 'goods_id'=>$goods_id,
                 'assessment_id'=>$assessment_id,
