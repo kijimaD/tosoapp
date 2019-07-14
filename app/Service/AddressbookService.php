@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Addressbook;
 use App\Prefecture;
-use App\UserAddress;
+use App\Useraddress;
 
 class AddressbookService
 {

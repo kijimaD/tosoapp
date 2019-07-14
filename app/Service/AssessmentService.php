@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Crypt;
 use App\Assessment;
-use App\AssessmentDone;
+use App\Assessmentdone;
 use App\Coupen;
 use App\Shippingcost;
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateAddressRequest;
 use App\Service\AddressbookService;
-use App\UserAddress;
+use App\Useraddress;
 
 class AddressBookController extends Controller
 {
