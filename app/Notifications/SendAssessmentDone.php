@@ -48,7 +48,9 @@ class SendAssessmentDone extends Notification
         //             ->line('The introduction to the notification.')
         //             ->action('Notification Action', url('/'))
         //             ->line('Thank you for using our application!');
-        $url = ("https://とそ.com/approve/add?id={$this->assessment_id}");
+
+        // 注意:ここは本番用に変えないといけない！
+        $url = ("https://beta.とそ.com/approve/add?id={$this->assessment_id}");
 
         $mail = new MailMessage();
         // Todo: 文面は適当である
