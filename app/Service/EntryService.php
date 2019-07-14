@@ -76,7 +76,7 @@ class EntryService
         if ($request->paymentway_id == '1') {
             $salted = \Crypt::decrypt($request->paymentbank_id);
             $goal_paymentbank_id = str_replace('paymentbank_id', '', $salted);
-            $paymentBank_id = DB::table('paymentBanks')->insertGetId(
+            $paymentbank_id = DB::table('paymentbanks')->insertGetId(
                 [
                     'entry_id'=>$entry_id,
                     'bank_id'=>$goal_paymentbank_id
