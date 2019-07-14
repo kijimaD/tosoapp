@@ -29,7 +29,7 @@ class AssessmentService
     {
         $entry_id = session()->pull('entry_id');
         $search_amazon = new \App\lib\Amazonfunctions;
-        $shippingcost_id = DB::table('shippingCosts')->insertGetId(
+        $shippingcost_id = DB::table('shippingcosts')->insertGetId(
             [
           'shippingcost_type'=>$request->shippingcost_type,
           'cost'=>$request->cost,
