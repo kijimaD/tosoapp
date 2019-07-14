@@ -29,6 +29,11 @@
         .page-footer a:visited{
           color:white;
         }
+
+        input[type="radio"] , input[type="checkbox"]{
+          -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+          margin-right: 0.5em;
     </style>
 </head>
 
