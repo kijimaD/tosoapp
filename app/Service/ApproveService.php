@@ -63,7 +63,7 @@ class ApproveService
          $val_approve,
       ]) {
             if ($val_approve == "yes") {
-                DB::table('approveGoods')->insert(
+                DB::table('approvegoods')->insert(
                     [
                   'assessmentdetail_id' => $val_assessmentdetail_id,
                   'created_at' => now(),
