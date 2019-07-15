@@ -132,11 +132,16 @@ window.onload = function(){
                     {{-- 分岐、口座部分 --}}
                     <div id="payment_firstbox" class="">
                         <div class="row">
+                            <?php $j=0; ?> {{-- old用に発行した番号 --}}
                             @foreach($banks as $bank)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="paymentbank_id" value="{{Crypt::encrypt('paymentbank_id' . $bank->id)}}" id="bank_radio" @if(old('paymentbank_id') == $bank->id) checked
+                                    <input type="radio" name="paymentbank_id" value="{{Crypt::encrypt('paymentbank_id' . $bank->id)}}" id="bank_radio" @if(old('paymentbank_id'))
+                                    @if(Crypt::decrypt(old('paymentbank_id')) == 'paymentbank_id'.$bank->id)
+                                    checked
+                                    @endif
                                     @endif />
+                                    {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
                                 </div>
                                 <div class="card-body">
                                     <p>
@@ -150,7 +155,9 @@ window.onload = function(){
 
                                 </div>
                             </div>
+                            <?php ++$j; ?> {{-- old用に発行した番号 --}}
                             @endforeach
+
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <p><a href="/bank/add">新規追加する</a></p>
@@ -199,8 +206,12 @@ window.onload = function(){
                             @foreach($addresses as $address)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="addressBook_id" value="{{Crypt::encrypt('addressBook_id' . $address->id)}}" @if(old('addressBook_id') == $address->id) checked
+                                    <input type="radio" name="addressBook_id" value="{{Crypt::encrypt('addressBook_id' . $address->id)}}" @if(old('addressBook_id'))
+                                    @if(Crypt::decrypt(old('addressBook_id')) == 'addressBook_id'.$address->id)
+                                    checked
+                                    @endif
                                     @endif />
+                                    {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
                                 </div>
                                 <div class="card-body">
                                     <p>
