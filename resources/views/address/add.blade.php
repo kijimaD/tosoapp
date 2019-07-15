@@ -19,8 +19,10 @@
             @enderror
 
             @if($errors->has('zip'))
-                {{-- デザインがよくない --}}
-                <strong>{{$errors->first('zip')}}</strong>
+                {{-- 要改善:デザイン --}}
+                <div class="text-danger">
+                    {{$errors->first('zip')}}
+                </div>
                 @endif
         </div>
     </div>

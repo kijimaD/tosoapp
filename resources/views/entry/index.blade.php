@@ -3,6 +3,7 @@
 @section('title',' 履歴一覧')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         @foreach ($items as $item)

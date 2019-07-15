@@ -83,6 +83,12 @@ class EntryService
                 ]
               );
         }
+
+        // adminに通知する
+        $user = \App\User::find($user_id);
+
+        $admin = \App\Admin::find('1');
+        $admin->SendEntry_admin($user->name);
     }
 
     // 注意:view側が未実装、未テスト。不必要かもしれない。
@@ -122,5 +128,9 @@ class EntryService
         $items = Entry::get();
         $param = ['items' => $items];
         return $param;
+    }
+
+    public function done_send_admin($user_id)
+    {
     }
 }

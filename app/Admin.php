@@ -32,4 +32,9 @@ class Admin extends Authenticatable
     {
         $this->notify(new \App\Notifications\SendApproveDone_admin($user_name));
     }
+
+    public function SendEntry_admin($user_name)
+    {
+        $this->notify(new \App\Notifications\SendEntry_admin($user_name));
+    }
 }

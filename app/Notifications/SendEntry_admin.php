@@ -7,8 +7,8 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-// 管理ユーザに了承完了通知を送信する
-class SendApproveDone_admin extends Notification
+// 管理ユーザに申し込みがあったことを通知する
+class SendEntry_admin extends Notification
 {
     use Queueable;
     protected $user_name;
@@ -20,8 +20,6 @@ class SendApproveDone_admin extends Notification
     public function __construct($user_name)
     {
         $this->user_name = $user_name;
-        // tips:引数をプロパティに格納してクラス内のどこでも使用できるようにする。
-        // アクセスは $this->user_name で。
     }
 
     /**
@@ -43,16 +41,11 @@ class SendApproveDone_admin extends Notification
      */
     public function toMail($notifiable)
     {
-        // return (new MailMessage)
-        //             ->line('The introduction to the notification.')
-        //             ->action('Notification Action', url('/'))
-        //             ->line('Thank you for using our application!');
         $url = ("https://beta.xn--d9jva.com/paymentdone/admin_index");
 
-        // Todo: 文面は適当です
         $mail = new MailMessage();
-        $mail->subject('了承されました。確認して、入金してください')
-             ->line("{$this->user_name}様が了承しました。確認して入金してください。")
+        $mail->subject('買い取り申し込みがありました')
+             ->line("{$this->user_name}様から買い取り申し込みがありました。至急対応してください。")
              ->greeting('#システム通知');
         return $mail;
     }

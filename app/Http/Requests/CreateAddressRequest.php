@@ -38,7 +38,7 @@ class CreateAddressRequest extends FormRequest
     public function messages()
     {
         return [
-        'zip.numeric' => '半角数字で入力してください'
+        'zip.numeric' => '半角数字で入力、ハイフンは不要です'
       ];
     }
 }
