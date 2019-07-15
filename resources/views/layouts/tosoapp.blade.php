@@ -31,9 +31,9 @@
         }
 
         input[type="radio"] , input[type="checkbox"]{
-          -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-          margin-right: 0.5em;
+          -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+          /* margin-right: 0.5em; */
     </style>
 </head>
 
@@ -159,12 +159,6 @@
                         <li>
                             <a class="" href="/entry">買取履歴</a>
                         </li>
-                        <li>
-                            <a class="" href="">進行状況確認</a>
-                        </li>
-                        <li>
-                            <a class="" href="">査定承認</a>
-                        </li>
                     </ul>
 
                 </div>
@@ -180,15 +174,13 @@
                         <li>
                             <a class="" href="/">トップページ</a>
                         </li>
-                        <li>
-                            <a class="" href="/home">ホーム</a>
-                        </li>
-                        <li>
+                        {{-- <li>
                             <a href="#!">Link 3</a>
                         </li>
                         <li>
                             <a href="#!">Link 4</a>
                         </li>
+                      --}}
                     </ul>
 
                 </div>
