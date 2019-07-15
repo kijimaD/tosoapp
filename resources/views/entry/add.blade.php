@@ -222,7 +222,6 @@ window.onload = function(){
                                     </p>
                                 </div>
                                 <div class="card-footer bg-white">
-                                    Footer
                                 </div>
                             </div>
                             @endforeach
