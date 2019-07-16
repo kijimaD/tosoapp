@@ -13,6 +13,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     protected $guarded = array('id');
+
+    public function defaultbank()
+    {
+        return $this->hasone('App\Defaultbank');
+    }
+
+    public function useraddress()
+    {
+        return $this->hasone('App\Useraddress');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

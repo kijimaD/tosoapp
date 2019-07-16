@@ -140,8 +140,13 @@ window.onload = function(){
                                     @if(Crypt::decrypt(old('paymentbank_id')) == 'paymentbank_id'.$bank->id)
                                     checked
                                     @endif
-                                    @endif />
-                                    {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
+                                    @elseif($user->defaultbank->bank->id)
+                                        @if($bank->id == $user->defaultbank->bank->id)
+                                            checked
+                                            @endif
+                                            @endif
+                                            />
+                                            {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
                                 </div>
                                 <div class="card-body">
                                     <p>
@@ -152,7 +157,9 @@ window.onload = function(){
                                     </p>
                                 </div>
                                 <div class="card-footer bg-white">
-
+                                    @if($bank->id == $user->defaultbank->bank->id)
+                                        <p class="text-success">既定の口座</p>
+                                        @endif
                                 </div>
                             </div>
                             <?php ++$j; ?> {{-- old用に発行した番号 --}}
@@ -210,8 +217,12 @@ window.onload = function(){
                                     @if(Crypt::decrypt(old('addressBook_id')) == 'addressBook_id'.$address->id)
                                     checked
                                     @endif
-                                    @endif />
-                                    {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
+                                    @elseif($user->useraddress->id)
+                                        @if($address->id == $user->useraddress->addressbook->id)
+                                            checked
+                                            @endif
+                                            @endif />
+                                            {{-- 注意:oldで暗号化した選択肢を保持するために、ややこしいことになっている --}}
                                 </div>
                                 <div class="card-body">
                                     <p>
@@ -222,6 +233,9 @@ window.onload = function(){
                                     </p>
                                 </div>
                                 <div class="card-footer bg-white">
+                                    @if($address->id == $user->useraddress->addressbook->id)
+                                        <p class="text-success">既定の住所</p>
+                                        @endif
                                 </div>
                             </div>
                             @endforeach
