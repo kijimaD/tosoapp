@@ -66,30 +66,41 @@
                 </div>
                 </li> --}}
 
-                {{-- <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インフォ</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">リンク2</a>
-                                <a class="dropdown-item" href="#">リンク3</a>
-                            </div>
-                        </li> --}}
+                {{-- <li class="nav-item dropdow">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">インフォ</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">リンク2</a>
+                        <a class="dropdown-item" href="#">リンク3</a>
+                    </div>
+                </li> --}}
 
                 </ul>
+
+                {{-- 暫定的:認証状態で変化するのは同じなので下とまとめたいが、うまくいかないのでここに書いている。 --}}
+                @if(Auth::check())
+                <ul class="navbar-nav float-right mr-6">
+                    <li class="nav-item">
+                        <a class="text-white" href="/user/mypage">マイページ</a>
+                        <a class="text-white" href="">|</a>
+                    </li>
+                </ul>
+                @endif
+
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         @if(Auth::check())
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ \Auth::user()->name}}
-                            @else
-                            <a class="text-white" href="{{ route('login')}}">ログイン</a>
-                            <a class="text-white">｜</a>
-                            <a class="text-white" href="{{ route('register')}}">新規登録</a>
-                            @endif
                         </a>
+                        @else
+                        <a class="text-white" href="{{ route('login')}}">ログイン</a>
+                        <a class="text-white">｜</a>
+                        <a class="text-white" href="{{ route('register')}}">新規登録</a>
+                        @endif
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                             @if(Auth::check())
-                            <a class="dropdown-item" href="/user/mypage">マイページ</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
                                 {{ __('ログアウト') }}
