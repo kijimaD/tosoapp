@@ -1,10 +1,12 @@
-@extends('layouts.tosoapp')
-
 <style>
     h2 {
         display: none;
     }
 </style>
+
+@extends('layouts.tosoapp')
+
+@section('title','メール認証')
 
 @section('content')
 <div class="container">

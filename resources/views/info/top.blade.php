@@ -18,13 +18,13 @@
 
 @extends('layouts.tosoapp')
 
-@section('title','')
+@section('title','とそブックス')
 
 @section('content')
 
 <div class="jumbotron jumbotron-fluid" id="top">
     <div class="container mt-5">
-        <h1 class="display-3">あたらしい買取</h1>
+        <h1 class="display-5">あたらしい買取</h1>
         <p class="">
             とそブックスは、革新的な買取サービスを提供します。<br>安全、簡単、公正、スピーディで買取をより身近なものにし、環境に配慮した新たなライフスタイルを支援します。
         </p>
