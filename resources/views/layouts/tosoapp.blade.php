@@ -76,22 +76,16 @@
 
                 </ul>
 
-                {{-- 暫定的:認証状態で変化するのは同じなので下とまとめたいが、うまくいかないのでここに書いている。 --}}
-                @if(Auth::check())
-                <ul class="navbar-nav float-right mr-6">
-                    <li class="nav-item">
-                        <a class="text-white" href="/user/mypage">マイページ</a>
-                        <a class="text-white" href="">|</a>
-                    </li>
-                </ul>
-                @endif
-
                 <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="/user/mypage">マイページ</a>
+                    </li>
                     <li class="nav-item dropdown">
                         @if(Auth::check())
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ \Auth::user()->name}}
                         </a>
+
                         @else
                         <a class="text-white" href="{{ route('login')}}">ログイン</a>
                         <a class="text-white">｜</a>
