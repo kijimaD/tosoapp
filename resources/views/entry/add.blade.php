@@ -5,7 +5,11 @@
 @section('content')
 
 <?php
-$week = [
+
+// 曜日取得用、wは曜日番号で、曜日の配列を呼び出して日本語で表示する。引数はまず日付関数に渡されるので、1から始まる。
+function calc_day ($day_num)
+{
+  $week = [
   '日',
   '月',
   '火',
@@ -14,21 +18,30 @@ $week = [
   '金',
   '土',
 ];
-$date1 = date('w',strtotime("+1 day"));
-$date2 = date('w',strtotime("+2 day"));
-$date3 = date('w',strtotime("+3 day"));
-$date4 = date('w',strtotime("+4 day"));
-$date5 = date('w',strtotime("+5 day"));
-$date6 = date('w',strtotime("+6 day"));
-$date7 = date('w',strtotime("+7 day"));
+  $day = date('w',strtotime("+$day_num day"));
+  $japanize_day = $week[$day];
+  return $japanize_day;
+}
 
-$day1 = date('Y/m/d',strtotime("+1 day"));
-$day2 = date('Y/m/d',strtotime("+2 day"));
-$day3 = date('Y/m/d',strtotime("+3 day"));
-$day4 = date('Y/m/d',strtotime("+4 day"));
-$day5 = date('Y/m/d',strtotime("+5 day"));
-$day6 = date('Y/m/d',strtotime("+6 day"));
-$day7 = date('Y/m/d',strtotime("+7 day"));
+// 日付計算
+function calc_date($num){
+  $date = date('Y/m/d',strtotime("+$num day"));
+  return $date;
+}
+
+// 希望時間帯。引数で配列に直接アクセスするため、0始まりになる。
+function collect_timezone($num){
+  $zone = [
+    '指定なし',
+    '午前中',
+    '~13時',
+    '14~16時',
+    '16~18時',
+    '17~18時30分',
+  ];
+  $goal = $zone[$num];
+  return $goal;
+}
 ?>
 
 <style type="text/css">
@@ -250,13 +263,10 @@ window.onload = function(){
                             <label for="collection_date" class="control-label col-xs-2">集荷日</label>
                             <div class="">
                                 <select class="form-control" id="number" name="collection_day">
-                                    <option value="{{$day1}}">{{$day1}}({{$week[$date1]}})</option>
-                                    <option value="{{$day2}}">{{$day2}}({{$week[$date2]}})</option>
-                                    <option value="{{$day3}}">{{$day3}}({{$week[$date3]}})</option>
-                                    <option value="{{$day4}}">{{$day4}}({{$week[$date4]}})</option>
-                                    <option value="{{$day5}}">{{$day5}}({{$week[$date5]}})</option>
-                                    <option value="{{$day6}}">{{$day6}}({{$week[$date6]}})</option>
-                                    <option value="{{$day7}}">{{$day7}}({{$week[$date7]}})</option>
+                                    @for ($i=1; $i
+                                    <=7; $i++) <option @if(old('collection_day') == calc_date($i)) selected
+                                    @endif value='{{calc_date($i)}}'>{{calc_date($i)}}({{calc_day($i)}})</option>
+                                    @endfor
                                 </select>
                             </div>
                             @if($errors->has('collection_day'))
@@ -268,12 +278,10 @@ window.onload = function(){
                             <label for="time_zone" class="control-label col-xs-2">集荷時間帯</label>
                             <div class="">
                                 <select class="form-control" name="collection_time">
-                                    <option value="指定なし">指定なし</option>
-                                    <option value="午前中">午前中</option>
-                                    <option value="~13時">13時まで</option>
-                                    <option value="14時~16時">14時から16時まで</option>
-                                    <option value="16時~18時">16時から18時まで</option>
-                                    <option value="17時~18時30分">17時から18時30分まで</option>
+                                    @for ($i=0; $i
+                                    <=5; $i++) <option @if(old('collection_time') == collect_timezone($i)) selected
+                                    @endif value='{{collect_timezone($i)}}'>{{collect_timezone($i)}}</option>
+                                    @endfor
                                 </select>
                             </div>
                             @if($errors->has('time_zone'))
