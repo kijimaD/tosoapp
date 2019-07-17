@@ -75,11 +75,12 @@
                 </li> --}}
 
                 </ul>
-
                 <ul class="navbar-nav">
+                    @if(Auth::check())
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="/user/mypage">マイページ</a>
                     </li>
+                    @endif
                     <li class="nav-item dropdown">
                         @if(Auth::check())
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
