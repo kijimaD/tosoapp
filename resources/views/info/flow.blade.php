@@ -27,7 +27,7 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h5 class="card-title">2．申し込む</h5>
-                <p>買取申し込みします。会員登録すると便利な機能を使えますが、登録しなくても利用できます。</p>
+                <p>買取を申し込みます。会員登録すると便利な機能を使えますが、登録しなくても利用できます。</p>
                 <a class="btn btn-primary" href="/info/flow2">詳しく</a>
             </div>
         </div>
