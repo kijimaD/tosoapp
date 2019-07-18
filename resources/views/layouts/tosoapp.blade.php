@@ -11,7 +11,7 @@
             /* background-color: silver; */
         }
         h2 {
-          border-bottom: solid 4px #343A40;
+          border-bottom: solid 4px black;
           padding-bottom: 5px;
           margin-bottom:50px;
           font-weight:bold;

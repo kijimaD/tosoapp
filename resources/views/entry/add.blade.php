@@ -119,7 +119,7 @@ window.onload = function(){
 
     <div class="form-group">
         <label for="payment_way" class="col-form-label text-md-left">
-            <h5>入金方法</h5>
+            <h3>入金方法</h3>
         </label>
         <div>
             <div class="form-check">
@@ -196,7 +196,7 @@ window.onload = function(){
 
     <div class="form-group">
         <label for="shipping_way" class="col-form-label text-md-left">
-            <h5>輸送方法</h5>
+            <h3>輸送方法</h3>
         </label>
         <div>
             <div class="form-check">

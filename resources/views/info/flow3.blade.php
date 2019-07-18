@@ -4,4 +4,8 @@
 
 @section('content')
 
+<p>
+    <a href="/info/flow4">（次）入金→</a>
+</p>
+
 @endsection

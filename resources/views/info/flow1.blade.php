@@ -19,7 +19,9 @@
 
 <h3>商品をつめる</h3>
 
-隙間がないようにつめます。
+<p>
+    隙間がないようにつめます。
+</p>
 
 <div style="max-width: 540px;">
     <img src="../img/flow1-prepare1.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
@@ -27,8 +29,10 @@
 
 <h3>同封する</h3>
 
-身分証明書のコピーを同封します。
-古物営業法に定められた身分確認で使用します。
+<p>
+    身分証明書のコピーを同封します。
+    古物営業法に定められた身分確認で使用します。
+</p>
 
 <div style="max-width: 540px;">
     <img src="../img/flow1-prepare2.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
@@ -38,6 +42,12 @@
     <img src="../img/flow1-prepare3.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
 </div>
 
-以上で荷物の準備完了です。
+<p>
+    以上で荷物の準備完了です。
+</p>
+
+<p>
+    <a href="/info/flow2">（次）申し込む→</a>
+</p>
 
 @endsection
