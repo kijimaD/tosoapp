@@ -171,11 +171,11 @@ class UsersTableSeeder extends Seeder
           ]);
         \App\Condition::create([
             'condition_code' => '可',
-            'condition_percent' => '0.20',
+            'condition_percent' => '0.25',
           ]);
         \App\Condition::create([
             'condition_code' => 'ギリ可',
-            'condition_percent' => '0.1',
+            'condition_percent' => '0.15',
           ]);
         \App\Condition::create([
             'condition_code' => '不可',

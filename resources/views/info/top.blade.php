@@ -38,6 +38,7 @@
         <p class="">
             査定結果をネットで確認。個別にチェックし査定価格に満足しなければ、無料で返送します。
         </p>
+        <a href="/info/flow" class="btn btn-success btn-large mt-5">買取の流れを見る</a>
     </div>
 </div>
 

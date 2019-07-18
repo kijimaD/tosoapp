@@ -23,7 +23,8 @@
       $(".total").text(total);
 
       coupen_total = parseInt(total * {{$info->coupen->coupen_value}});
-      $(".coupen_total").text(coupen_total);
+      coupen_diff = parseInt(total * {{$info->coupen->coupen_value}} - total);
+      $(".coupen_total").text(coupen_diff);
 
       final_total = coupen_total + {{$info->shippingcost->apply_cost}};
       $(".final_total").text(final_total);
@@ -100,7 +101,7 @@ total();
                     <td></td>
                     <td></td>
                     <td>{{$info->coupen->coupen_name}}</td>
-                    <td>￥<span class="
+                    <td>+￥<span class="
                           coupen_total"></span></td>
                 </tr>
                 <tr>
