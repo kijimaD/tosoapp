@@ -13,7 +13,7 @@
         h2 {
           border-bottom: solid 4px #343A40;
           padding-bottom: 5px;
-          margin-bottom:24px;
+          margin-bottom:50px;
           font-weight:bold;
           /* margin-bottom: 16px; */
         }

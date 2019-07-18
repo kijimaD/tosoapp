@@ -22,7 +22,7 @@
 隙間がないようにつめます。
 
 <div style="max-width: 540px;">
-    <img src="../img/flow1-prepare1.jpg" class="img-fluid center-block p-4" style="max-width:100%;height:auto;">
+    <img src="../img/flow1-prepare1.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
 </div>
 
 <h3>同封する</h3>
@@ -31,11 +31,11 @@
 古物営業法に定められた身分確認で使用します。
 
 <div style="max-width: 540px;">
-    <img src="../img/flow1-prepare2.jpg" class="img-fluid center-block p-4" style="max-width:100%;height:auto;">
+    <img src="../img/flow1-prepare2.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
 </div>
 
 <div style="max-width: 540px;">
-    <img src="../img/flow1-prepare3.jpg" class="img-fluid center-block p-4" style="max-width:100%;height:auto;">
+    <img src="../img/flow1-prepare3.jpg" class="img-fluid center-block py-4" style="max-width:100%;height:auto;">
 </div>
 
 以上で荷物の準備完了です。
