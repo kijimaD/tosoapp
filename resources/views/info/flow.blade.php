@@ -4,34 +4,63 @@
 
 @section('content')
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h3 class="card-title">1．段ボールにつめる</h3>
-        {{-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> --}}
-        <p class="card-text">売りたいものを段ボールに詰めます。</p>
-        {{-- <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a> --}}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters p-3">
+        <div class="col-md-4 my-auto">
+            <img class="card-img" src="../img/flow1.svg" style="width: 80%; height:80%">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">1．段ボールにつめる</h5>
+                <p>売りたいものを段ボールにつめて、身分証明書のコピーを同封します。</p>
+                <a class="btn btn-primary" href="#">詳しく</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h3 class="card-title">2．買取申し込みする</h3>
-        <p class="card-text">買取申し込みします。 会員登録すると便利な機能を使用できますが、登録しなくても利用できます。</p>
+<div class="card mb-3" style="max-width: 540px">
+    <div class="row no-gutters p-3">
+        <div class="col-md-4 my-auto">
+            <img class="card-img" src="../img/flow2.svg" style="width: 80%; height:80%;">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">2．申し込む</h5>
+                <p>買取申し込みします。会員登録すると便利な機能を使えますが、登録しなくても利用できます。</p>
+                <a class="btn btn-primary" href="#">詳しく</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h3 class="card-title">3．査定を確認する</h3>
-        <p class="card-text">査定完了メールに記載したリンクをクリックし査定内容を確認し了承します。</p>
+<div class="card mb-3" style="max-width: 540px">
+    <div class="row no-gutters p-3">
+        <div class="col-md-4 my-auto">
+            <img class="card-img" src="../img/flow3.svg" style="width: 80%;height:80%;">
+        </div>
+        <div class=" col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">3.査定を確認する</h5>
+                <p>査定完了メールに記載したリンクをクリックし査定内容を確認し、了承します。</p>
+                <a class="btn btn-primary" href="#">詳しく</a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="card mb-4">
-    <div class="card-body">
-        <h3 class="card-title">4．入金！</h3>
-        <p class="card-text">指定方法にて入金します。</p>
+<div class="card mb-3" style="max-width: 540px">
+    <div class="row no-gutters p-3">
+        <div class="col-md-4 my-auto">
+            <img class="card-img" src="../img/flow4.svg" style="width:80%;height:80%;">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">4．入金！</h5>
+                <p>指定した方法で入金します。</p>
+                <a class="btn btn-primary" href="#">詳しく</a>
+            </div>
+        </div>
     </div>
 </div>
 
