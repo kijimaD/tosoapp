@@ -10,4 +10,9 @@ class InfoController extends Controller
     {
         return view('info.top');
     }
+
+    public function flow(Request $request)
+    {
+        return view('info.flow');
+    }
 }

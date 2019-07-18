@@ -182,13 +182,12 @@
                         <li>
                             <a class="" href="/">トップページ</a>
                         </li>
-                        {{-- <li>
-                            <a href="#!">Link 3</a>
+                        <li>
+                            <a href="/info/flow">買取の流れ</a>
                         </li>
                         <li>
-                            <a href="#!">Link 4</a>
+                            <a href="#!"></a>
                         </li>
-                      --}}
                     </ul>
 
                 </div>
