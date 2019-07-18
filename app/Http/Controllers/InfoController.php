@@ -15,4 +15,24 @@ class InfoController extends Controller
     {
         return view('info.flow');
     }
+
+    public function flow1(Request $request)
+    {
+        return view('info.flow1');
+    }
+
+    public function flow2(Request $request)
+    {
+        return view('info.flow2');
+    }
+
+    public function flow3(Request $request)
+    {
+        return view('info.flow3');
+    }
+
+    public function flow4(Request $request)
+    {
+        return view('info.flow4');
+    }
 }

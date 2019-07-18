@@ -11,8 +11,21 @@
             /* background-color: silver; */
         }
         h2 {
-          border-bottom: solid 1px #343A40;
+          border-bottom: solid 4px #343A40;
+          padding-bottom: 5px;
+          margin-bottom:24px;
+          font-weight:bold;
           /* margin-bottom: 16px; */
+        }
+
+        h3{
+          border: solid 0.5px gray;
+          padding:4px;
+          margin-top:12px;
+          margin-bottom:12px;
+        }
+
+        h3:after {
         }
 
         li {
@@ -186,7 +199,16 @@
                             <a href="/info/flow">買取の流れ</a>
                         </li>
                         <li>
-                            <a href="#!"></a>
+                            <a href="/info/flow1">　-段ボールにつめる</a>
+                        </li>
+                        <li>
+                            <a href="/info/flow2">　-申し込む</a>
+                        </li>
+                        <li>
+                            <a href="/info/flow3">　-査定を確認する</a>
+                        </li>
+                        <li>
+                            <a href="/info/flow4">　-入金</a>
                         </li>
                     </ul>
 
