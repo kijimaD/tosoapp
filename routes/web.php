@@ -27,7 +27,7 @@ Route::get('test/index0', 'TestController@index0');
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'InfoController@top');
-Route::get('/info/flow', 'Infocontroller@flow');
+Route::get('/info/flow', 'InfoController@flow');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
