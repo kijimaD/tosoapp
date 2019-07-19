@@ -32,6 +32,7 @@ Route::get('/info/flow1', 'InfoController@flow1');
 Route::get('/info/flow2', 'InfoController@flow2');
 Route::get('/info/flow3', 'InfoController@flow3');
 Route::get('/info/flow4', 'InfoController@flow4');
+Route::get('/info/privacy_policy', 'InfoController@privacy_policy');
 Route::get('/home', 'HomeController@index')->name('home');
 
 

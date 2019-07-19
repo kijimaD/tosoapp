@@ -11,21 +11,23 @@
             /* background-color: silver; */
         }
         h2 {
-          border-bottom: solid 4px black;
+          border-bottom: solid 2px black;
           padding-bottom: 5px;
-          margin-bottom:50px;
+          margin-bottom:30px;
           font-weight:bold;
           /* margin-bottom: 16px; */
         }
 
         h3{
           border: solid 0.5px gray;
-          padding:4px;
+          padding:6px;
           margin-top:12px;
           margin-bottom:12px;
+          background-color:#FFFFFF;
+          font-weight:bolder;
         }
 
-        h3:after {
+        h3:before {
         }
 
         li {
@@ -209,6 +211,9 @@
                         </li>
                         <li>
                             <a href="/info/flow4">　-入金</a>
+                        </li>
+                        <li>
+                            <a href="/info/privacy_policy">プライバシーポリシー</a>
                         </li>
                     </ul>
 

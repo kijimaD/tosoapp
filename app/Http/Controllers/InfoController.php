@@ -35,4 +35,9 @@ class InfoController extends Controller
     {
         return view('info.flow4');
     }
+
+    public function privacy_policy(Request $request)
+    {
+        return view('info.privacy_policy');
+    }
 }
