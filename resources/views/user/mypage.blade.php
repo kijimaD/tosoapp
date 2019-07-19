@@ -7,6 +7,7 @@
 <style>
     h5 span {
         border: solid 1px black;
+        padding: 3px;
     }
 
     ul {

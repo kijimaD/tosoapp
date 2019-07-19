@@ -3,6 +3,7 @@
 @section('title',' 案件一覧')
 
 @section('content')
+
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm">
         <thead>

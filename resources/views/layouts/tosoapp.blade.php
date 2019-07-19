@@ -213,16 +213,16 @@
                             <a href="/info/flow" id="footer-list">買取の流れ</a>
                         </li>
                         <li>
-                            <a href="/info/flow1" id="footer-list">｜段ボールにつめる</a>
+                            <a href="/info/flow1" id="footer-list">段ボールにつめる</a>
                         </li>
                         <li>
-                            <a href="/info/flow2" id="footer-list">｜申し込む</a>
+                            <a href="/info/flow2" id="footer-list">申し込む</a>
                         </li>
                         <li>
-                            <a href="/info/flow3" id="footer-list">｜査定を確認する</a>
+                            <a href="/info/flow3" id="footer-list">査定を確認する</a>
                         </li>
                         <li>
-                            <a href="/info/flow4" id="footer-list">｜入金</a>
+                            <a href="/info/flow4" id="footer-list">入金</a>
                         </li>
                     </ul>
                 </div>
@@ -234,6 +234,9 @@
                     <ul class="list-unstyled">
                         <li>
                             <a href="/info/privacy_policy" id="footer-list">プライバシーポリシー</a>
+                        </li>
+                        <li>
+                            <a href="/info/law_display" id="footer-list">特定商取引法に基づく表示</a>
                         </li>
                     </ul>
 

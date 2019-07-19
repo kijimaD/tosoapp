@@ -40,4 +40,9 @@ class InfoController extends Controller
     {
         return view('info.privacy_policy');
     }
+
+    public function law_display(Request $request)
+    {
+        return view('info.law_display');
+    }
 }
