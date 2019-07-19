@@ -30,6 +30,10 @@
         h3:before {
         }
 
+        .list-unstyled{
+          color:silver;
+        }
+
         li {
           list-style: none;
         }
@@ -43,6 +47,14 @@
         }
         .page-footer a:visited{
           color:white;
+        }
+
+        #footer-h5{
+          font-weight:bold;
+        }
+
+        #footer-list{
+          color:silver;
         }
 
         input[type="radio"] , input[type="checkbox"]{
@@ -145,17 +157,20 @@
             <div class="row">
 
                 <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
+                {{-- <div class="col-md-6 mt-md-0 mt-3">
 
                     <!-- Content -->
-                    <h5 class="text-uppercase">とそブックス</h5>
-                    <p>送信先住所:〒890-0081
+                    <h5 class="text-uppercase" id="footer-h5">とそブックス</h5>
+                    <p style="color:silver;">
+                        送信先住所:〒890-0081
                         鹿児島県鹿児島市<br>
                         唐湊4丁目14-26
                         塩満アパート102号室<br>
                     </p>
 
                 </div>
+
+                --}}
                 <!-- Grid column -->
 
                 <hr class="clearfix w-100 d-md-none pb-3">
@@ -164,23 +179,23 @@
                 <div class="col-md-3 mb-md-0 mb-3">
 
                     <!-- Links -->
-                    <h5 class="text-uppercase">アカウント</h5>
+                    <h5 class="text-uppercase" id="footer-h5">アカウント</h5>
 
                     <ul class="list-unstyled">
                         <li>
-                            <a class="" href="{{route('user.mypage')}}">マイページ</a>
+                            <a class="" href="{{route('user.mypage')}}" id="footer-list">マイページ</a>
                         </li>
                         <li>
-                            <a class="" href="/bank">口座管理</a>
+                            <a class="" href="/bank" id="footer-list">口座管理</a>
                         </li>
                         <li>
-                            <a class="" href="/address">住所管理</a>
+                            <a class="" href="/address" id="footer-list">住所管理</a>
                         </li>
                         <li>
-                            <a class="" href="/entry/add">買取申込</a>
+                            <a class="" href="/entry/add" id="footer-list">買取申込</a>
                         </li>
                         <li>
-                            <a class="" href="/entry">買取履歴</a>
+                            <a class="" href="/entry" id="footer-list">買取履歴</a>
                         </li>
                     </ul>
 
@@ -191,47 +206,49 @@
                 <div class="col-md-3 mb-md-0 mb-3">
 
                     <!-- Links -->
-                    <h5 class="text-uppercase">インフォ</h5>
+                    <h5 class="text-uppercase" id="footer-h5">つかいかた</h5>
 
                     <ul class="list-unstyled">
                         <li>
-                            <a class="" href="/">トップページ</a>
+                            <a href="/info/flow" id="footer-list">買取の流れ</a>
                         </li>
                         <li>
-                            <a href="/info/flow">買取の流れ</a>
+                            <a href="/info/flow1" id="footer-list">｜段ボールにつめる</a>
                         </li>
                         <li>
-                            <a href="/info/flow1">　-段ボールにつめる</a>
+                            <a href="/info/flow2" id="footer-list">｜申し込む</a>
                         </li>
                         <li>
-                            <a href="/info/flow2">　-申し込む</a>
+                            <a href="/info/flow3" id="footer-list">｜査定を確認する</a>
                         </li>
                         <li>
-                            <a href="/info/flow3">　-査定を確認する</a>
+                            <a href="/info/flow4" id="footer-list">｜入金</a>
                         </li>
+                    </ul>
+                </div>
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase" id="footer-h5">規約情報</h5>
+                    <ul class="list-unstyled">
                         <li>
-                            <a href="/info/flow4">　-入金</a>
-                        </li>
-                        <li>
-                            <a href="/info/privacy_policy">プライバシーポリシー</a>
+                            <a href="/info/privacy_policy" id="footer-list">プライバシーポリシー</a>
                         </li>
                     </ul>
 
                 </div>
-                <!-- Grid column -->
+                <!-- Grid row -->
+
+                <!-- Footer Links -->
 
             </div>
-            <!-- Grid row -->
-
-            {{-- </div> --}}
-            <!-- Footer Links -->
-
             <!-- Copyright -->
-            <div class="footer-copyright py-3">© 2019 Copyright:
+            <div class="footer-copyright py-3 text-center">© 2019 Copyright:
                 <a href="https://とそ.com">とそ.com</a>
             </div>
             <!-- Copyright -->
-        </div>
+
     </footer>
 
 </body>
