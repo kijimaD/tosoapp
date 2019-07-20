@@ -43,7 +43,7 @@
         @endforeach
     </div>
     <div>
-        <a class="btn btn-secondary btn-block" href="/user/mypage" role="button">マイページに戻る</a>
+        <a class="btn btn-outline-secondary btn-block" href="/user/mypage" role="button">マイページに戻る</a>
     </div>
 </div>
 
