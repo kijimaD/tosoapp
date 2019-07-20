@@ -149,11 +149,12 @@ window.onload = function(){
                             @foreach($banks as $bank)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="paymentbank_id" value="{{Crypt::encrypt('paymentbank_id' . $bank->id)}}" id="bank_radio" @if(old('paymentbank_id'))
+                                    <input type="radio" name="paymentbank_id" value="{{Crypt::encrypt('paymentbank_id' . $bank->id)}}" id="bank_radio" {{-- oldのチェック --}} @if(old('paymentbank_id'))
                                     @if(Crypt::decrypt(old('paymentbank_id')) == 'paymentbank_id'.$bank->id)
                                     checked
                                     @endif
-                                    @elseif($user->defaultbank->bank->id)
+                                    {{-- 既定口座のチェック --}}
+                                    @elseif($user->defaultbank)
                                         @if($bank->id == $user->defaultbank->bank->id)
                                             checked
                                             @endif
@@ -170,9 +171,11 @@ window.onload = function(){
                                     </p>
                                 </div>
                                 <div class="card-footer bg-white">
-                                    @if($bank->id == $user->defaultbank->bank->id)
-                                        <p class="text-success">既定の口座</p>
-                                        @endif
+                                    @if($user->defaultbank)
+                                        @if($bank->id == $user->defaultbank->bank->id)
+                                            <p class="text-success">既定の口座</p>
+                                            @endif
+                                            @endif
                                 </div>
                             </div>
                             <?php ++$j; ?> {{-- old用に発行した番号 --}}
