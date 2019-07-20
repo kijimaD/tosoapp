@@ -229,11 +229,12 @@ window.onload = function(){
                             @foreach($addresses as $address)
                             <div class="card col-sm-3 mr-3 mb-3" style="width: 18rem;">
                                 <div class="card-header bg-white">
-                                    <input type="radio" name="addressBook_id" value="{{Crypt::encrypt('addressBook_id' . $address->id)}}" @if(old('addressBook_id'))
+                                    <input type="radio" name="addressBook_id" value="{{Crypt::encrypt('addressBook_id' . $address->id)}}" {{-- oldのチェック --}} @if(old('addressBook_id'))
                                     @if(Crypt::decrypt(old('addressBook_id')) == 'addressBook_id'.$address->id)
                                     checked
                                     @endif
-                                    @elseif($user->useraddress->id)
+                                    {{-- 既定住所のチェック --}}
+                                    @elseif($user->useraddress)
                                         @if($address->id == $user->useraddress->addressbook->id)
                                             checked
                                             @endif
@@ -249,9 +250,11 @@ window.onload = function(){
                                     </p>
                                 </div>
                                 <div class="card-footer bg-white">
-                                    @if($address->id == $user->useraddress->addressbook->id)
-                                        <p class="text-success">既定の住所</p>
-                                        @endif
+                                    @if($user->useraddress)
+                                        @if($address->id == $user->useraddress->addressbook->id)
+                                            <p class="text-success">既定の住所</p>
+                                            @endif
+                                            @endif
                                 </div>
                             </div>
                             @endforeach
