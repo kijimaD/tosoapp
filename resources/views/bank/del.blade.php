@@ -10,28 +10,28 @@
     <div class="form-group">
         <label for="bank_name" class="col-form-label text-md-left">銀行名</label>
         <div>
-            <input type="text" name="bank_name" value="{{$form->bank_name}}" />
+            <input type="text" name="bank_name" value="{{$form->bank_name}}" disabled="disabled" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="bank_branch" class="cl-form-label text-md-left">支店名</label>
         <div>
-            <input type="text" name="bank_branch" value="{{$form->bank_branch}}" />
+            <input type="text" name="bank_branch" value="{{$form->bank_branch}}" disabled="disabled" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="bank_type" class="col-form-label text-md-left">口座種別</label>
         <div>
-            <input type="text" name="bank_type" value="{{$form->bank_type}}" />
+            <input type="text" name="bank_type" value="{{$form->bank_type}}" disabled="disabled" />
         </div>
     </div>
 
     <div class="form-group">
         <label for="bank_num" class="col-form-label text-md-left">口座種別</label>
         <div>
-            <input type="text" name="bank_num" value="{{$form->bank_num}}" />
+            <input type="text" name="bank_num" value="{{$form->bank_num}}" disabled="disabled" />
         </div>
     </div>
 

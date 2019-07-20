@@ -186,16 +186,16 @@
                             <a class="" href="{{route('user.mypage')}}" id="footer-list">マイページ</a>
                         </li>
                         <li>
-                            <a class="" href="/bank" id="footer-list">口座管理</a>
+                            <a class="" href="/bank" id="footer-list">入金口座</a>
                         </li>
                         <li>
-                            <a class="" href="/address" id="footer-list">住所管理</a>
-                        </li>
-                        <li>
-                            <a class="" href="/entry/add" id="footer-list">買取申込</a>
+                            <a class="" href="/address" id="footer-list">アドレス帳</a>
                         </li>
                         <li>
                             <a class="" href="/entry" id="footer-list">買取履歴</a>
+                        </li>
+                        <li>
+                            <a class="" href="/entry/add" id="footer-list">買取申込</a>
                         </li>
                     </ul>
 

@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','口座管理')
+@section('title','入金口座')
 
 @section('content')
 
@@ -41,6 +41,9 @@
             </div>
         </div>
         @endforeach
+    </div>
+    <div>
+        <a class="btn btn-secondary btn-block" href="/user/mypage" role="button">マイページに戻る</a>
     </div>
 </div>
 
