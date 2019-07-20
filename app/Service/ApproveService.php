@@ -62,6 +62,7 @@ class ApproveService
         [$val_assessmentdetail_id,
          $val_approve,
       ]) {
+            // DBにunique制限がかかっているため、2度目をやるとここでストップする。500エラーが出る。「2度押しました」と表示したい。
             if ($val_approve == "yes") {
                 DB::table('approvegoods')->insert(
                     [

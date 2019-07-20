@@ -133,7 +133,7 @@ class AddForeignKey extends Migration
 
         // 荷受け申請
         Schema::table('applygoods', function (Blueprint $table) {
-            $table->integer('entry_id')->unsigned();
+            $table->integer('entry_id')->unsigned()->unique();
             $table->foreign('entry_id')
             ->references('id')
             ->on('entries')
@@ -304,7 +304,7 @@ class AddForeignKey extends Migration
 
         // 了承商品
         Schema::table('approvegoods', function (Blueprint $table) {
-            $table->integer('assessmentdetail_id')->unsigned();
+            $table->integer('assessmentdetail_id')->unsigned()->unique();
             $table->foreign('assessmentdetail_id')
             ->references('id')
             ->on('assessmentdetails')
@@ -313,7 +313,7 @@ class AddForeignKey extends Migration
 
         // 返送商品
         Schema::table('resendgoods', function (Blueprint $table) {
-            $table->integer('assessmentdetail_id')->unsigned();
+            $table->integer('assessmentdetail_id')->unsigned()->unique();
             $table->foreign('assessmentdetail_id')
             ->references('id')
             ->on('assessmentdetails')

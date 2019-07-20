@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateApproveRequest;
 use App\Service\ApproveService;
 use App\Assessment;
 use App\Assessmentdetail;
@@ -24,7 +25,7 @@ class ApproveController extends Controller
         return view('approve.add', $this->service->add($request));
     }
 
-    public function create(Request $request)
+    public function create(CreateApproveRequest $request)
     {
         $this->service->create($request);
         return redirect('/entry');
