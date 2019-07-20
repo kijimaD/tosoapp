@@ -1,6 +1,6 @@
 @extends('layouts.tosoapp')
 
-@section('title','コメント修正')
+@section('title','口座削除')
 
 @section('content')
 <form action="/bank/del" method="post">

@@ -73,6 +73,7 @@ class AddressbookService
     {
         $addressbook_id = session()->pull('addressbook_id');
         Addressbook::find($addressbook_id)->delete();
+        Useraddress::where('addressbook_id', $addressbook_id)->delete();
     }
 
     public function defaultCreate($request)

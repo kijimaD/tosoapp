@@ -66,6 +66,7 @@ class BankService
     {
         $bank_id = session()->pull('id');
         Bank::find($bank_id)->delete();
+        Defaultbank::where('bank_id', $bank_id)->delete(); // 既定口座も削除する
     }
 
     public function defaultCreate($request)
