@@ -105,7 +105,11 @@ class ApproveService
         ->sum('get_price');
 
         $coupen_value = $assessment->coupen->coupen_value; // クーポンの価格上昇率
-        $total_price = floor($coupen_value * $sum_price); // クーポンを加味した合計値
+        $total_price = floor($coupen_value * $sum_price - $assessment->shippingcost->apply_cost); // クーポンを足し、送料を引いて合計額を求める
+
+        if ($total_price < 0) {
+            $total_price = 0; // マイナスにはならない
+        }
 
         return $total_price;
     }

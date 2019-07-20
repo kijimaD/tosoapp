@@ -45,4 +45,9 @@ class InfoController extends Controller
     {
         return view('info.law_display');
     }
+
+    public function target_goods(Request $request)
+    {
+        return view('info.target_goods');
+    }
 }

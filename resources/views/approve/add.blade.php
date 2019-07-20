@@ -26,7 +26,10 @@
       coupen_diff = parseInt(total * {{$info->coupen->coupen_value}} - total);
       $(".coupen_total").text(coupen_diff);
 
-      final_total = coupen_total + {{$info->shippingcost->apply_cost}};
+      final_total = coupen_total - {{$info->shippingcost->apply_cost}};
+      if(final_total < 0){
+        final_total = 0; // マイナスにはならない
+      }
       $(".final_total").text(final_total);
 
 // valはhiddenの値をセットする

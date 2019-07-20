@@ -34,6 +34,7 @@ Route::get('/info/flow3', 'InfoController@flow3');
 Route::get('/info/flow4', 'InfoController@flow4');
 Route::get('/info/privacy_policy', 'InfoController@privacy_policy');
 Route::get('/info/law_display', 'InfoController@law_display');
+Route::get('/info/target_goods', 'InfoController@target_goods');
 Route::get('/home', 'HomeController@index')->name('home');
 
 

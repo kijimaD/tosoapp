@@ -224,6 +224,9 @@
                         <li>
                             <a href="/info/flow4" id="footer-list">入金</a>
                         </li>
+                        <li>
+                            <a href="/info/target_goods" id="footer-list">買取対象商品</a>
+                        </li>
                     </ul>
                 </div>
 
