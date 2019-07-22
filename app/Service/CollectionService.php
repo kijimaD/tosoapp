@@ -18,7 +18,7 @@ class CollectionService
 
     public function applydone_create($request)
     {
-        $entry_id = session()->pull('entry_id');
+        $entry_id = get_salted_id($request, 'entry_id');
         $applydone = new Applydone;
         $applydone->fill([
           'entry_id' => $entry_id
