@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'], function 
     Route::get('/entry', 'EntryController@index');
     Route::get('/entry/add', 'EntryController@add');
     Route::post('/entry/add', 'EntryController@create');
+    Route::post('/entry/cancel_create', 'EntryController@cancel_create');
 
     Route::get('/approve/add', 'ApproveController@add');
     Route::post('/approve/add', 'ApproveController@create');

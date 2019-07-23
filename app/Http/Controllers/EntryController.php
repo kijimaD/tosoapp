@@ -63,4 +63,10 @@ class EntryController extends Controller
     {
         return view('entry.unify', $this->service->unify());
     }
+
+    public function cancel_create(Request $request)
+    {
+        $this->service->cancel_create($request);
+        return redirect('/entry');
+    }
 }
