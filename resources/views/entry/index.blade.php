@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         @foreach ($items as $item)
-        <div class="card col-sm-12 mr-3 mb-3" style="width: 18rem;">
+        <div class="card col-sm-12 mr-3 mb-3">
             <div class="card-header bg-white">
                 {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
