@@ -25,4 +25,24 @@ class CollectionService
           ])
         ->save();
     }
+
+    public function cancel_for_apply($request)
+    {
+        $entry_id = get_salted_id($request, 'entry_id');
+        $cancel = new \App\Cancel;
+        $cancel->fill([
+        'entry_id' => $entry_id,
+        'reason' => '集荷依頼に失敗しました。お手数ですが再度申し込んでください',
+      ])->save();
+    }
+
+    public function cancel_for_no_arrival($request)
+    {
+        $entry_id = get_salted_id($request, 'entry_id');
+        $cancel = new \App\Cancel;
+        $cancel->fill([
+        'entry_id' => $entry_id,
+        'reason' => '商品の到着が確認できませんでした。',
+      ])->save();
+    }
 }

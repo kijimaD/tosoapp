@@ -135,12 +135,14 @@ class EntryService
     {
     }
 
+    // ユーザ側からのキャンセルの場合。
     public function cancel_create($request)
     {
         $entry_id = get_salted_id($request, 'entry_id');
         $cancel = new \App\Cancel;
         $cancel->fill([
-        'entry_id' => $entry_id
+        'entry_id' => $entry_id,
+        'reason' => 'ユーザがキャンセルしました'
       ])
       ->save();
     }

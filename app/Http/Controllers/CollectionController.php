@@ -26,4 +26,16 @@ class CollectionController extends Controller
         $this->service->applydone_create($request);
         return redirect('collection/admin_index');
     }
+
+    public function cancel_for_apply(Request $request)
+    {
+        $this->service->cancel_for_apply($request);
+        return redirect('collection/admin_index');
+    }
+
+    public function cancel_for_no_arrival(Request $request)
+    {
+        $this->service->cancel_for_no_arrival($request);
+        return redirect('collection/admin_index');
+    }
 }

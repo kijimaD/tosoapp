@@ -181,6 +181,7 @@ class CreateUsersTable extends Migration
         // キャンセル
         Schema::create('cancels', function (Blueprint $table) {
             $table->Increments('id');
+            $table->string('reason');
             $table->timestamps();
         });
 

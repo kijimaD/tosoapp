@@ -111,6 +111,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('collection/admin_index', 'CollectionController@admin_index');
     Route::post('collection/applydone_add', 'CollectionController@applydone_create');
+    Route::post('collection/cancel_for_apply', 'CollectionController@cancel_for_apply');
+    Route::post('collection/cancel_for_no_arrival', 'CollectionController@cancel_for_no_arrival');
 
     Route::get('assessment/admin_index', 'AssessmentController@admin_index');
     Route::get('assessment/add', 'AssessmentController@add');

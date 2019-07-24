@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         @foreach ($items as $item)
-        <div class="card col-sm-12 mr-3 mb-3">
+        <div class="card col-sm-12 mr-3 mb-3" style="width: 18rem;">
             <div class="card-header bg-white">
                 {{-- <h5 class="card-title">{{$item->user->name}}</h5> --}}
                 <div>
@@ -40,7 +40,8 @@
                             </p>
 
                             @elseif(isset($item->cancel->id))
-                                <p class="text-danger">キャンセル済みです。</p>
+                                <p class="text-danger">キャンセル済みです。
+                                    <small>理由:{{$item->cancel->reason}}</small></p>
                                 {{-- 1.申し込みが完了しているとき（最初） --}}
                                 @elseif(isset($item->id))
                                     <p>申込が完了しました。</p>

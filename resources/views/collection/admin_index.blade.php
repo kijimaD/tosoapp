@@ -17,6 +17,7 @@
                 <th>集荷時刻帯</th>
                 <th>箱数</th>
                 <th>完了</th>
+                <th>キャンセル</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +40,22 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{Crypt::encrypt('entry_id' . $item->id)}}">
                     <td><input type="submit" value="委託完了" /></td>
+                </form>
+                @endif
+
+                @if (isset($item->cancel->id))
+                <td>キャンセル済み。理由:{{$item->cancel->reason}}</td>
+                @else
+                <form action="/collection/cancel_for_apply" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{Crypt::encrypt('entry_id' . $item->id)}}">
+                    <td><input type="submit" value="集荷依頼失敗キャンセル" class="btn btn-danger" /></td>
+                </form>
+
+                <form action="/collection/cancel_for_no_arrival" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{Crypt::encrypt('entry_id' . $item->id)}}">
+                    <td><input type="submit" value="未着キャンセル" class="btn btn-danger" /></td>
                 </form>
                 @endif
 
