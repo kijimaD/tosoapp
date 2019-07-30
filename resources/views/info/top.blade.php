@@ -58,7 +58,7 @@
         <div class="card mb-3 border-white" style="max-height: 140px;">
             <div class="row no-gutters p-3">
                 <div class="col-md-4 my-auto">
-                    <img class="card-img" src="../img/flow1.svg" style="width: 80%;">
+                    <img class="card-img" src="../img/flow1.svg" style="height: 80%;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -73,7 +73,7 @@
         <div class="card mb-3 border-white" style="max-height: 140px">
             <div class="row no-gutters p-3">
                 <div class="col-md-4 my-auto">
-                    <img class="card-img" src="../img/flow2.svg" style="width: 80%;">
+                    <img class="card-img" src="../img/flow2.svg" style="height:80%;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -88,7 +88,7 @@
         <div class="card mb-3 border-white" style="max-height: 140px">
             <div class="row no-gutters p-3">
                 <div class="col-md-4 my-auto">
-                    <img class="card-img" src="../img/flow3.svg" style="width:80%;">
+                    <img class="card-img" src="../img/flow3.svg" style="height:80%;">
                 </div>
                 <div class=" col-md-8">
                     <div class="card-body">
@@ -103,7 +103,7 @@
         <div class="card mb-3 border-white" style="max-height: 140px">
             <div class="row no-gutters p-3">
                 <div class="col-md-4 my-auto">
-                    <img class="card-img" src="../img/flow4.svg" style="width:80%;">
+                    <img class="card-img" src="../img/flow4.svg" style="height:80%;">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
