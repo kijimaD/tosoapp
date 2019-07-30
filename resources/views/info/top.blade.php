@@ -1,18 +1,19 @@
 <style>
     div#top.jumbotron {
-        background: url("../img/jumbotron2.png") no-repeat center center;
+        background: url("../img/jumbotron1.png") no-repeat center center;
     }
 
     div#second.jumbotron {
-        background: url("../img/jumbotron3.jpg") no-repeat center center;
+        background: url("../img/jumbotron2.jpg") no-repeat center center;
     }
 
     div#third.jumbotron {
-        background: url("../img/jumbotron4.jpg") no-repeat center center;
+        background: url("../img/jumbotron3.jpg") no-repeat center center;
     }
 
     div#fourth.jumbotron {
-        background: color:gray;
+        background: url("../img/jumbotron3.jpg") no-repeat center center;
+        background-color: aliceblue;
     }
 
     h2 {
