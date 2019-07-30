@@ -12,8 +12,8 @@
     }
 
     div#fourth.jumbotron {
-        background: url("../img/jumbotron3.jpg") no-repeat center center;
-        background-color: aliceblue;
+        /* background: url("../img/jumbotron3.jpg") no-repeat center center; */
+        background-color: lightskyblue;
     }
 
     h2 {
@@ -56,7 +56,7 @@
             少し複雑に思うかもしれませんが、とても簡単です。
             ぜひ一度お試しください。
         </p>
-        <div class="card mb-3" style="max-width: 540px">
+        <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters p-3">
                 <div class="col-md-4 my-auto">
                     <img class="card-img" src="../img/flow1.svg" style="width: 80%;">
