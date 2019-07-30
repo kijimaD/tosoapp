@@ -48,13 +48,20 @@
     </div>
 </div>
 
+<div class="jumbotron jumbotron-fluid" id="third">
+    <div class="container">
+        <h1 class="display-5">輸送効率化</h1>
+        <p class="">
+            ネットワークと連動したロッカー（実装中）で、買取をより身近にします。
+        </p>
+    </div>
+</div>
 
 <div class="jumbotron jumbotron-fluid" id="fourth">
     <div class="container">
         <h1 class="display-5 text-white">買取の流れ</h1>
         <p class="text-white">
-            荷物の受け渡しと入金に関する入力があります。
-            <br>ぜひ一度お試しください。
+            4ステップで、簡単に買取が可能。
         </p>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters p-3">
@@ -64,7 +71,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">1．段ボールにつめる</h5>
-                        <p>売りたいものを段ボールにつめて、身分証明書のコピーを同封します。</p>
+                        <p>売りたい商品を段ボールにつめて、身分証明書のコピーを同封します。</p>
                         <a class="btn btn-primary" href="/info/flow1">詳しく</a>
                     </div>
                 </div>
@@ -118,13 +125,4 @@
 
     </div>
 </div>
-
-{{-- <div class="jumbotron jumbotron-fluid" id="third">
-    <div class="container">
-        <h1 class="display-5">輸送効率化</h1>
-        <p class="">
-            ネットワークと連動したロッカーで、買取をより身近にします。
-        </p>
-    </div>
-</div> --}}
 @endsection
