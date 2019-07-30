@@ -13,7 +13,7 @@
 
     div#fourth.jumbotron {
         /* background: url("../img/jumbotron3.jpg") no-repeat center center; */
-        background-color: lightskyblue;
+        background-color: 017BFF;
     }
 
     h2 {
@@ -41,7 +41,8 @@
     <div class="container">
         <h1 class="display-5">公正な取引</h1>
         <p class="">
-            査定結果をネットで確認。個別にチェックし査定価格に満足しなければ、無料で返送します。
+            査定結果をネットで確認。<br>
+            査定価格に満足しなければ、無料で個別返送します。
         </p>
         {{-- <a href="/info/flow" class="btn btn-success btn-large mt-5">買取の流れを見る</a> --}}
     </div>
@@ -50,11 +51,10 @@
 
 <div class="jumbotron jumbotron-fluid" id="fourth">
     <div class="container">
-        <h1 class="display-5">買取の流れ</h1>
-        <p class="">
-            とそブックスはネット買取のみ対応しています。
-            少し複雑に思うかもしれませんが、とても簡単です。
-            ぜひ一度お試しください。
+        <h1 class="display-5 text-white">買取の流れ</h1>
+        <p class="text-white">
+            荷物の受け渡しと入金に関する入力があります。
+            <br>ぜひ一度お試しください。
         </p>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters p-3">
