@@ -51,7 +51,9 @@
     <div class="container">
         <h1 class="display-5">買取の流れ</h1>
         <p class="">
-            4ステップで、買取いたします。
+            とそブックスはネット買取のみ対応しています。
+            少し複雑に思うかもしれませんが、とても簡単です。
+            ぜひ一度お試しください。
         </p>
         <div class="card mb-3" style="max-width: 540px">
             <div class="row no-gutters p-3">
