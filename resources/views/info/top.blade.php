@@ -122,7 +122,7 @@
                 </div>
             </div>
         </div>
-
+        <a href="/register" class="btn btn-success btn-large mt-5">とそブックスに登録する</a>
     </div>
 </div>
 @endsection

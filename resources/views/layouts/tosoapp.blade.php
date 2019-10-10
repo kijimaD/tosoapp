@@ -111,7 +111,7 @@
                     <li class="nav-item dropdown">
                         @if(Auth::check())
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ \Auth::user()->name}}
+                            {{ \Auth::user()->name}}様
                         </a>
 
                         @else
