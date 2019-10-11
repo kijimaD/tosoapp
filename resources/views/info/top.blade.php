@@ -67,7 +67,7 @@
                     <a href="#shop" class="btn btn-secondary">店舗情報を見る</a>
                 </div>
                 <div class="col-md-4 d-none d-lg-block">
-                    <img class="" src="../img/book.svg" style="width:14rem;">
+                    <img class="" src="{{asset('img/book.svg')}}" style="width:14rem;">
                 </div>
             </div>
     </section>
@@ -83,7 +83,7 @@
                 <div class="col-12 mb-3">
                     <h3 class="mb-3">買取方法</h3>
 
-                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow1.svg') no-repeat right center; background-size:30%">
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url('{{asset('img/flow1.svg')}}') no-repeat right center; background-size:30%">
                         <div class="card-body">
                             <h5 class="card-title">1．段ボールにつめる</h5>
                             <p>売りたい商品を段ボールにつめて、身分証明書のコピーを同封します。</p>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow2.svg') no-repeat right center; background-size:30%;">
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url('{{asset('img/flow2.svg')}}') no-repeat right center; background-size:30%;">
                         <div class="card-body">
                             <h5 class="card-title">2．申し込む</h5>
                             <p>PCやスマホから入力します。会員登録すると便利な機能を使えますが、登録しなくても利用できます。</p>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
 
-                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow3.svg') no-repeat right center; background-size:30%">
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url('{{asset('img/flow3.svg')}}') no-repeat right center; background-size:30%">
                         <div class="card-body">
                             <h5 class="card-title">3．査定を確認する</h5>
                             <p>査定完了メールに記載したリンクをクリックし査定内容を確認し、了承します。</p>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow4.svg') no-repeat right center; background-size:30%;">
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url('{{asset('img/flow4.svg')}}') no-repeat right center; background-size:30%;">
                         <div class="card-body">
                             <h5 class="card-title">4．入金</h5>
                             <p>指定した方法で入金されます。</p>
@@ -174,7 +174,7 @@
                 <div class="col-md-6">
                     <h3 class="mb-3">担当者</h3>
                     <div class="card mb-3 border-0">
-                        <img src="../img/face.jpg" class="img-thumbnail rounded-circle border-white bg-light" alt="" style="width: 6rem; height:6rem;">
+                        <img src="{{asset('img/face.jpg')}}" class="img-thumbnail rounded-circle border-white bg-light" alt="" style="width: 6rem; height:6rem;">
                         <div class="card-body">
                             <p class="card-text">店長の貴島です。私が本の査定や、発送をしています。普段から本は好きで丁寧に扱っていますが、皆様からお預かりした本はさらに細心の注意を払って取り扱っています。お気づきの点などございましたらご連絡ください。</p>
                             <p class="card-text"><small class="text-muted"></small></p>

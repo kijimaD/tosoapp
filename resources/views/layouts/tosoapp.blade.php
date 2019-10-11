@@ -8,64 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=divice-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <!-- fontawesomeCDN -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <title>@yield('title')</title>
-    <style>
-        body {
-            /* background-color: silver; */
-        }
-
-        h2 {
-          border-bottom: solid 2px black;
-          padding-bottom: 5px;
-          margin-bottom:30px;
-          font-weight:900;
-          /* margin-bottom: 16px; */
-        }
-
-        h3{
-          padding:6px;
-          margin-top:12px;
-          font-weight:bold;
-        }
-
-        h3:before {
-        }
-
-        .list-unstyled{
-          color:silver;
-        }
-
-        li {
-          list-style: none;
-        }
-
-        .table-responsive th {
-          white-space: nowrap;
-        }
-
-        .page-footer a:link{
-          color:white;
-        }
-        .page-footer a:visited{
-          color:white;
-        }
-
-        #footer-h5{
-          font-weight:bold;
-        }
-
-        #footer-list{
-          color:silver;
-        }
-
-        input[type="radio"] , input[type="checkbox"]{
-          -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-          /* margin-right: 0.5em; */
-        }
-    </style>
 </head>
 
 <body>
