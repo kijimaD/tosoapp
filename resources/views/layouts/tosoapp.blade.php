@@ -8,7 +8,6 @@
     <meta charset="utf-8">
     {{-- ↓スマホ表示で必要！ --}}
     <meta name="viewport" content="width=divice-width, initial-scale=1, shrink-to-fit=no" />
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> --}}
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <title>@yield('title')</title>
