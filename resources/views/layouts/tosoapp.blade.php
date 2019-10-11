@@ -1,3 +1,6 @@
+@section('top-container','container')
+{{-- 初期値をcontainerありに設定 --}}
+
 <!doctype html>
 <html lang="ja">
 
@@ -5,26 +8,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=divice-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- fontawesomeCDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <title>@yield('title')</title>
     <style>
         body {
             /* background-color: silver; */
         }
+
         h2 {
           border-bottom: solid 2px black;
           padding-bottom: 5px;
           margin-bottom:30px;
-          font-weight:bold;
+          font-weight:900;
           /* margin-bottom: 16px; */
         }
 
         h3{
-          border: solid 0.5px gray;
           padding:6px;
           margin-top:12px;
-          margin-bottom:12px;
-          background-color:#FFFFFF;
-          font-weight:bolder;
+          font-weight:bold;
         }
 
         h3:before {
@@ -61,6 +64,7 @@
           -webkit-transform: scale(1.2);
           transform: scale(1.2);
           /* margin-right: 0.5em; */
+        }
     </style>
 </head>
 
@@ -69,7 +73,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="/">とそブックス</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
@@ -143,8 +147,8 @@
         </nav>
     </header>
 
-    <main role="main" class="container">
-        <h2 class="page-header mt-2">@yield('title')</h2>
+    <main role="main" class="@yield('top-container')">
+        <h2 class="page-header mt-4">@yield('title')</h2>
         @yield('content')
     </main>
 
@@ -176,7 +180,7 @@
                 <hr class="clearfix w-100 d-md-none pb-3">
 
                 <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
+                <div class="col-md-3 mb-md-0 my-3">
 
                     <!-- Links -->
                     <h5 class="text-uppercase" id="footer-h5">アカウント</h5>
@@ -203,7 +207,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
+                <div class="col-md-3 mb-md-0 my-3">
 
                     <!-- Links -->
                     <h5 class="text-uppercase" id="footer-h5">つかいかた</h5>
@@ -231,7 +235,7 @@
                 </div>
 
                 <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
+                <div class="col-md-3 mb-md-0 my-3">
 
                     <h5 class="text-uppercase" id="footer-h5">規約情報</h5>
                     <ul class="list-unstyled">
