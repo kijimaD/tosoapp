@@ -14,9 +14,6 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.4.0.slim.js" integrity="sha256-milezx5lakrZu0OP9b2QWFy1ft/UEUK6NH1Jqz8hUhQ=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
             <div class="container">
