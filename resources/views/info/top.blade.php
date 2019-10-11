@@ -61,13 +61,13 @@
                 <div class="col-md-8 mb-3">
                     <h3 class="mb-3">とそブックスについて</h3>
                     <p>とそブックスは、書籍等のネット買取を行っています。<br>
-                        段ボールにつめ、PC・スマートフォンの簡単な入力だけで買取が利用できます。
+                        段ボールにつめ、PC・スマートフォンの簡単な入力をするだけで買取が利用できます。
                     </p>
                     <a href="#menu" class="btn btn-secondary">メニューを見る</a>
                     <a href="#shop" class="btn btn-secondary">店舗情報を見る</a>
                 </div>
-                <div class="col-md-4">
-                    <img class="" src="../img/book.svg" style="width:18rem;">
+                <div class="col-md-4 d-none d-lg-block">
+                    <img class="" src="../img/book.svg" style="width:14rem;">
                 </div>
             </div>
     </section>
@@ -80,14 +80,43 @@
         <div class="container">
             <!-- 上段 -->
             <div class="row mb-4">
-                <div class="col-md-8 mb-3">
+                <div class="col-12 mb-3">
                     <h3 class="mb-3">買取方法</h3>
-                    <p>X COFFEEは、店主が焙煎したこだわりのコーヒーを最高の空間とおもてなしで提供する自家焙煎のカフェです。店主が世界中のコーヒー豆を焙煎し、コーヒー豆の種類にあわせ、心を込めて焙煎、抽出しております。また、女性に丁度良いボリュームのワンプレートランチ、季節のスイーツなどもご好評いただいております。</p>
-                    <p>最高においしい一杯のコーヒーを、最高に心地よい空間で。美味しいコーヒーを飲みながら、ゆったりとした素敵な空間を過ごしに、ぜひX COFFEEにお越しください。</p>
-                    <a href="#menu" class="btn btn-secondary">メニューを見る</a>
-                    <a href="#shop" class="btn btn-secondary">店舗情報を見る</a>
+
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow1.svg') no-repeat right center; background-size:30%">
+                        <div class="card-body">
+                            <h5 class="card-title">1．段ボールにつめる</h5>
+                            <p>売りたい商品を段ボールにつめて、身分証明書のコピーを同封します。</p>
+                            <a class="btn btn-secondary" href="/info/flow1">詳しく</a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow2.svg') no-repeat right center; background-size:30%;">
+                        <div class="card-body">
+                            <h5 class="card-title">2．申し込む</h5>
+                            <p>PCやスマホから入力します。会員登録すると便利な機能を使えますが、登録しなくても利用できます。</p>
+                            <a class="btn btn-secondary" href="/info/flow2">詳しく</a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow3.svg') no-repeat right center; background-size:30%">
+                        <div class="card-body">
+                            <h5 class="card-title">3．査定を確認する</h5>
+                            <p>査定完了メールに記載したリンクをクリックし査定内容を確認し、了承します。</p>
+                            <a class="btn btn-secondary" href="/info/flow3">詳しく</a>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" style="max-width: 540px; background: url(' ../img/flow4.svg') no-repeat right center; background-size:30%;">
+                        <div class="card-body">
+                            <h5 class="card-title">4．入金</h5>
+                            <p>指定した方法で入金されます。</p>
+                            <a class="btn btn-secondary" href="/info/flow4">詳しく</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 <!-- /コンテンツ02 -->
@@ -98,10 +127,39 @@
         <div class="container">
             <!-- 上段 -->
             <div class="row mb-4">
-                <div class="col-md-8 mb-3">
+                <div class="col-md-6 mb-3">
                     <h3 class="mb-3">店舗情報</h3>
-                    <p>X COFFEEは、店主が焙煎したこだわりのコーヒーを最高の空間とおもてなしで提供する自家焙煎のカフェです。店主が世界中のコーヒー豆を焙煎し、コーヒー豆の種類にあわせ、心を込めて焙煎、抽出しております。また、女性に丁度良いボリュームのワンプレートランチ、季節のスイーツなどもご好評いただいております。</p>
-                    <p>最高においしい一杯のコーヒーを、最高に心地よい空間で。美味しいコーヒーを飲みながら、ゆったりとした素敵な空間を過ごしに、ぜひX COFFEEにお越しください。</p>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>店名</th>
+                                <td>とそブックス</td>
+                            </tr>
+                            <tr>
+                                <th>住所</th>
+                                <td>〒890-0081　鹿児島県鹿児島市唐湊4-14-26塩満アパート102</td>
+                            </tr>
+                            <tr>
+                                <th>営業形態</th>
+                                <td>ネット買取のみ</td>
+                            </tr>
+                            <tr>
+                                <th>定休日</th>
+                                <td>土日祝</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <section id="access">
+                        <h4 class="mb-3">所在地</h4>
+                        <!-- アクセスマップ -->
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25315.025656145044!2d130.53724594725026!3d31.56117234560029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353e6724f0717987%3A0x2ff2a3555304625e!2z44CSODkwLTAwODEg6bm_5YWQ5bO255yM6bm_5YWQ5bO25biC5ZSQ5rmK77yU5LiB55uu77yR77yU4oiS77yS77yWIOWhqea6gOOCouODkeODvOODiA!5e0!3m2!1sja!2sjp!4v1570765489950!5m2!1sja!2sjp"
+                              width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                        <!-- /アクセスマップ -->
+                    </section>
                 </div>
             </div>
     </section>
@@ -116,7 +174,7 @@
             <div class="row mb-4">
                 <div class="col-md-8 mb-3">
                     <h3 class="mb-3">店長</h3>
-                    <p>X COFFEEは、店主が焙煎したこだわりのコーヒーを最高の空間とおもてなしで提供する自家焙煎のカフェです。店主が世界中のコーヒー豆を焙煎し、コーヒー豆の種類にあわせ、心を込めて焙煎、抽出しております。また、女性に丁度良いボリュームのワンプレートランチ、季節のスイーツなどもご好評いただいております。</p>
+                    <img src="../img/face.jpg" class="img-thumbnail rounded-circle border-white bg-light ml-3" alt="" style="width: 5rem;">
                 </div>
             </div>
     </section>
