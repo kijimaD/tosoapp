@@ -63,8 +63,7 @@
                     <p>とそブックスは、書籍等のネット買取を行っています。<br>
                         段ボールにつめ、PC・スマートフォンの簡単な入力をするだけで買取が利用できます。
                     </p>
-                    <a href="#menu" class="btn btn-secondary">メニューを見る</a>
-                    <a href="#shop" class="btn btn-secondary">店舗情報を見る</a>
+                    {{-- <a href="#menu" class="btn btn-secondary">メニューを見る</a> --}}
                 </div>
                 <div class="col-md-4 d-none d-lg-block">
                     <img class="" src="{{asset('img/book.svg')}}" style="width:14rem;">

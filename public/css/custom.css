@@ -13,7 +13,6 @@ color:gray;
 } */
 
 body {
-/* background-color: silver; */
 }
 
 h2 {
@@ -23,9 +22,6 @@ margin-top: 4rem;
 
 h3{
 font-size: 1.5rem;
-}
-
-h3:before {
 }
 
 .list-unstyled{
