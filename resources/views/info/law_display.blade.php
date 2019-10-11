@@ -41,19 +41,10 @@
             </tr>
             <tr>
                 <td>
-                    自動番号
-                </td>
-                <td>
-                    05037070889
-                </td>
-            </tr>
-            <tr>
-                <td>
                     メールアドレス
                 </td>
                 <td>
-                    toso
-                    @xn--d9jva.com
+                    {{'toso@xn--d9jva.com'}}
                 </td>
             </tr>
             <tr>
