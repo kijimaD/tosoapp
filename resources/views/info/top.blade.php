@@ -152,7 +152,7 @@
                 </div>
                 <div class="col-md-6">
                     <section id="access">
-                        <h4 class="mb-3">所在地</h4>
+                        <h3 class="mb-3">所在地</h3>
                         <!-- アクセスマップ -->
                         <div class="embed-responsive embed-responsive-4by3">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25315.025656145044!2d130.53724594725026!3d31.56117234560029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x353e6724f0717987%3A0x2ff2a3555304625e!2z44CSODkwLTAwODEg6bm_5YWQ5bO255yM6bm_5YWQ5bO25biC5ZSQ5rmK77yU5LiB55uu77yR77yU4oiS77yS77yWIOWhqea6gOOCouODkeODvOODiA!5e0!3m2!1sja!2sjp!4v1570765489950!5m2!1sja!2sjp"
@@ -172,11 +172,11 @@
         <div class="container">
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <h4 class="mb-3">担当者</h4>
+                    <h3 class="mb-3">担当者</h3>
                     <div class="card mb-3 border-0">
                         <img src="../img/face.jpg" class="img-thumbnail rounded-circle border-white bg-light" alt="" style="width: 6rem; height:6rem;">
                         <div class="card-body">
-                            <p class="card-text">店長の貴島です。私が本の査定や、発送をしています。普段から本は好きで丁寧に扱うほうですが、皆様からお預かりした本にはさらに細心の注意を払っています。お気づきの点などございましたらご連絡ください。</p>
+                            <p class="card-text">店長の貴島です。私が本の査定や、発送をしています。普段から本は好きで丁寧に扱っていますが、皆様からお預かりした本はさらに細心の注意を払って取り扱っています。お気づきの点などございましたらご連絡ください。</p>
                             <p class="card-text"><small class="text-muted"></small></p>
                         </div>
                     </div>
