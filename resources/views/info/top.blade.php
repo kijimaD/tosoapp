@@ -46,7 +46,7 @@
                 <br>安全、簡単、公正、スピーディで買取をより身近なものにし、環境に配慮した新たなライフスタイルを支援します。
             </p>
             <a href="/register" class="btn btn-success btn-large mt-5">とそブックスに登録する</a>
-            <a href="/register" class="ml-3 btn btn-success btn-sm mt-5">会員登録せず売る</a>
+            {{-- <a href="/register" class="ml-3 btn btn-success btn-sm mt-5">会員登録せず売る</a> --}}
         </div>
     </div>
 </div>
@@ -170,13 +170,19 @@
 <div class="py-4">
     <section id="about">
         <div class="container">
-            <!-- 上段 -->
             <div class="row mb-4">
-                <div class="col-md-8 mb-3">
-                    <h3 class="mb-3">店長</h3>
-                    <img src="../img/face.jpg" class="img-thumbnail rounded-circle border-white bg-light ml-3" alt="" style="width: 5rem;">
+                <div class="col-md-6">
+                    <h4 class="mb-3">担当者</h4>
+                    <div class="card mb-3 border-0">
+                        <img src="../img/face.jpg" class="img-thumbnail rounded-circle border-white bg-light" alt="" style="width: 6rem; height:6rem;">
+                        <div class="card-body">
+                            <p class="card-text">店長の貴島です。私が本の査定や、発送をしています。普段から本は好きで丁寧に扱うほうですが、皆様からお預かりした本にはさらに細心の注意を払っています。お気づきの点などございましたらご連絡ください。</p>
+                            <p class="card-text"><small class="text-muted"></small></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 <!-- /コンテンツ04 -->

@@ -177,8 +177,6 @@
                 --}}
                 <!-- Grid column -->
 
-                <hr class="clearfix w-100 d-md-none pb-3">
-
                 <!-- Grid column -->
                 <div class="col-md-3 mb-md-0 my-3">
 
