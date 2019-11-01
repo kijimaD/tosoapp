@@ -7,12 +7,11 @@ class Amazonfunctions
     {
 
 // Amazon API Sample
-        // h26.1.20
 
         // ログイン情報
-        $access_key_id		= 'AKIAIF4URGNAXFOPUF2Q';
-        $AssociateTag		= 'kijima05-22';		//AssociateTagというのはアソシエイトIDのこと
-        $secret_access_key	= 'kMWBkMzfJq6seFZFPUOGO3kvZO/ZBN29+XlKY/iF';
+        $access_key_id  = env('AMAZON_ACCESS_KEY_ID', false);
+        $AssociateTag		= env('AMAZON_ASSOCIATETAG', false);	//AssociateTagというのはアソシエイトIDのこと
+        $secret_access_key	= env('AMAZON_SECRET_ACCESS_KEY', false);
 
         // 各パラメータ設定
         $params=array();
