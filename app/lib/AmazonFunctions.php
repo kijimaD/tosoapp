@@ -57,49 +57,51 @@ class Amazonfunctions
         $url			= $baseurl.'?'.$option_string.'&Signature='.$this->urlencode_rfc3986($signature);
 
         // HTMLアクセスを行う
-        $get_contents	= file_get_contents($url);
 
-        // XMLパラメータをオブジェクトとして読み込む
-        $amazon_xml		= simplexml_load_string($get_contents);
+        // $get_contents	= file_get_contents($url);
 
-        foreach ($amazon_xml->Items->Item as $item) {
-            $getdata = array();
-            // 取得したxMLデータをgetdataへ値を代入
-            $getdata['titlename']	= $item->ItemAttributes->Title;
-            $getdata['maker']		= $item->ItemAttributes->Manufacturer;
-            $getdata['asin']		= $item->ASIN;
-            $getdata['listprice']	= $item->ItemAttributes->ListPrice->Amount;
-            $getdata['newprice']	= $item->OfferSummary->LowestNewPrice->Amount;
-            $getdata['usedprice']	= $item->OfferSummary->LowestUsedPrice->Amount;
-            $getdata['p_category']	= $item->BrowseNodes->BrowseNode->Name;
-            $getdata['newstock']	= $item->OfferSummary->TotalNew;
-            $getdata['usedstock']	= $item->OfferSummary->TotalUsed;
-            $getdata['dim_hight']	= $item->ItemAttributes->PackageDimensions->Height;
-            $getdata['dim_length']	= $item->ItemAttributes->PackageDimensions->Length;
-            $getdata['dim_width']	= $item->ItemAttributes->PackageDimensions->Width;
-            $getdata['weight']		= $item->ItemAttributes->PackageDimensions->Weight;
-            $getdata['ean']			= $item->ItemAttributes->EAN;
-            $getdata['isbn']		= $item->ItemAttributes->ISBN;
-            $getdata['upc']			= $item->ItemAttributes->UPC;
-            $getdata['p_release']	= $item->ItemAttributes->PublicationDate;
-            $getdata['producturl']	= $item->DetailPageURL;
+        if (isset($get_contents)) {
+            // XMLパラメータをオブジェクトとして読み込む
+            $amazon_xml		= simplexml_load_string($get_contents);
 
-            // 取得した商品情報の表示用(今回は取得した情報のタイトルと価格のみを表示)
-            // $curDate = sprintf("%04d%02d%02d", date("Y"), date("n"), date("j"))
-            // . "_" . sprintf("%02d%02d%02d", date("G"), date("i"), date("s"));
-            // $temWord = mb_convert_encoding($getdata['titlename'], "SJIS", "UTF-8");
-            //         printf(
-            //             "Time=[%s], ASIN=[%s], Title=[%s], Price=[%s], UsedPrice=[%s], title=[%s]\n",
-            //             $curDate,
-            //             $getdata['asin'],
-            //             $temWord,
-            //             $getdata['newprice'],
-            //             $getdata['usedprice'],
-            //             $getdata['titlename']
-            // );
-            // $title = $getdata['titlename'];
-            // $usedprice = $getdata['usedprice'];
+            foreach ($amazon_xml->Items->Item as $item) {
+                $getdata = array();
+                // 取得したxMLデータをgetdataへ値を代入
+                $getdata['titlename']	= $item->ItemAttributes->Title;
+                $getdata['maker']		= $item->ItemAttributes->Manufacturer;
+                $getdata['asin']		= $item->ASIN;
+                $getdata['listprice']	= $item->ItemAttributes->ListPrice->Amount;
+                $getdata['newprice']	= $item->OfferSummary->LowestNewPrice->Amount;
+                $getdata['usedprice']	= $item->OfferSummary->LowestUsedPrice->Amount;
+                $getdata['p_category']	= $item->BrowseNodes->BrowseNode->Name;
+                $getdata['newstock']	= $item->OfferSummary->TotalNew;
+                $getdata['usedstock']	= $item->OfferSummary->TotalUsed;
+                $getdata['dim_hight']	= $item->ItemAttributes->PackageDimensions->Height;
+                $getdata['dim_length']	= $item->ItemAttributes->PackageDimensions->Length;
+                $getdata['dim_width']	= $item->ItemAttributes->PackageDimensions->Width;
+                $getdata['weight']		= $item->ItemAttributes->PackageDimensions->Weight;
+                $getdata['ean']			= $item->ItemAttributes->EAN;
+                $getdata['isbn']		= $item->ItemAttributes->ISBN;
+                $getdata['upc']			= $item->ItemAttributes->UPC;
+                $getdata['p_release']	= $item->ItemAttributes->PublicationDate;
+                $getdata['producturl']	= $item->DetailPageURL;
 
+                // 取得した商品情報の表示用(今回は取得した情報のタイトルと価格のみを表示)
+                // $curDate = sprintf("%04d%02d%02d", date("Y"), date("n"), date("j"))
+                // . "_" . sprintf("%02d%02d%02d", date("G"), date("i"), date("s"));
+                // $temWord = mb_convert_encoding($getdata['titlename'], "SJIS", "UTF-8");
+                //         printf(
+                //             "Time=[%s], ASIN=[%s], Title=[%s], Price=[%s], UsedPrice=[%s], title=[%s]\n",
+                //             $curDate,
+                //             $getdata['asin'],
+                //             $temWord,
+                //             $getdata['newprice'],
+                //             $getdata['usedprice'],
+                //             $getdata['titlename']
+                // );
+                // $title = $getdata['titlename'];
+                // $usedprice = $getdata['usedprice'];
+            }
             return $getdata;
         }
     }
